@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Vice City Forums — enter the city and find your people.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Vice City Forums — enter the city, join a district, and find your people.">
+  <meta name="theme-color" content="#090812">
   <title>Vice City Forums</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,120 +14,117 @@
 <body>
   <div class="ambient" aria-hidden="true"></div>
   <div class="app-shell">
-    <aside class="city-rail" aria-label="City selector">
-      <button class="city-logo active" aria-label="Vice City">VC</button>
-      <button class="city-logo" aria-label="Formula 6">F6</button>
-      <button class="city-logo" aria-label="Future city">FC</button>
-      <button class="city-logo add" aria-label="Add city">+</button>
+    <aside class="city-rail" aria-label="Network selector">
+      <button class="city-logo active" aria-label="Vice City Forums">VC</button>
+      <button class="city-logo" aria-label="Formula 6 coming soon">F6</button>
+      <button class="city-logo" aria-label="Future City coming soon">FC</button>
+      <button class="city-logo add" aria-label="Add community">+</button>
       <div class="rail-spacer"></div>
-      <button class="avatar-mini" aria-label="Profile">BB</button>
+      <button class="avatar-mini" data-action="profile" aria-label="Open profile">BB</button>
     </aside>
 
-    <aside class="district-nav">
-      <div>
+    <aside class="district-nav" aria-label="Primary navigation">
+      <div class="brand-block">
         <p class="eyebrow">THE NETWORK</p>
         <h1>VICE CITY<br>FORUMS</h1>
         <p class="tagline">Enter the city. Find your people.</p>
       </div>
 
-      <nav aria-label="Primary navigation">
-        <button class="nav-item active" data-view="city-feed">City Feed</button>
-        <button class="nav-item" data-view="districts">Districts</button>
-        <button class="nav-item" data-view="crews">Crews</button>
-        <button class="nav-item" data-view="events">Events</button>
-        <button class="nav-item" data-view="media">Clips & Media</button>
+      <nav id="primary-nav">
+        <button class="nav-item active" data-view="home"><span>City Feed</span><span>⌂</span></button>
+        <button class="nav-item" data-view="discover"><span>Discover</span><span>⌕</span></button>
+        <button class="nav-item" data-view="crews"><span>Crews</span><span>♟</span></button>
+        <button class="nav-item" data-view="events"><span>Events</span><span>◇</span></button>
+        <button class="nav-item" data-view="saved"><span>Saved</span><span>☆</span></button>
+        <button class="nav-item" data-view="notifications"><span>Notifications</span><span id="notification-count" class="nav-count">3</span></button>
       </nav>
 
-      <div class="district-list">
-        <p class="section-label">LIVE DISTRICTS</p>
-        <button>Ocean Beach <span>128</span></button>
-        <button>Little Havana <span>84</span></button>
-        <button>Vice Point <span>63</span></button>
-        <button>Port Gellhorn <span>42</span></button>
+      <section>
+        <div class="section-head compact"><p class="section-label">DISTRICTS</p><button class="text-button" data-action="district-info">View all</button></div>
+        <div class="district-list" id="district-list"></div>
+      </section>
+
+      <div class="nav-footer">
+        <button class="profile-chip" data-action="profile">
+          <span class="profile-avatar">BB</span>
+          <span><strong>Brother Big</strong><small>City Founder · Level 12</small></span>
+        </button>
+        <p>Independent fan community. Not affiliated with Rockstar Games or Take-Two Interactive.</p>
       </div>
     </aside>
 
     <main class="main-content">
       <header class="topbar">
         <div>
-          <p class="eyebrow">THURSDAY NIGHT IN THE CITY</p>
+          <p class="eyebrow" id="view-kicker">LIVE FROM THE CITY</p>
           <h2 id="view-title">City Feed</h2>
         </div>
         <div class="top-actions">
-          <button class="ghost-button">Search</button>
-          <button class="primary-button" id="new-post-button">Start a thread</button>
+          <label class="search-box" aria-label="Search forums">
+            <span>⌕</span>
+            <input id="search-input" type="search" placeholder="Search the city">
+          </label>
+          <button class="ghost-button" data-action="notifications">Alerts</button>
+          <button class="primary-button" data-action="new-post">+ New Post</button>
         </div>
       </header>
 
-      <section class="hero-card">
-        <div>
-          <span class="status-pill">CITYWIDE EVENT</span>
-          <h3>WELCOME TO THE<br>OPENING NIGHT</h3>
-          <p>The first wave of citizens is arriving. Claim your district, meet your crew, and help shape the city before launch.</p>
-          <button class="primary-button">Enter the event</button>
-        </div>
-        <div class="hero-stat">
-          <strong>1,946</strong>
-          <span>citizens online</span>
-        </div>
-      </section>
-
-      <section class="feed-grid" id="feed">
-        <article class="thread-card featured">
-          <div class="thread-meta"><span class="badge legendary">LEGENDARY</span><span>Ocean Beach</span><span>2 min ago</span></div>
-          <h3>What is the first place you are driving when the city opens?</h3>
-          <p>Beach first, downtown first, or straight into the Everglades? Make your case.</p>
-          <footer><span>BB · City Founder</span><span>318 replies</span></footer>
-        </article>
-
-        <article class="thread-card">
-          <div class="thread-meta"><span class="badge rare">DISCOVERY</span><span>Vice Point</span><span>8 min ago</span></div>
-          <h3>New storefront details hidden in the latest footage</h3>
-          <p>There are at least four businesses nobody has catalogued yet.</p>
-          <footer><span>NeonKnight</span><span>96 replies</span></footer>
-        </article>
-
-        <article class="thread-card">
-          <div class="thread-meta"><span class="badge uncommon">CREW</span><span>Little Havana</span><span>14 min ago</span></div>
-          <h3>Nightshift crew recruiting editors and clip hunters</h3>
-          <p>Building a 24-hour team for launch-week discoveries, fails, and city news.</p>
-          <footer><span>SouthSideSix</span><span>41 replies</span></footer>
-        </article>
-      </section>
+      <section id="view-root" aria-live="polite"></section>
     </main>
 
-    <aside class="activity-panel">
+    <aside class="activity-panel" aria-label="City activity">
       <section>
-        <p class="section-label">CITY PULSE</p>
-        <div class="pulse-item"><strong>12,804</strong><span>registered citizens</span></div>
-        <div class="pulse-item"><strong>492</strong><span>threads today</span></div>
-        <div class="pulse-item"><strong>76</strong><span>active crews</span></div>
+        <div class="section-head"><p class="section-label">CITY PULSE</p><span class="live-dot">LIVE</span></div>
+        <div class="pulse-grid">
+          <div class="pulse-item"><strong id="online-count">2,846</strong><span>online now</span></div>
+          <div class="pulse-item"><strong>18.4K</strong><span>citizens</span></div>
+          <div class="pulse-item"><strong>647</strong><span>posts today</span></div>
+          <div class="pulse-item"><strong>83</strong><span>active crews</span></div>
+        </div>
       </section>
 
       <section>
-        <p class="section-label">TRENDING NOW</p>
-        <ol class="trending-list">
-          <li><span>01</span><div><strong>Launch map theories</strong><small>1.4K posts</small></div></li>
-          <li><span>02</span><div><strong>Best trailer details</strong><small>892 posts</small></div></li>
-          <li><span>03</span><div><strong>Community crews</strong><small>641 posts</small></div></li>
-        </ol>
+        <div class="section-head"><p class="section-label">TRENDING NOW</p><button class="text-button" data-view="discover">Explore</button></div>
+        <ol class="trending-list" id="trending-list"></ol>
+      </section>
+
+      <section class="event-teaser">
+        <p class="eyebrow">NEXT CITY EVENT</p>
+        <h3>Vice Night: Trailer Breakdown</h3>
+        <p>Community watch party, live theories, and creator rooms.</p>
+        <div class="event-meta"><span>Friday · 9:00 PM ET</span><span>1.2K going</span></div>
+        <button class="ghost-button full" data-view="events">View Event</button>
       </section>
     </aside>
   </div>
 
-  <dialog id="new-post-dialog">
-    <form method="dialog" class="composer">
+  <dialog id="composer-dialog">
+    <form method="dialog" class="composer" id="composer-form">
       <div class="composer-head">
-        <div><p class="eyebrow">BROADCAST TO THE CITY</p><h2>Start a thread</h2></div>
+        <div><p class="eyebrow">BROADCAST TO THE CITY</p><h2>Create a post</h2></div>
         <button class="icon-button" value="cancel" aria-label="Close">×</button>
       </div>
-      <label>Title<input name="title" maxlength="120" required></label>
-      <label>District<select name="district"><option>Citywide</option><option>Ocean Beach</option><option>Little Havana</option><option>Vice Point</option><option>Port Gellhorn</option></select></label>
-      <label>Post<textarea name="body" rows="6" required></textarea></label>
-      <div class="composer-actions"><button class="ghost-button" value="cancel">Cancel</button><button class="primary-button" value="publish">Publish thread</button></div>
+      <label>Title<input name="title" maxlength="120" required placeholder="What is happening in Vice City?"></label>
+      <label>District<select name="district" id="composer-district"></select></label>
+      <label>Post<textarea name="body" rows="7" maxlength="1200" required placeholder="Share the details, theory, clip, guide, or question..."></textarea></label>
+      <div class="composer-options">
+        <label class="check-row"><input type="checkbox" name="spoiler"> Mark as spoiler</label>
+        <label class="check-row"><input type="checkbox" name="media"> Includes media</label>
+      </div>
+      <div class="composer-actions"><span class="form-note">Community rules apply.</span><button class="primary-button" value="publish">Publish Post</button></div>
     </form>
   </dialog>
 
-  <script src="js/app.js"></script>
+  <dialog id="profile-dialog">
+    <div class="profile-modal">
+      <button class="icon-button modal-close" data-action="close-profile" aria-label="Close">×</button>
+      <div class="profile-hero"><div class="profile-avatar large">BB</div><div><p class="eyebrow">CITY FOUNDER</p><h2>Brother Big</h2><p>@BrotherBig · Ocean Beach</p></div></div>
+      <div class="profile-stats"><div><strong>12</strong><span>Level</span></div><div><strong>4,820</strong><span>Reputation</span></div><div><strong>326</strong><span>Followers</span></div><div><strong>18</strong><span>Badges</span></div></div>
+      <div class="profile-grid"><section><p class="section-label">ABOUT</p><p>Building the city before the city arrives. Founder of Vice City Forums and the GTA 6 Community network.</p></section><section><p class="section-label">CURRENT CREW</p><div class="mini-card"><strong>First Wave</strong><span>Founder · 212 members</span></div></section></div>
+    </div>
+  </dialog>
+
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
