@@ -1,8 +1,50 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080611"><meta name="description" content="Vice City Forums — the live community network for GTA VI fans."><title>Vice City Forums</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/styles.css"></head>
-<body><div class="shell">
-<aside class="network-rail"><button class="net active">VC</button><button class="net">F6</button><button class="net">FC</button><button class="net add">+</button><div class="spacer"></div><button class="avatar">BB</button></aside>
-<aside class="sidebar"><header><small>LIVE NETWORK</small><h1>VICE CITY</h1><p><i></i> 18,421 citizens online</p></header><button class="community">GTA 6 COMMUNITY <span>⌄</span></button>
-<nav><label>CITY CENTER</label><button class="channel active" data-view="home"># &nbsp; vice-wire <b>24</b></button><button class="channel" data-view="general"># &nbsp; general</button><button class="channel" data-view="news"># &nbsp; breaking-news <b>8</b></button><label>MEDIA DISTRICT</label><button class="channel" data-view="discover"># &nbsp; clips</button><button class="channel" data-view="discover"># &nbsp; fails</button><button class="channel" data-view="discover"># &nbsp; screenshots</button><button class="channel" data-view="discover"># &nbsp; map-discoveries</button><label>SAFEHOUSES</label><button class="channel"><em>●</em> Ocean Drive <strong>32</strong></button><button class="channel"><em>●</em> Looking for Crew <strong>18</strong></button><button class="channel"><em>●</em> Watch Party <strong>71</strong></button><label>CITY SERVICES</label><button class="channel" data-view="jobs">★ &nbsp; Jobs & Events</button><button class="channel">▣ &nbsp; Cases</button><button class="channel">⌕ &nbsp; Search</button><button class="channel">♔ &nbsp; Moderation</button></nav>
-<footer><span class="avatar">BB</span><div><b>BigBoss127</b><small>Racer · Level 17</small></div><span>⚙</span></footer></aside>
-<main><header class="top"><div><b id="channel-name"># &nbsp; vice-wire</b><span id="channel-desc">The city changes every minute.</span></div><div><button>⌕</button><button>♟</button><button>☰</button></div></header><section id="view"></section></main></div><script src="js/app.js"></script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090611">
+<meta name="description" content="Vice City Forums — an independent GTA VI fan community for news, theories, clips, crews and discussion.">
+<meta property="og:title" content="Vice City Forums">
+<meta property="og:description" content="Enter the city. Find your people. Join the independent GTA VI fan community.">
+<title>Vice City Forums</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="guest">
+<div class="app">
+<aside id="sidebar" class="sidebar">
+  <div class="brand"><div class="logo">VC</div><div><b>VICE CITY</b><span>FORUMS · FAN COMMUNITY</span></div></div>
+  <div class="nav">
+    <button data-route="home" class="active"># &nbsp; vice-wire</button>
+    <button data-route="categories"># &nbsp; all-forums</button>
+    <div class="nav-label">COMMUNITY</div>
+    <button data-category="general-discussion"># &nbsp; general</button>
+    <button data-category="official-news"># &nbsp; official-news</button>
+    <button data-category="vice-city-world"># &nbsp; vice-city-world</button>
+    <button data-category="gameplay-vehicles"># &nbsp; gameplay-vehicles</button>
+    <div class="nav-label">DISTRICTS</div>
+    <button data-route="clips">▣ &nbsp; clips & compilations</button>
+    <button data-route="crews">♟ &nbsp; crews & roleplay</button>
+  </div>
+  <div class="side-spacer"></div>
+  <div id="side-user" class="side-user"></div>
+</aside>
+<main class="main">
+  <header class="topbar">
+    <button id="mobile-menu" class="mobile-menu" aria-label="Open menu">☰</button>
+    <div class="top-title"><b id="top-name"># vice-wire</b><small id="top-desc">The city starts here.</small></div>
+    <div id="auth-actions" class="auth-actions"></div>
+  </header>
+  <section id="view"><div class="loading">Connecting to Vice City…</div></section>
+  <footer class="footer"><div class="footer-inner"><div><b style="color:#fff">VICECITYFORUMS.COM</b><br>Independent fan community. Not affiliated with, endorsed by, or associated with Rockstar Games or Take-Two Interactive.</div><div><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="#categories">Forums</a></div></div></footer>
+</main>
+</div>
+<button id="mobile-auth-cta" class="btn mobile-auth-cta">CREATE ACCOUNT</button>
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
