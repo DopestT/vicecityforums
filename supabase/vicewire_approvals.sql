@@ -10,6 +10,7 @@ as $$
 declare
   a public.vicewire_actions%rowtype;
   label text;
+  thread_target uuid;
 begin
   if not public.is_vicewire_admin() then
     raise exception 'not authorized';
@@ -51,13 +52,21 @@ begin
     where id = p_action_id;
 
   elsif a.action_type = 'lock_recommendation' then
-    if a.target_table <> 'threads' or a.target_id is null then
+    if a.target_table = 'threads' then
+      thread_target := a.target_id;
+    elsif a.target_table = 'replies' and a.target_id is not null then
+      select thread_id into thread_target
+      from public.replies
+      where id = a.target_id;
+    end if;
+
+    if thread_target is null then
       raise exception 'lock recommendation has no thread target';
     end if;
 
     update public.threads
     set is_locked = true
-    where id = a.target_id;
+    where id = thread_target;
 
     update public.vicewire_actions
     set status = 'executed', executed_at = now()
