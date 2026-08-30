@@ -38,16 +38,22 @@ function closeMenu(){ document.body.classList.remove('menu-open'); }
 function closeModal(){ modalRoot.innerHTML=''; }
 
 async function bootstrap(){
+  const recoveryLink = new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
   const { data } = await supabase.auth.getSession();
   session = data.session;
   await loadCategories();
   await refreshProfile();
   renderAuth();
   route();
-  supabase.auth.onAuthStateChange(async (_event, nextSession)=>{
+  if(recoveryLink && session) openPasswordReset();
+  supabase.auth.onAuthStateChange(async (event, nextSession)=>{
     session = nextSession;
     await refreshProfile();
     renderAuth();
+    if(event === 'PASSWORD_RECOVERY'){
+      openPasswordReset();
+      return;
+    }
     if(session && profile && !profile.onboarded) openOnboarding();
   });
 }
@@ -85,10 +91,11 @@ function bindGlobalActions(){
 
 function openAuth(mode='signup'){
   const signup = mode !== 'login';
-  modalRoot.innerHTML = `<div class="modal-backdrop"><div class="modal"><button class="modal-close" aria-label="Close">×</button><div class="eyebrow">VICE CITY FORUMS</div><h2>${signup?'CREATE ACCOUNT':'WELCOME BACK'}</h2><p class="muted">${signup?'Join the independent GTA VI fan community.':'Log in to post, reply and manage your profile.'}</p><div class="auth-tabs"><button data-switch="signup" class="${signup?'active':''}">SIGN UP</button><button data-switch="login" class="${!signup?'active':''}">LOG IN</button></div><form id="auth-form" class="form"><div class="field"><label>EMAIL</label><input name="email" type="email" autocomplete="email" required></div><div class="field"><label>PASSWORD</label><input name="password" type="password" minlength="8" autocomplete="${signup?'new-password':'current-password'}" required></div><div id="auth-message"></div><button class="btn" type="submit">${signup?'CREATE ACCOUNT':'LOG IN'}</button></form></div></div>`;
+  modalRoot.innerHTML = `<div class="modal-backdrop"><div class="modal"><button class="modal-close" aria-label="Close">×</button><div class="eyebrow">VICE CITY FORUMS</div><h2>${signup?'CREATE ACCOUNT':'WELCOME BACK'}</h2><p class="muted">${signup?'Join the independent GTA VI fan community.':'Log in to post, reply and manage your profile.'}</p><div class="auth-tabs"><button data-switch="signup" class="${signup?'active':''}">SIGN UP</button><button data-switch="login" class="${!signup?'active':''}">LOG IN</button></div><form id="auth-form" class="form"><div class="field"><label>EMAIL</label><input name="email" type="email" autocomplete="email" required></div><div class="field"><label>PASSWORD</label><input name="password" type="password" minlength="8" autocomplete="${signup?'new-password':'current-password'}" required></div><div id="auth-message"></div><button class="btn" type="submit">${signup?'CREATE ACCOUNT':'LOG IN'}</button>${signup?'':'<button class="btn ghost" type="button" id="forgot-password">FORGOT PASSWORD?</button>'}</form></div></div>`;
   $('.modal-close').onclick=closeModal;
   $('.modal-backdrop').onclick=e=>{ if(e.target===e.currentTarget) closeModal(); };
   document.querySelectorAll('[data-switch]').forEach(b=>b.onclick=()=>openAuth(b.dataset.switch));
+  if(!signup) $('#forgot-password').onclick=openForgotPassword;
   $('#auth-form').onsubmit = async e => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget), email=String(fd.get('email')).trim(), password=String(fd.get('password'));
@@ -107,6 +114,38 @@ function openAuth(mode='signup'){
       session=data.session; await refreshProfile(); renderAuth(); closeModal();
       if(!profile?.onboarded) openOnboarding(); else { toast('Logged in.'); route(); }
     }
+  };
+}
+
+function openForgotPassword(){
+  modalRoot.innerHTML = `<div class="modal-backdrop"><div class="modal"><button class="modal-close" aria-label="Close">×</button><div class="eyebrow">VICE CITY FORUMS</div><h2>RESET PASSWORD</h2><p class="muted">Enter your account email. We will send you a secure link to choose a new password.</p><form id="forgot-form" class="form"><div class="field"><label>EMAIL</label><input name="email" type="email" autocomplete="email" required></div><div id="forgot-message"></div><button class="btn" type="submit">SEND RESET LINK</button><button class="btn ghost" type="button" id="back-to-login">BACK TO LOG IN</button></form></div></div>`;
+  $('.modal-close').onclick=closeModal;
+  $('.modal-backdrop').onclick=e=>{ if(e.target===e.currentTarget) closeModal(); };
+  $('#back-to-login').onclick=()=>openAuth('login');
+  $('#forgot-form').onsubmit = async e => {
+    e.preventDefault();
+    const email=String(new FormData(e.currentTarget).get('email')).trim();
+    const msg=$('#forgot-message');
+    msg.innerHTML='<div class="notice">Sending reset link…</div>';
+    const { error } = await supabase.auth.resetPasswordForEmail(email,{redirectTo:`${location.origin}/`});
+    if(error){ msg.innerHTML=`<div class="notice error">${esc(error.message)}</div>`; return; }
+    msg.innerHTML='<div class="notice">If an account exists for that email, a reset link is on the way. Open it to choose your new password.</div>';
+  };
+}
+
+function openPasswordReset(){
+  modalRoot.innerHTML = `<div class="modal-backdrop"><div class="modal"><div class="eyebrow">VICE CITY FORUMS</div><h2>CHOOSE A NEW PASSWORD</h2><p class="muted">Your reset link is verified. Enter a new password for this account.</p><form id="password-reset-form" class="form"><div class="field"><label>NEW PASSWORD</label><input name="password" type="password" minlength="8" autocomplete="new-password" required></div><div class="field"><label>CONFIRM PASSWORD</label><input name="confirm_password" type="password" minlength="8" autocomplete="new-password" required></div><div id="password-reset-message"></div><button class="btn" type="submit">SAVE NEW PASSWORD</button></form></div></div>`;
+  $('#password-reset-form').onsubmit = async e => {
+    e.preventDefault();
+    const fd=new FormData(e.currentTarget), password=String(fd.get('password')), confirmPassword=String(fd.get('confirm_password'));
+    const msg=$('#password-reset-message');
+    if(password !== confirmPassword){ msg.innerHTML='<div class="notice error">Passwords do not match.</div>'; return; }
+    msg.innerHTML='<div class="notice">Saving new password…</div>';
+    const { error } = await supabase.auth.updateUser({password});
+    if(error){ msg.innerHTML=`<div class="notice error">${esc(error.message)}</div>`; return; }
+    closeModal();
+    toast('Password updated. You are logged in.');
+    if(!profile?.onboarded) openOnboarding(); else route();
   };
 }
 
