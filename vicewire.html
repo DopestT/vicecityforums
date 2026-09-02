@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090611">
+<title>ViceWire Command Center · Vice City Forums</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  body{background:#090611;color:#f7f3ff;font-family:Inter,sans-serif;min-height:100vh}.command{max-width:1180px;margin:0 auto;padding:28px 18px 70px}.command-top{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:24px}.command h1{font-family:Anton,sans-serif;font-size:clamp(34px,7vw,72px);line-height:.95;margin:6px 0}.sub{color:#a99fb8;max-width:720px}.status-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#6f657a;margin-right:8px}.status-dot.on{background:#54f59a;box-shadow:0 0 18px #54f59a}.command-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.cc-panel{background:#120d1c;border:1px solid #2a2038;border-radius:16px;padding:16px}.metric b{display:block;font-size:28px}.metric span,.muted{color:#9e94ab;font-size:13px}.cc-panel{margin-top:14px}.cc-panel h2{margin:0 0 12px;font-size:18px}.switch-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #241a31}.switch-row:last-child{border-bottom:0}.switch-row input{width:22px;height:22px}.action{display:grid;grid-template-columns:120px 90px 1fr auto;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid #241a31}.action:last-child{border:0}.chip{display:inline-flex;align-items:center;width:max-content;border:1px solid #3a2a4a;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:800}.chip.pending{border-color:#ffb347;color:#ffca75}.chip.executed,.chip.approved{border-color:#54f59a;color:#73ffac}.chip.high{border-color:#ff5a7d;color:#ff8ca4}.controls{display:flex;gap:6px}.smallbtn{background:#20162d;border:1px solid #4a355f;color:#fff;border-radius:8px;padding:7px 9px;font-weight:800;cursor:pointer}.smallbtn.ok{border-color:#2f8c5a}.smallbtn.no{border-color:#8a3b4d}.queue-form{display:grid;grid-template-columns:1fr auto;gap:10px}.queue-form textarea{min-height:90px}.loginbox{max-width:520px;margin:9vh auto;background:#120d1c;border:1px solid #2a2038;border-radius:18px;padding:22px}.loginbox input{width:100%;box-sizing:border-box;margin:6px 0 12px;background:#0c0812;color:#fff;border:1px solid #352746;border-radius:10px;padding:12px}.noticebox{padding:12px;border:1px solid #5d3a19;background:#24180d;border-radius:10px;color:#ffd392}.toplinks{display:flex;gap:8px;flex-wrap:wrap}.toplinks a,.toplinks button{color:#fff;text-decoration:none;background:#171020;border:1px solid #332441;border-radius:9px;padding:8px 10px;font:inherit;cursor:pointer}.hidden{display:none!important}@media(max-width:800px){.command-grid{grid-template-columns:1fr 1fr}.action{grid-template-columns:1fr}.queue-form{grid-template-columns:1fr}.command-top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div id="login" class="loginbox hidden">
+  <div class="eyebrow">VICEWIRE SECURITY</div>
+  <h2>ADMIN SIGN IN</h2>
+  <p class="muted">Use the same Supabase account as Vice City Forums. Access is controlled by the ViceWire admin list.</p>
+  <form id="login-form">
+    <label>EMAIL</label><input name="email" type="email" autocomplete="email" required>
+    <label>PASSWORD</label><input name="password" type="password" autocomplete="current-password" minlength="8" required>
+    <button class="btn" type="submit">ENTER COMMAND CENTER</button>
+    <button class="btn ghost" id="forgot-password" type="button">SEND PASSWORD RESET</button>
+    <div id="login-msg" style="margin-top:10px"></div>
+  </form>
+</div>
+
+<main id="app" class="command hidden">
+  <div class="command-top">
+    <div>
+      <div class="eyebrow">VICE CITY FORUMS · AI OPERATIONS</div>
+      <h1>VICEWIRE<br>COMMAND CENTER</h1>
+      <p class="sub">ViceWire can review new discussions, propose moderation actions, create clearly labeled community posts, and reply when permitted. Destructive actions remain owner-controlled.</p>
+    </div>
+    <div class="toplinks"><a href="./">← FORUM</a><button id="logout">LOG OUT</button></div>
+  </div>
+
+  <div id="access-warning" class="noticebox hidden"></div>
+
+  <section class="command-grid">
+    <div class="metric"><span>AI STATUS</span><b id="m-status"><i class="status-dot"></i>OFF</b></div>
+    <div class="metric"><span>QUEUED JOBS</span><b id="m-queued">0</b></div>
+    <div class="metric"><span>PENDING DECISIONS</span><b id="m-pending">0</b></div>
+    <div class="metric"><span>ACTIONS · 24H</span><b id="m-actions">0</b></div>
+  </section>
+
+  <section class="cc-panel">
+    <h2>AUTONOMY CONTROLS</h2>
+    <div class="switch-row"><div><b>ViceWire enabled</b><div class="muted">Master switch for the operator.</div></div><input id="s-enabled" type="checkbox"></div>
+    <div class="switch-row"><div><b>Automated safety review</b><div class="muted">Review new threads/replies and queue flags. No automatic bans or deletions.</div></div><input id="s-moderate" type="checkbox"></div>
+    <div class="switch-row"><div><b>Automatic replies</b><div class="muted">Allow low-risk ViceWire replies when the AI believes it adds value.</div></div><input id="s-reply" type="checkbox"></div>
+    <div class="switch-row"><div><b>Daily discussion post</b><div class="muted">Create approximately one clearly labeled community thread per day.</div></div><input id="s-post" type="checkbox"></div>
+  </section>
+
+  <section class="cc-panel">
+    <h2>GIVE VICEWIRE AN ASSIGNMENT</h2>
+    <form id="queue-form" class="queue-form">
+      <textarea id="prompt" placeholder="Example: Start a discussion asking members which GTA VI activity they expect to spend the most time doing, and why." maxlength="4000" required></textarea>
+      <button class="btn" type="submit">QUEUE THREAD</button>
+    </form>
+    <div id="queue-msg" class="muted" style="margin-top:8px"></div>
+  </section>
+
+  <section class="cc-panel">
+    <h2>NEEDS OWNER DECISION</h2>
+    <div id="pending-list"><div class="muted">Loading…</div></div>
+  </section>
+
+  <section class="cc-panel">
+    <h2>RECENT VICEWIRE ACTIVITY</h2>
+    <div id="recent-list"><div class="muted">Loading…</div></div>
+  </section>
+</main>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+const SUPABASE_URL='https://zyjapghvxmhnuvgvjeip.supabase.co';
+const SUPABASE_KEY='sb_publishable_-3ngWLW6Vbcm41kjdCyHPQ_SZHpc-x0';
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const $=s=>document.querySelector(s);
+const esc=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=v=>{try{return new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date(v))}catch{return''}};
+let settings=null;
+
+async function isAdmin(){const {data,error}=await supabase.rpc('is_vicewire_admin');return !error&&data===true}
+async function authGate(){
+  const {data}=await supabase.auth.getSession();
+  if(!data.session){$('#login').classList.remove('hidden');return}
+  if(!(await isAdmin())){ $('#login').classList.add('hidden');$('#app').classList.remove('hidden');$('#access-warning').textContent='This account is signed in but is not on the ViceWire admin list. Add its auth user ID to public.vicewire_admins in Supabase.';$('#access-warning').classList.remove('hidden');disableControls();return }
+  $('#login').classList.add('hidden');$('#app').classList.remove('hidden');await refresh();
+}
+function disableControls(){document.querySelectorAll('input,textarea,button').forEach(el=>{if(el.id!=='logout')el.disabled=true})}
+async function refresh(){
+  const [{data:s},{data:jobs},{data:pending},{data:actions}]=await Promise.all([
+    supabase.from('vicewire_settings').select('*').eq('id',1).single(),
+    supabase.from('vicewire_jobs').select('id',{count:'exact'}).eq('status','queued'),
+    supabase.from('vicewire_actions').select('*').eq('status','pending').order('created_at',{ascending:false}).limit(20),
+    supabase.from('vicewire_actions').select('*').gte('created_at',new Date(Date.now()-86400000).toISOString()).order('created_at',{ascending:false}).limit(50)
+  ]);
+  settings=s;
+  $('#s-enabled').checked=!!s?.enabled;$('#s-moderate').checked=!!s?.auto_moderate;$('#s-reply').checked=!!s?.auto_reply;$('#s-post').checked=!!s?.auto_post;
+  $('#m-status').innerHTML=`<i class="status-dot ${s?.enabled?'on':''}"></i>${s?.enabled?'ACTIVE':'OFF'}`;
+  const {count:qCount}=await supabase.from('vicewire_jobs').select('*',{count:'exact',head:true}).eq('status','queued');
+  const {count:pCount}=await supabase.from('vicewire_actions').select('*',{count:'exact',head:true}).eq('status','pending');
+  const {count:aCount}=await supabase.from('vicewire_actions').select('*',{count:'exact',head:true}).gte('created_at',new Date(Date.now()-86400000).toISOString());
+  $('#m-queued').textContent=qCount||0;$('#m-pending').textContent=pCount||0;$('#m-actions').textContent=aCount||0;
+  renderActions('#pending-list',pending||[],true);renderActions('#recent-list',actions||[],false);
+}
+function renderActions(selector,rows,needsControls){
+  const root=$(selector);if(!rows.length){root.innerHTML='<div class="muted">Nothing here.</div>';return}
+  root.innerHTML=rows.map(a=>`<div class="action"><div><span class="chip ${esc(a.status)}">${esc(a.status.toUpperCase())}</span></div><div><span class="chip ${esc(a.risk_level)}">${esc(a.risk_level.toUpperCase())}</span></div><div><b>${esc(a.action_type.replaceAll('_',' ').toUpperCase())}</b><div class="muted">${esc(a.reasoning_summary||'No summary')} · ${esc(fmt(a.created_at))}</div>${a.payload?.reply?`<div style="margin-top:6px">${esc(a.payload.reply)}</div>`:''}</div>${needsControls?`<div class="controls"><button class="smallbtn ok" data-approve="${esc(a.id)}">APPROVE</button><button class="smallbtn no" data-reject="${esc(a.id)}">REJECT</button></div>`:'<div></div>'}</div>`).join('');
+  document.querySelectorAll('[data-approve]').forEach(b=>b.onclick=()=>review(b.dataset.approve,true));
+  document.querySelectorAll('[data-reject]').forEach(b=>b.onclick=()=>review(b.dataset.reject,false));
+}
+async function review(id,approve){
+  const fn=approve?'vicewire_approve_action':'vicewire_reject_action';const {error}=await supabase.rpc(fn,{p_action_id:id});if(error)return alert(error.message);await refresh();
+}
+async function saveSetting(key,value){const {error}=await supabase.from('vicewire_settings').update({[key]:value,updated_at:new Date().toISOString()}).eq('id',1);if(error)alert(error.message);else refresh()}
+$('#s-enabled').onchange=e=>saveSetting('enabled',e.target.checked);$('#s-moderate').onchange=e=>saveSetting('auto_moderate',e.target.checked);$('#s-reply').onchange=e=>saveSetting('auto_reply',e.target.checked);$('#s-post').onchange=e=>saveSetting('auto_post',e.target.checked);
+$('#queue-form').onsubmit=async e=>{e.preventDefault();const prompt=$('#prompt').value.trim();if(!prompt)return;$('#queue-msg').textContent='Queuing…';const {error}=await supabase.rpc('vicewire_enqueue_manual',{p_kind:'manual_prompt',p_payload:{prompt}});if(error{$('#queue-msg').textContent=error.message;return}$('#prompt').value='';$('#queue-msg').textContent='Queued. The next ViceWire run will create it.';await refresh()};
+$('#login-form').onsubmit=async e=>{e.preventDefault();const fd=new FormData(e.currentTarget);$('#login-msg').textContent='Signing in…';const {error}=await supabase.auth.signInWithPassword({email:String(fd.get('email')).trim(),password:String(fd.get('password'))});if(error{$('#login-msg').textContent=error.message;return}location.reload()};
+$('#forgot-password').onclick=async()=>{const email=$('#login-form').elements.email.value.trim();if(!email){$('#login-msg').textContent='Enter your forum account email first.';return}$('#login-msg').textContent='Sending a secure reset link…';const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:`${location.origin}/`});$('#login-msg').textContent=error?error.message:'If that account exists, a reset link is on the way.'};
+$('#logout').onclick=async()=>{await supabase.auth.signOut();location.reload()};
+authGate();
+</script>
+</body>
+</html>
