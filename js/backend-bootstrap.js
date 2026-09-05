@@ -19,6 +19,22 @@ source = source
   .replace(
     "redirectTo:`${location.origin}/`",
     `redirectTo:'${FORUM_URL}'`
+  )
+  .replace(
+    "select('id,username,display_name,bio,avatar_url,onboarded')",
+    "select('id,username,display_name,bio,avatar_url,onboarded,is_admin')"
+  )
+  .replace(
+    "document.body.classList.toggle('guest', !session);",
+    "document.body.classList.toggle('guest', !session); document.body.classList.toggle('admin', !!profile?.is_admin);"
+  )
+  .replace(
+    'authActions.innerHTML = `<button class="btn small" data-new-thread>NEW THREAD</button><span class="username">${esc(label)}</span><button class="btn small ghost" data-signout>LOG OUT</button>`;',
+    'authActions.innerHTML = `<button class="btn small" data-new-thread>NEW THREAD</button>${profile?.is_admin?\'<span class="pinned">ADMIN</span>\':\'\'}<span class="username">${esc(label)}</span><button class="btn small ghost" data-signout>LOG OUT</button>`;'
+  )
+  .replace(
+    'sideUser.innerHTML = `<div class="userline"><span class="avatar">${esc(initials(label))}</span><div><b>${esc(label)}</b><small>${profile?.username?\'@\'+esc(profile.username):\'Finish profile setup\'}</small></div></div>`;',
+    'sideUser.innerHTML = `<div class="userline"><span class="avatar">${esc(initials(label))}</span><div><b>${esc(label)}${profile?.is_admin?\' · ADMIN\':\'\'}</b><small>${profile?.username?\'@\'+esc(profile.username):\'Finish profile setup\'}</small></div></div>`;'
   );
 
 const blobUrl = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
