@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <style>
-  .admin-shell{max-width:1180px;margin:0 auto;padding:24px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.admin-title{font-family:Anton,Impact,sans-serif;font-size:42px;margin:4px 0}.admin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:14px;padding:18px}.stat b{font:32px Anton;display:block}.stat span{color:var(--muted);font-size:10px;letter-spacing:.1em}.admin-row{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:12px;padding:14px;margin:9px 0}.admin-row h3{margin:0 0 6px}.row-meta{color:var(--muted);font-size:10px;display:flex;gap:10px;flex-wrap:wrap}.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-nav{display:flex;gap:8px;flex-wrap:wrap}.status-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#10251e;color:#75f5bd;font-size:10px;font-weight:800}.danger-zone{border-color:#693244}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:900px){.admin-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}@media(max-width:560px){.admin-grid{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
+  .admin-shell{max-width:1180px;margin:0 auto;padding:24px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.admin-title{font-family:Anton,Impact,sans-serif;font-size:42px;margin:4px 0}.admin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:14px;padding:18px}.stat b{font:32px Anton;display:block}.stat span{color:var(--muted);font-size:10px;letter-spacing:.1em}.admin-row{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:12px;padding:14px;margin:9px 0}.admin-row h3{margin:0 0 6px}.row-meta{color:var(--muted);font-size:10px;display:flex;gap:10px;flex-wrap:wrap}.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-nav{display:flex;gap:8px;flex-wrap:wrap}.status-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#10251e;color:#75f5bd;font-size:10px;font-weight:800}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.login-panel{max-width:470px;margin:34px auto 0;border:1px solid var(--edge);background:rgba(21,17,36,.96);border-radius:16px;padding:22px}@media(max-width:900px){.admin-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}@media(max-width:560px){.admin-grid{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
@@ -41,11 +41,26 @@ const esc=(v='')=>String(v).replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':
 const fmt=v=>{try{return new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date(v));}catch{return ''}};
 let profile=null;
 
+function showLogin(){
+  $('#identity').textContent='Administrator sign-in required';
+  $('#gate').className='login-panel';
+  $('#gate').hidden=false;
+  $('#gate').innerHTML=`<div class="eyebrow">PRIVATE ADMIN</div><h2 class="section-title" style="margin:8px 0 16px">SIGN IN</h2><form id="admin-login" class="form"><div class="field"><label>EMAIL</label><input name="email" type="email" autocomplete="email" required></div><div class="field"><label>PASSWORD</label><input name="password" type="password" autocomplete="current-password" minlength="8" required></div><div id="login-message"></div><button class="btn" type="submit">ENTER ADMIN</button></form>`;
+  $('#admin-login').onsubmit=async e=>{
+    e.preventDefault();
+    const fd=new FormData(e.currentTarget), email=String(fd.get('email')).trim(), password=String(fd.get('password'));
+    $('#login-message').innerHTML='<div class="notice">Signing in…</div>';
+    const {error}=await supabase.auth.signInWithPassword({email,password});
+    if(error){$('#login-message').innerHTML=`<div class="notice error">${esc(error.message)}</div>`;return;}
+    if(await requireAdmin()){await load();}
+  };
+}
+
 async function requireAdmin(){
   const {data:{session}}=await supabase.auth.getSession();
-  if(!session){$('#gate').className='notice error';$('#gate').innerHTML='No active forum session. <a href="./">Return to the forum and log in first.</a>';return false;}
+  if(!session){showLogin();return false;}
   const {data,error}=await supabase.from('profiles').select('id,username,display_name,is_admin,onboarded').eq('id',session.user.id).maybeSingle();
-  if(error||!data?.is_admin){$('#gate').className='notice error';$('#gate').textContent='Access denied. This account is not a forum administrator.';return false;}
+  if(error||!data?.is_admin){$('#gate').hidden=false;$('#gate').className='notice error';$('#gate').textContent='Access denied. This account is not a forum administrator.';return false;}
   profile=data;
   $('#identity').innerHTML=`<span class="status-pill">ADMIN ACTIVE</span> &nbsp; ${esc(data.display_name||data.username||'Administrator')}`;
   $('#gate').hidden=true;$('#admin').hidden=false;return true;
@@ -56,7 +71,7 @@ async function load(){
   $('#threads').innerHTML='<div class="loading">Loading threads…</div>';
   $('#categories').innerHTML='<div class="loading">Loading categories…</div>';
   const [threadsRes,repliesRes,catsRes,profilesRes]=await Promise.all([
-    supabase.from('threads').select('id,title,is_pinned,is_locked,reply_count,created_at,last_activity_at,category_id').order('last_activity_at',{ascending:false}).limit(50),
+    supabase.from('threads').select('id,title,is_pinned,is_locked,reply_count,created_at,last_activity_at,category_id',{count:'exact'}).order('last_activity_at',{ascending:false}).limit(50),
     supabase.from('replies').select('id',{count:'exact',head:true}),
     supabase.from('categories').select('id,name,slug,description,sort_order').order('sort_order'),
     supabase.from('profiles').select('id',{count:'exact',head:true})
