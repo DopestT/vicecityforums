@@ -56,17 +56,6 @@ async function getAdminState() {
   return profile?.is_admin ? profile : null;
 }
 
-function openAdminStatus(profile) {
-  const root = document.querySelector('#modal-root');
-  if (!root) return;
-  const name = profile.display_name || profile.username || 'Administrator';
-  root.innerHTML = `<div class="modal-backdrop"><div class="modal"><button class="modal-close" aria-label="Close">×</button><div class="eyebrow">VICE CITY FORUMS</div><h2>ADMIN ACCESS ACTIVE</h2><p class="muted"><b>${name}</b> is authenticated as a forum administrator.</p><div class="notice">Admin permissions are active for forum moderation, including thread/reply management and category administration.</div><button class="btn" id="admin-close">DONE</button></div></div>`;
-  const close = () => { root.innerHTML = ''; };
-  root.querySelector('.modal-close')?.addEventListener('click', close);
-  root.querySelector('#admin-close')?.addEventListener('click', close);
-  root.querySelector('.modal-backdrop')?.addEventListener('click', e => { if (e.target === e.currentTarget) close(); });
-}
-
 function installAdminUi(profile) {
   document.body.classList.add('admin');
   const actions = document.querySelector('#auth-actions');
@@ -75,7 +64,9 @@ function installAdminUi(profile) {
     button.className = 'btn small';
     button.setAttribute('data-admin-status', 'true');
     button.textContent = 'ADMIN';
-    button.addEventListener('click', () => openAdminStatus(profile));
+    button.addEventListener('click', () => {
+      location.href = new URL('admin.html', location.href).href;
+    });
     actions.prepend(button);
   }
   const side = document.querySelector('#side-user b');
