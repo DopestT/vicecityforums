@@ -2,6 +2,10 @@
 
 A community-first GTA VI / Vice City discussion platform built to feel like entering the city rather than opening a conventional message board.
 
+## Production
+
+The operational source of truth is [`OPERATIONS.md`](./OPERATIONS.md). It records the canonical production host, Supabase project, auth/admin path, deployment workflow, security follow-ups, and current work order.
+
 ## Initial product areas
 
 - City-wide discussion feed
@@ -26,8 +30,11 @@ Open `http://localhost:8080`.
 
 ```text
 index.html
+admin.html
 css/styles.css
 js/app.js
+js/backend-bootstrap.js
+OPERATIONS.md
 ```
 
 ## Brand
