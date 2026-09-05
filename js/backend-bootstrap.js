@@ -3,27 +3,18 @@ const NEW_SUPABASE_URL = 'https://mzqplhhtsnahxghxpwcd.supabase.co';
 const OLD_SUPABASE_KEY = 'sb_publishable_-3ngWLW6Vbcm41kjdCyHPQ_SZHpc-x0';
 const NEW_SUPABASE_KEY = 'sb_publishable_iOZHjbnIztfwjLQ82WCmCw_-FyEQ51q';
 
-const nativeFetch = globalThis.fetch.bind(globalThis);
+const appUrl = new URL('./app.js', import.meta.url);
+const response = await fetch(appUrl, { cache: 'no-store' });
+if (!response.ok) throw new Error(`Failed to load app.js: ${response.status}`);
 
-globalThis.fetch = (input, init = {}) => {
-  let url = typeof input === 'string' ? input : input?.url;
-  if (!url || !url.startsWith(OLD_SUPABASE_URL)) {
-    return nativeFetch(input, init);
-  }
+let source = await response.text();
+source = source
+  .replaceAll(OLD_SUPABASE_URL, NEW_SUPABASE_URL)
+  .replaceAll(OLD_SUPABASE_KEY, NEW_SUPABASE_KEY);
 
-  url = NEW_SUPABASE_URL + url.slice(OLD_SUPABASE_URL.length);
-
-  const headers = new Headers(init.headers || (typeof input !== 'string' ? input?.headers : undefined) || {});
-  if (headers.get('apikey') === OLD_SUPABASE_KEY) headers.set('apikey', NEW_SUPABASE_KEY);
-  if (headers.get('authorization') === `Bearer ${OLD_SUPABASE_KEY}`) {
-    headers.set('authorization', `Bearer ${NEW_SUPABASE_KEY}`);
-  }
-
-  const nextInit = { ...init, headers };
-  if (typeof input === 'string') return nativeFetch(url, nextInit);
-
-  const nextRequest = new Request(url, input);
-  return nativeFetch(nextRequest, nextInit);
-};
-
-import('./app.js');
+const blobUrl = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
+try {
+  await import(blobUrl);
+} finally {
+  URL.revokeObjectURL(blobUrl);
+}
