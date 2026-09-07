@@ -1,10 +1,13 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
 const OLD_SUPABASE_URL = 'https://zyjapghvxmhnuvgvjeip.supabase.co';
 const NEW_SUPABASE_URL = 'https://mzqplhhtsnahxghxpwcd.supabase.co';
 const OLD_SUPABASE_KEY = 'sb_publishable_-3ngWLW6Vbcm41kjdCyHPQ_SZHpc-x0';
 const NEW_SUPABASE_KEY = 'sb_publishable_iOZHjbnIztfwjLQ82WCmCw_-FyEQ51q';
 const FORUM_URL = 'https://dopestt.github.io/vicecityforums/';
+
+// Capture recovery intent before Supabase initializes and removes auth data
+// from the URL fragment.
+globalThis.__VCF_RECOVERY_INTENT__ =
+  new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
 
 const appUrl = new URL('./app.js', import.meta.url);
 const response = await fetch(appUrl, { cache: 'no-store' });
@@ -12,6 +15,18 @@ if (!response.ok) throw new Error(`Failed to load app.js: ${response.status}`);
 
 let source = await response.text();
 source = source
+  .replaceAll(
+    'https://esm.sh/@supabase/supabase-js@2',
+    'https://esm.sh/@supabase/supabase-js@2.115.0'
+  )
+  .replace(
+    "const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {",
+    "const supabase = globalThis.__VCF_SUPABASE__ = createClient(SUPABASE_URL, SUPABASE_KEY, {"
+  )
+  .replace(
+    "const recoveryLink = new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';",
+    "const recoveryLink = Boolean(globalThis.__VCF_RECOVERY_INTENT__) || new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';"
+  )
   .replaceAll(OLD_SUPABASE_URL, NEW_SUPABASE_URL)
   .replaceAll(OLD_SUPABASE_KEY, NEW_SUPABASE_KEY)
   .replace(
@@ -38,11 +53,10 @@ try {
   URL.revokeObjectURL(blobUrl);
 }
 
-// Independent admin-status layer so admin access is visible even if the
-// main app re-renders its header or a browser has stale UI state.
-const adminClient = createClient(NEW_SUPABASE_URL, NEW_SUPABASE_KEY, {
-  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
-});
+// Reuse the app's auth client so recovery handling and admin status share
+// one session lifecycle and one storage lock.
+const adminClient = globalThis.__VCF_SUPABASE__;
+if (!adminClient) throw new Error('Shared Supabase client was not initialized.');
 
 async function getAdminState() {
   const { data: sessionData } = await adminClient.auth.getSession();
