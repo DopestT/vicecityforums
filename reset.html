@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080711">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://esm.sh; connect-src https://mzqplhhtsnahxghxpwcd.supabase.co; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Reset Password · Vice City Forums</title>
+<style>
+:root{color-scheme:dark;--pink:#ff3da4;--blue:#23b7ff;--ink:#080711;--panel:#12101d;--muted:#aaa4ba;--line:#2b2740}
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0}
+body{display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 15% 15%,rgba(35,183,255,.17),transparent 35%),radial-gradient(circle at 85% 80%,rgba(255,61,164,.18),transparent 38%),var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff}
+.card{width:min(100%,520px);padding:30px;border:1px solid var(--line);border-radius:20px;background:rgba(18,16,29,.96);box-shadow:0 28px 80px rgba(0,0,0,.5)}
+.brand{display:flex;align-items:center;gap:13px;margin-bottom:28px}
+.logo{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--pink),var(--blue));font-weight:900;letter-spacing:-1px}
+.brand b{display:block;font-size:17px;letter-spacing:.08em}
+.brand span{display:block;margin-top:3px;color:var(--muted);font-size:11px;letter-spacing:.12em}
+.eyebrow{color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.16em}
+h1{margin:8px 0 10px;font-size:clamp(30px,7vw,42px);line-height:1}
+.intro{margin:0 0 22px;color:var(--muted);line-height:1.55}
+.notice{margin:18px 0;padding:14px 15px;border:1px solid rgba(35,183,255,.35);border-radius:10px;background:rgba(35,183,255,.08);line-height:1.45}
+.error{color:#ff9bca;border-color:rgba(255,61,164,.5);background:rgba(255,61,164,.09)}
+form{display:grid;gap:17px;margin-top:22px}
+form[hidden],[hidden]{display:none!important}
+label{display:block;margin-bottom:7px;font-size:12px;font-weight:800;letter-spacing:.11em}
+input{width:100%;border:1px solid var(--line);border-radius:10px;padding:15px;background:#0b0913;color:#fff;font:inherit;outline:none}
+input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(35,183,255,.13)}
+button,.button{display:block;width:100%;border:0;border-radius:10px;padding:16px;background:linear-gradient(90deg,var(--pink),#ee4cff);color:#fff;text-align:center;text-decoration:none;font-size:14px;font-weight:900;letter-spacing:.07em;cursor:pointer}
+button:disabled{opacity:.65;cursor:wait}
+.small{min-height:22px;margin:0;color:var(--muted);font-size:13px;line-height:1.4}
+.success{padding:18px 0 4px}
+.success h2{margin:0 0 10px;font-size:28px}
+.success p{color:var(--muted);line-height:1.5}
+.footer{margin-top:24px;color:#716b82;text-align:center;font-size:11px;line-height:1.5}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="brand">
+    <div class="logo">VC</div>
+    <div><b>VICE CITY FORUMS</b><span>ACCOUNT SECURITY</span></div>
+  </div>
+
+  <div class="eyebrow">SECURE RECOVERY</div>
+  <h1>Choose a new password.</h1>
+  <p class="intro">Verify your one-time link, then create a new password for your forum account.</p>
+
+  <div id="status" class="notice" role="status" aria-live="polite">Verifying your secure link…</div>
+
+  <form id="reset-form" hidden>
+    <div>
+      <label for="password">NEW PASSWORD</label>
+      <input id="password" name="password" type="password" minlength="8" autocomplete="new-password" required>
+    </div>
+    <div>
+      <label for="confirmation">CONFIRM PASSWORD</label>
+      <input id="confirmation" name="confirmation" type="password" minlength="8" autocomplete="new-password" required>
+    </div>
+    <p id="form-message" class="small" role="alert" aria-live="polite"></p>
+    <button id="submit-password" type="submit">SAVE NEW PASSWORD</button>
+  </form>
+
+  <section id="success" class="success" hidden>
+    <h2>Password updated.</h2>
+    <p>Your account is secure and ready. Return to Vice City Forums and log in with your new password.</p>
+    <a class="button" href="https://vicecityforums.com/">RETURN TO VICE CITY FORUMS</a>
+  </section>
+
+  <div class="footer">Independent GTA VI fan community · Never share recovery links or passwords.</div>
+</main>
+<script type="module" src="js/reset.js?v=20260907-1535"></script>
+</body>
+</html>
