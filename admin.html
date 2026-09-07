@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <style>
-  .admin-shell{max-width:1180px;margin:0 auto;padding:24px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.admin-title{font-family:Anton,Impact,sans-serif;font-size:42px;margin:4px 0}.admin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:14px;padding:18px}.stat b{font:32px Anton;display:block}.stat span{color:var(--muted);font-size:10px;letter-spacing:.1em}.admin-row{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:12px;padding:14px;margin:9px 0}.admin-row h3{margin:0 0 6px}.row-meta{color:var(--muted);font-size:10px;display:flex;gap:10px;flex-wrap:wrap}.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-nav{display:flex;gap:8px;flex-wrap:wrap}.status-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#10251e;color:#75f5bd;font-size:10px;font-weight:800}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.login-panel{max-width:470px;margin:34px auto 0;border:1px solid var(--edge);background:rgba(21,17,36,.96);border-radius:16px;padding:22px}@media(max-width:900px){.admin-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}@media(max-width:560px){.admin-grid{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
+  .admin-shell{max-width:1180px;margin:0 auto;padding:24px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.admin-title{font-family:Anton,Impact,sans-serif;font-size:42px;margin:4px 0}.admin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:14px;padding:18px}.stat b{font:32px Anton;display:block}.stat span{color:var(--muted);font-size:10px;letter-spacing:.1em}.admin-row{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:12px;padding:14px;margin:9px 0}.admin-row h3{margin:0 0 6px}.row-meta{color:var(--muted);font-size:10px;display:flex;gap:10px;flex-wrap:wrap}.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-nav{display:flex;gap:8px;flex-wrap:wrap}.status-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#10251e;color:#75f5bd;font-size:10px;font-weight:800}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.login-panel{max-width:470px;margin:34px auto 0;border:1px solid var(--edge);background:rgba(21,17,36,.96);border-radius:16px;padding:22px}.campaign-tools{margin:18px 0;border:1px solid #4b3768;background:radial-gradient(circle at 90% 20%,rgba(80,215,255,.10),transparent 24%),linear-gradient(120deg,rgba(255,59,145,.08),rgba(123,82,255,.08)),rgba(21,17,36,.96);border-radius:14px;padding:18px}.campaign-tools h2{margin:3px 0 8px}.campaign-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.campaign-status{font-size:11px;color:var(--muted)}@media(max-width:900px){.admin-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}@media(max-width:560px){.admin-grid{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
@@ -22,6 +22,12 @@
   <div id="gate" class="notice">Verifying access…</div>
   <section id="admin" hidden>
     <div class="admin-grid" id="stats"></div>
+    <section class="campaign-tools">
+      <div class="eyebrow">100 FOUNDING CITIZENS CAMPAIGN</div>
+      <h2 class="section-title">DISCUSSION STARTER</h2>
+      <p class="muted">Creates up to 20 real staff-started GTA VI discussions under your administrator account. Existing matching titles are skipped, so the tool is safe to run again.</p>
+      <div class="campaign-actions"><button class="btn" id="seed-discussions" type="button">SEED 20 DISCUSSIONS</button><span id="seed-status" class="campaign-status"></span></div>
+    </section>
     <div class="two-col">
       <section><div class="section-head"><h2 class="section-title">THREAD MODERATION</h2></div><div id="threads"></div></section>
       <section><div class="section-head"><h2 class="section-title">CATEGORIES</h2></div><div id="categories"></div></section>
@@ -40,6 +46,30 @@ const $=s=>document.querySelector(s);
 const esc=(v='')=>String(v).replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
 const fmt=v=>{try{return new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date(v));}catch{return ''}};
 let profile=null;
+let categoryBySlug=new Map();
+
+const foundingDiscussionSeeds=[
+  ['general-discussion','What is the FIRST thing you are doing when GTA VI loads?','The opening minutes matter. What is the very first thing you plan to do once you have control in GTA VI—and why?'],
+  ['general-discussion','What feature would instantly make GTA VI a 10/10?','Pick one feature, system, or quality-of-life improvement that would make GTA VI a 10/10 for you.'],
+  ['vice-city-world','Which GTA game had the best map?','Vice City is back, but which GTA map is still the benchmark? Rank your favorite and explain what made it work.'],
+  ['general-discussion','What GTA V feature should never return?','Not every old feature needs another life. What should Rockstar leave behind when GTA VI arrives?'],
+  ['general-discussion','Jason or Lucia — who are you playing first?','If the game gives you a choice early, who gets your first serious play session: Jason or Lucia?'],
+  ['gameplay-vehicles','What vehicle are you hunting for first?','Supercar, motorcycle, boat, helicopter, beat-up sedan—what is the first vehicle you are going looking for?'],
+  ['gameplay-vehicles','Should GTA VI have realistic fuel?','Would refueling make the world more immersive, or just make GTA less fun? Where is your line?'],
+  ['gameplay-vehicles','How realistic is TOO realistic for GTA?','GTA VI is pushing detail hard. Which realistic systems would improve the game, and which would become chores?'],
+  ['vice-city-world','What city should Rockstar use after Vice City?','Assume GTA VI is a huge success. Where should the series go next: a returning city, a brand-new region, or somewhere unexpected?'],
+  ['general-discussion','What is your wildest GTA VI prediction?','Make one prediction that sounds ridiculous now but might look genius later. We are keeping receipts.'],
+  ['general-discussion','What feature do you think Rockstar is deliberately hiding?','What major feature do you think has been kept out of trailers and marketing on purpose?'],
+  ['general-discussion','Will GTA VI actually live up to the hype?','The expectations may be higher than for any game ever released. What would GTA VI need to deliver to meet them?'],
+  ['general-discussion','Single-player first or GTA Online first?','When both experiences are available, which gets your attention first and what will pull you there?'],
+  ['general-discussion','What would ruin GTA VI for you?','Name the one design decision, monetization choice, technical problem, or missing feature that could seriously damage the experience for you.'],
+  ['general-discussion','Which GTA character deserves to return?','Choose one character from GTA history who deserves a return, cameo, reference, or proper second act.'],
+  ['vice-city-world','Best GTA radio station ever. Go.','No long setup. Name the best GTA radio station ever—and defend your answer.'],
+  ['vice-city-world','What GTA VI Easter egg are you expecting?','What callback, mystery, conspiracy, or hidden reference would you be shocked NOT to find somewhere in Leonida?'],
+  ['gameplay-vehicles','Create your dream GTA VI car collection.','You get a limited garage. What vehicles make the cut? Build your dream GTA VI collection.'],
+  ['general-discussion','What is the first stupid thing you are going to try in GTA VI?','Forget the serious plans. What ridiculous experiment are you trying as soon as the game lets you loose?'],
+  ['general-discussion','Make one GTA VI prediction now. We reopen this after launch.','One prediction only. Be specific enough that we can come back after launch and decide whether you nailed it.']
+];
 
 function showLogin(){
   $('#identity').textContent='Administrator sign-in required';
@@ -77,12 +107,31 @@ async function load(){
     supabase.from('profiles').select('id',{count:'exact',head:true})
   ]);
   const threads=threadsRes.data||[], cats=catsRes.data||[], catMap=new Map(cats.map(c=>[c.id,c]));
+  categoryBySlug=new Map(cats.map(c=>[c.slug,c]));
   $('#stats').innerHTML=[
     ['THREADS',threadsRes.count ?? threads.length],['REPLIES',repliesRes.count ?? 0],['MEMBERS',profilesRes.count ?? 0],['CATEGORIES',cats.length]
   ].map(([label,n])=>`<div class="stat"><b>${Number(n)||0}</b><span>${label}</span></div>`).join('');
   $('#threads').innerHTML=threads.length?threads.map(t=>`<article class="admin-row" data-thread="${t.id}"><h3>${esc(t.title)}</h3><div class="row-meta"><span>${esc(catMap.get(t.category_id)?.name||'Forum')}</span><span>${t.reply_count||0} replies</span><span>${esc(fmt(t.last_activity_at||t.created_at))}</span>${t.is_pinned?'<span class="pinned">PINNED</span>':''}${t.is_locked?'<span class="pinned">LOCKED</span>':''}</div><div class="row-actions"><button class="btn small ghost" data-action="pin">${t.is_pinned?'UNPIN':'PIN'}</button><button class="btn small ghost" data-action="lock">${t.is_locked?'UNLOCK':'LOCK'}</button><button class="btn small danger" data-action="delete">DELETE</button></div></article>`).join(''):'<div class="empty">No threads yet.</div>';
   $('#categories').innerHTML=cats.length?cats.map(c=>`<article class="admin-row"><h3>${esc(c.name)}</h3><div class="row-meta"><span>#${esc(c.slug)}</span><span>order ${c.sort_order??0}</span></div><p class="muted">${esc(c.description||'')}</p></article>`).join(''):'<div class="empty">No categories.</div>';
   bindThreadActions(threads);
+}
+
+async function seedFoundingDiscussions(){
+  const button=$('#seed-discussions'), status=$('#seed-status');
+  if(!profile && !(await requireAdmin())) return;
+  button.disabled=true;status.textContent='Checking existing discussions…';
+  const titles=foundingDiscussionSeeds.map(([,title])=>title);
+  const {data:existing,error:checkError}=await supabase.from('threads').select('title').in('title',titles);
+  if(checkError){status.textContent=checkError.message;button.disabled=false;return;}
+  const existingTitles=new Set((existing||[]).map(row=>row.title));
+  const rows=foundingDiscussionSeeds.filter(([slug,title])=>!existingTitles.has(title)&&categoryBySlug.has(slug)).map(([slug,title,body])=>({category_id:categoryBySlug.get(slug).id,author_id:profile.id,title,body}));
+  if(!rows.length){status.textContent='All available campaign discussions are already present.';button.disabled=false;return;}
+  status.textContent=`Publishing ${rows.length} staff-started discussion${rows.length===1?'':'s'}…`;
+  const {error}=await supabase.from('threads').insert(rows);
+  if(error){status.textContent=error.message;button.disabled=false;return;}
+  status.textContent=`Published ${rows.length}. Existing titles were left untouched.`;
+  button.disabled=false;
+  await load();
 }
 
 function bindThreadActions(threads){
@@ -101,6 +150,7 @@ function bindThreadActions(threads){
 }
 
 $('#refresh').onclick=load;
+$('#seed-discussions').onclick=seedFoundingDiscussions;
 if(await requireAdmin()) await load();
 </script>
 </body>
