@@ -45,3 +45,6 @@ if (adminProfile) {
   const observer = new MutationObserver(() => installAdminUi(adminProfile));
   observer.observe(document.body, { childList: true, subtree: true });
 }
+
+// Load campaign decoration only after app.js has created the shared client.
+await import('./founding-citizens.js?v=20260909-2');
