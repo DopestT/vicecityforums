@@ -208,6 +208,7 @@ const pages = [
       ["Required", "Source and disclosure"],
     ],
     body: `
+      <div class="callout"><strong>VCF Clips is live</strong><p>Watch the native, source-labeled feed and jump directly into a forum discussion for every published video. <a href="/#clips">Open VCF Clips →</a></p></div>
       <h2>What belongs in the clip hub?</h2>
       <div class="card-grid">
         <article class="card"><span class="meta">Series</span><h3>NPC Chaos Selfies</h3><p>Character-led snapshots and short scenes built around the absurd, unpredictable moments that make Vice City feel alive.</p></article>
@@ -219,14 +220,14 @@ const pages = [
       <p>Every clip should be identifiable as <strong>official Rockstar footage</strong>, <strong>user gameplay</strong>, <strong>fan-made</strong>, or <strong>AI-generated</strong>. Unknown-source footage stays out of production until it can be traced. This is especially important before the game's November 19, 2026 launch, when misleading “gameplay” labels can spread faster than corrections.</p>
       <div class="callout"><strong>Creator-first policy</strong><p>Submit only footage you own or have permission to share. Keep the original source URL and creator credit attached to the clip from intake through publication.</p></div>
       <h2>Join the discussion</h2>
-      <p>Use the <a href="/#category/clips-compilations">Clips & Compilations forum</a> to share a source, pitch a theme, identify a moment, or help verify whether footage is official, community-made, or synthetic.</p>
+      <p>Watch and submit through <a href="/#clips">VCF Clips</a>, or use the <a href="/#category/clips-compilations">Clips & Compilations forum</a> to pitch a theme, identify a moment, or help verify whether footage is official, community-made, or synthetic.</p>
     `,
     faqs: [
       ["Can I submit a GTA 6 clip?", "Yes, if you own the footage or have permission to share it and include the original source and creator information."],
       ["Does Vice City Forums post AI-generated GTA 6 clips?", "AI-assisted concepts may be discussed or featured only when they are visibly disclosed and are not labeled as real gameplay."],
       ["What are NPC Chaos Selfies?", "They are original character-centered images and short scenes that frame unexpected Vice City chaos from an NPC-style point of view."],
     ],
-    sources: [["Official GTA VI media for source comparison", officialVideos], ["Clips & Compilations forum", `${base}/#category/clips-compilations`]],
+    sources: [["Official GTA VI media for source comparison", officialVideos], ["VCF Clips feed", `${base}/#clips`], ["Clips & Compilations forum", `${base}/#category/clips-compilations`]],
   },
   {
     slug: "gta-6-forums",
