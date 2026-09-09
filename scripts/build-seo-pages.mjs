@@ -474,11 +474,11 @@ const pages = [
 ];
 
 const nav = `
-  <a href="${base}/gta-6-news/">News</a>
-  <a href="${base}/gta-6-release-date/">Release</a>
-  <a href="${base}/gta-6-gameplay/">Gameplay</a>
-  <a href="${base}/gta-6-characters/">Characters</a>
-  <a href="${base}/gta-6-countdown/">Countdown</a>
+  <a href="${base}/gta-6-news">News</a>
+  <a href="${base}/gta-6-release-date">Release</a>
+  <a href="${base}/gta-6-gameplay">Gameplay</a>
+  <a href="${base}/gta-6-characters">Characters</a>
+  <a href="${base}/gta-6-countdown">Countdown</a>
   <a class="nav-cta" href="${base}/#categories">Forums</a>`;
 
 const related = pages.map((page) => ({ slug: page.slug, title: page.h1, intro: page.intro }));
@@ -488,7 +488,7 @@ function esc(value) {
 }
 
 function jsonLd(page) {
-  const url = `${base}/${page.slug}/`;
+  const url = `${base}/${page.slug}`;
   const graph = [
     {
       "@type": page.type,
@@ -542,13 +542,13 @@ function jsonLd(page) {
 }
 
 function render(page) {
-  const url = `${base}/${page.slug}/`;
+  const url = `${base}/${page.slug}`;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(`${page.h1} | Vice City Forums`);
   const currentIndex = related.findIndex((candidate) => candidate.slug === page.slug);
   const relatedCards = [...related.slice(currentIndex + 1), ...related.slice(0, currentIndex)]
     .slice(0, 3)
-    .map((candidate) => `<a class="related-card" href="${base}/${candidate.slug}/"><h3>${esc(candidate.title)}</h3><span>${esc(candidate.intro)}</span></a>`)
+    .map((candidate) => `<a class="related-card" href="${base}/${candidate.slug}"><h3>${esc(candidate.title)}</h3><span>${esc(candidate.intro)}</span></a>`)
     .join("");
   const faqHtml = page.faqs.map(([question, answer]) => `<article class="faq-item"><h3>${esc(question)}</h3><p>${esc(answer)}</p></article>`).join("");
   const sourceHtml = page.sources.map(([label, href]) => `<li><a href="${href}" rel="noopener">${esc(label)}</a></li>`).join("");
@@ -639,7 +639,7 @@ for (const page of pages) {
 
 const sitemapEntries = [
   { path: "/", priority: "1.0", changefreq: "daily" },
-  ...pages.map((page) => ({ path: `/${page.slug}/`, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
+  ...pages.map((page) => ({ path: `/${page.slug}`, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -650,8 +650,8 @@ await writeFile(resolve(root, "sitemap.xml"), sitemap);
 const feedItems = pages.slice(0, 6).map((page) => `
   <item>
     <title>${esc(page.h1)}</title>
-    <link>${base}/${page.slug}/</link>
-    <guid isPermaLink="true">${base}/${page.slug}/</guid>
+    <link>${base}/${page.slug}</link>
+    <guid isPermaLink="true">${base}/${page.slug}</guid>
     <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
     <description>${esc(page.description)}</description>
   </item>`).join("");
@@ -686,7 +686,7 @@ Official GTA VI source used for fact checking: ${officialHome}
 Last verified: ${modified}
 
 ## Core pages
-${pages.map((page) => `- [${page.h1}](${base}/${page.slug}/): ${page.description}`).join("\n")}
+${pages.map((page) => `- [${page.h1}](${base}/${page.slug}): ${page.description}`).join("\n")}
 
 ## Editorial policy
 - Confirmed claims are tied to Rockstar-controlled or other direct first-party sources.

@@ -57,31 +57,31 @@ Recommended daily mix: one short-form video, one story/poll, one discussion prom
 
 **Caption:** The clock to Vice City is running. We built a clean GTA 6 countdown tied to Rockstar's current November 19, 2026 date—plus the November 12 preload date and direct source links. What are you doing first when the city opens?
 
-**Link:** `https://vicecityforums.com/gta-6-countdown/?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
+**Link:** `https://vicecityforums.com/gta-6-countdown?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
 
 ### PC status
 
 **Caption:** GTA 6 PC date check: not announced. Rockstar currently lists PS5 and Xbox Series X|S. That does not mean “never”—it means every exact PC date circulating right now needs a source. Track the official status and debate the likely window with us.
 
-**Link:** `https://vicecityforums.com/gta-6-pc/?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
+**Link:** `https://vicecityforums.com/gta-6-pc?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
 
 ### Pre-order guide
 
 **Caption:** GTA 6 pre-orders are live, but the fine print matters: Standard vs. Ultimate, the Vintage Vice City pack, November 12 preload, and physical versions described as code-in-box with no disc. We put the official details in one place.
 
-**Link:** `https://vicecityforums.com/gta-6-pre-order/?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
+**Link:** `https://vicecityforums.com/gta-6-pre-order?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
 
 ### Gameplay evidence
 
 **Caption:** Rockstar says An Extended Look was captured entirely from in-game footage on PS5. But a visible action is not automatically proof of a complete mechanic. Our breakdown labels what Rockstar states, what the footage shows, and what remains theory.
 
-**Link:** `https://vicecityforums.com/gta-6-gameplay/?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
+**Link:** `https://vicecityforums.com/gta-6-gameplay?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
 
 ### Community invitation
 
 **Caption:** GTA 6 deserves more than rumor pages and comment sections that disappear. Vice City Forums is public, independent, and built for verified news, map discoveries, trailer theories, vehicles, clips, crews, and long-form debate. The first 100 completed profiles become Founding Citizens.
 
-**Link:** `https://vicecityforums.com/gta-6-forums/?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
+**Link:** `https://vicecityforums.com/gta-6-forums?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
 
 Replace `CHANNEL` with `instagram`, `tiktok`, `youtube`, `facebook`, `x`, or the actual referrer name before publishing.
 

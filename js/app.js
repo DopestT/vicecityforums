@@ -180,18 +180,18 @@ function threadCard(row,authors){
 }
 
 const seoHubs = `
-  <a class="seo-hub-card" href="gta-6-news/"><b>GTA 6 NEWS</b><span>Verified updates and official announcements</span></a>
-  <a class="seo-hub-card" href="gta-6-countdown/"><b>LIVE COUNTDOWN</b><span>Days until November 19, 2026</span></a>
-  <a class="seo-hub-card" href="gta-6-pre-order/"><b>PRE-ORDER GUIDE</b><span>Editions, bonuses, and preload details</span></a>
-  <a class="seo-hub-card" href="gta-6-gameplay/"><b>GAMEPLAY</b><span>Confirmed footage versus interpretation</span></a>
-  <a class="seo-hub-card" href="gta-6-release-date/"><b>RELEASE DATE</b><span>Launch date, platforms, and status</span></a>
-  <a class="seo-hub-card" href="gta-6-pc/"><b>PC STATUS</b><span>What Rockstar has and has not announced</span></a>
-  <a class="seo-hub-card" href="gta-6-characters/"><b>CHARACTERS</b><span>Jason, Lucia, and the official cast</span></a>
-  <a class="seo-hub-card" href="gta-6-map-locations/"><b>MAP & LOCATIONS</b><span>Vice City and the state of Leonida</span></a>
-  <a class="seo-hub-card" href="gta-6-vehicles/"><b>VEHICLES</b><span>Official names, cars, boats, and bonuses</span></a>
-  <a class="seo-hub-card" href="gta-6-trailers/"><b>TRAILERS</b><span>Official videos and community breakdowns</span></a>
-  <a class="seo-hub-card" href="gta-6-funny-clips/"><b>FUNNY CLIPS</b><span>Fails, glitches, concepts, and NPC chaos</span></a>
-  <a class="seo-hub-card" href="gta-6-forums/"><b>FORUM DIRECTORY</b><span>Find the right GTA 6 discussion</span></a>`;
+  <a class="seo-hub-card" href="gta-6-news"><b>GTA 6 NEWS</b><span>Verified updates and official announcements</span></a>
+  <a class="seo-hub-card" href="gta-6-countdown"><b>LIVE COUNTDOWN</b><span>Days until November 19, 2026</span></a>
+  <a class="seo-hub-card" href="gta-6-pre-order"><b>PRE-ORDER GUIDE</b><span>Editions, bonuses, and preload details</span></a>
+  <a class="seo-hub-card" href="gta-6-gameplay"><b>GAMEPLAY</b><span>Confirmed footage versus interpretation</span></a>
+  <a class="seo-hub-card" href="gta-6-release-date"><b>RELEASE DATE</b><span>Launch date, platforms, and status</span></a>
+  <a class="seo-hub-card" href="gta-6-pc"><b>PC STATUS</b><span>What Rockstar has and has not announced</span></a>
+  <a class="seo-hub-card" href="gta-6-characters"><b>CHARACTERS</b><span>Jason, Lucia, and the official cast</span></a>
+  <a class="seo-hub-card" href="gta-6-map-locations"><b>MAP & LOCATIONS</b><span>Vice City and the state of Leonida</span></a>
+  <a class="seo-hub-card" href="gta-6-vehicles"><b>VEHICLES</b><span>Official names, cars, boats, and bonuses</span></a>
+  <a class="seo-hub-card" href="gta-6-trailers"><b>TRAILERS</b><span>Official videos and community breakdowns</span></a>
+  <a class="seo-hub-card" href="gta-6-funny-clips"><b>FUNNY CLIPS</b><span>Fails, glitches, concepts, and NPC chaos</span></a>
+  <a class="seo-hub-card" href="gta-6-forums"><b>FORUM DIRECTORY</b><span>Find the right GTA 6 discussion</span></a>`;
 
 async function home(){
   setHead('vice-wire','The city starts here.'); setActive('data-route','home');
@@ -203,7 +203,7 @@ async function home(){
         <div class="eyebrow">INDEPENDENT GTA 6 FAN COMMUNITY</div>
         <h1>THE GTA 6 COMMUNITY IS OPEN.</h1>
         <p>Track verified GTA 6 news, break down official trailers, explore Leonida, discover characters, share funny clips, and debate theories with people waiting for Vice City.</p>
-        <div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<button class="btn ghost" data-go-categories>BROWSE FORUMS</button><a class="btn ghost" href="gta-6-countdown/">LAUNCH COUNTDOWN</a></div>
+        <div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<button class="btn ghost" data-go-categories>BROWSE FORUMS</button><a class="btn ghost" href="gta-6-countdown">LAUNCH COUNTDOWN</a></div>
         <div class="launch-note">Unofficial fan community · Not affiliated with Rockstar Games or Take-Two Interactive</div>
       </section>
       <section aria-labelledby="explore-gta6">

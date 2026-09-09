@@ -7,18 +7,18 @@ Official GTA VI source used for fact checking: https://www.rockstargames.com/VI
 Last verified: 2026-09-09
 
 ## Core pages
-- [GTA 6 News: Confirmed Updates](https://vicecityforums.com/gta-6-news/): Track confirmed GTA 6 news, official Rockstar announcements, release-date updates, trailers, platforms, characters, and Vice City developments.
-- [GTA 6 Release Date & Platforms](https://vicecityforums.com/gta-6-release-date/): GTA 6 is scheduled for November 19, 2026. See confirmed platforms, current PC status, official source links, and what remains unannounced.
-- [GTA 6 Characters](https://vicecityforums.com/gta-6-characters/): Meet the confirmed GTA 6 characters: Jason Duval, Lucia Caminos, Cal Hampton, Boobie Ike, Dre'Quan Priest, Real Dimez, Raul Bautista, and Brian Heder.
-- [GTA 6 Map & Leonida Locations](https://vicecityforums.com/gta-6-map-locations/): Explore the officially named GTA 6 map locations: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga.
-- [GTA 6 Trailers & Official Videos](https://vicecityforums.com/gta-6-trailers/): Watch the official GTA 6 video lineup and explore source-labeled breakdowns of An Extended Look, Trailer 2, Trailer 1, and Rockstar's character clips.
-- [GTA 6 Funny Clips & NPC Chaos](https://vicecityforums.com/gta-6-funny-clips/): Discover source-labeled GTA 6 funny clips, fails, glitches, fan videos, and NPC chaos. Official, community, and AI footage are clearly identified.
-- [GTA 6 Forums & Community](https://vicecityforums.com/gta-6-forums/): Join GTA 6 forums for verified news, trailer theories, Vice City map discussion, characters, vehicles, funny clips, crews, and community discoveries.
-- [GTA 6 Pre-Order & Editions](https://vicecityforums.com/gta-6-pre-order/): Compare the official GTA 6 Standard and Ultimate editions, Vintage Vice City pre-order bonuses, preload date, and physical code-in-box details.
-- [GTA 6 Gameplay: What Is Confirmed](https://vicecityforums.com/gta-6-gameplay/): Explore confirmed GTA 6 gameplay footage, what Rockstar's PS5 extended look actually shows, and which systems remain community interpretation.
-- [GTA 6 PC Release Status](https://vicecityforums.com/gta-6-pc/): Check the current official GTA 6 PC release status, confirmed console platforms, unsupported date claims, and the sources worth watching for an announcement.
-- [GTA 6 Vehicles & Confirmed Names](https://vicecityforums.com/gta-6-vehicles/): Track officially named GTA 6 vehicles from Rockstar's store and media, including the Cheetah, Stanier, Dominator Buggy, Squalo, and more.
-- [GTA 6 Release Countdown](https://vicecityforums.com/gta-6-countdown/): Follow a live calendar countdown to the confirmed GTA 6 release date, November 19, 2026, plus preload timing and launch-status source links.
+- [GTA 6 News: Confirmed Updates](https://vicecityforums.com/gta-6-news): Track confirmed GTA 6 news, official Rockstar announcements, release-date updates, trailers, platforms, characters, and Vice City developments.
+- [GTA 6 Release Date & Platforms](https://vicecityforums.com/gta-6-release-date): GTA 6 is scheduled for November 19, 2026. See confirmed platforms, current PC status, official source links, and what remains unannounced.
+- [GTA 6 Characters](https://vicecityforums.com/gta-6-characters): Meet the confirmed GTA 6 characters: Jason Duval, Lucia Caminos, Cal Hampton, Boobie Ike, Dre'Quan Priest, Real Dimez, Raul Bautista, and Brian Heder.
+- [GTA 6 Map & Leonida Locations](https://vicecityforums.com/gta-6-map-locations): Explore the officially named GTA 6 map locations: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga.
+- [GTA 6 Trailers & Official Videos](https://vicecityforums.com/gta-6-trailers): Watch the official GTA 6 video lineup and explore source-labeled breakdowns of An Extended Look, Trailer 2, Trailer 1, and Rockstar's character clips.
+- [GTA 6 Funny Clips & NPC Chaos](https://vicecityforums.com/gta-6-funny-clips): Discover source-labeled GTA 6 funny clips, fails, glitches, fan videos, and NPC chaos. Official, community, and AI footage are clearly identified.
+- [GTA 6 Forums & Community](https://vicecityforums.com/gta-6-forums): Join GTA 6 forums for verified news, trailer theories, Vice City map discussion, characters, vehicles, funny clips, crews, and community discoveries.
+- [GTA 6 Pre-Order & Editions](https://vicecityforums.com/gta-6-pre-order): Compare the official GTA 6 Standard and Ultimate editions, Vintage Vice City pre-order bonuses, preload date, and physical code-in-box details.
+- [GTA 6 Gameplay: What Is Confirmed](https://vicecityforums.com/gta-6-gameplay): Explore confirmed GTA 6 gameplay footage, what Rockstar's PS5 extended look actually shows, and which systems remain community interpretation.
+- [GTA 6 PC Release Status](https://vicecityforums.com/gta-6-pc): Check the current official GTA 6 PC release status, confirmed console platforms, unsupported date claims, and the sources worth watching for an announcement.
+- [GTA 6 Vehicles & Confirmed Names](https://vicecityforums.com/gta-6-vehicles): Track officially named GTA 6 vehicles from Rockstar's store and media, including the Cheetah, Stanier, Dominator Buggy, Squalo, and more.
+- [GTA 6 Release Countdown](https://vicecityforums.com/gta-6-countdown): Follow a live calendar countdown to the confirmed GTA 6 release date, November 19, 2026, plus preload timing and launch-status source links.
 
 ## Editorial policy
 - Confirmed claims are tied to Rockstar-controlled or other direct first-party sources.

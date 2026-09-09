@@ -1,6 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.vicecityforums.com"
+        }
+      ],
+      "destination": "https://vicecityforums.com/",
+      "permanent": true
+    },
     {
       "source": "/:path*",
       "has": [
@@ -13,6 +25,17 @@
       "permanent": true
     },
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "vicecityforums.net"
+        }
+      ],
+      "destination": "https://vicecityforums.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -21,6 +44,17 @@
         }
       ],
       "destination": "https://vicecityforums.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.vicecityforums.net"
+        }
+      ],
+      "destination": "https://vicecityforums.com/",
       "permanent": true
     },
     {
@@ -37,7 +71,7 @@
   ],
   "headers": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",

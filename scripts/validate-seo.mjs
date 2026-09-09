@@ -6,18 +6,18 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://vicecityforums.com";
 const routes = [
   ["index.html", "/"],
-  ["gta-6-news/index.html", "/gta-6-news/"],
-  ["gta-6-release-date/index.html", "/gta-6-release-date/"],
-  ["gta-6-characters/index.html", "/gta-6-characters/"],
-  ["gta-6-map-locations/index.html", "/gta-6-map-locations/"],
-  ["gta-6-trailers/index.html", "/gta-6-trailers/"],
-  ["gta-6-funny-clips/index.html", "/gta-6-funny-clips/"],
-  ["gta-6-forums/index.html", "/gta-6-forums/"],
-  ["gta-6-pre-order/index.html", "/gta-6-pre-order/"],
-  ["gta-6-gameplay/index.html", "/gta-6-gameplay/"],
-  ["gta-6-pc/index.html", "/gta-6-pc/"],
-  ["gta-6-vehicles/index.html", "/gta-6-vehicles/"],
-  ["gta-6-countdown/index.html", "/gta-6-countdown/"],
+  ["gta-6-news/index.html", "/gta-6-news"],
+  ["gta-6-release-date/index.html", "/gta-6-release-date"],
+  ["gta-6-characters/index.html", "/gta-6-characters"],
+  ["gta-6-map-locations/index.html", "/gta-6-map-locations"],
+  ["gta-6-trailers/index.html", "/gta-6-trailers"],
+  ["gta-6-funny-clips/index.html", "/gta-6-funny-clips"],
+  ["gta-6-forums/index.html", "/gta-6-forums"],
+  ["gta-6-pre-order/index.html", "/gta-6-pre-order"],
+  ["gta-6-gameplay/index.html", "/gta-6-gameplay"],
+  ["gta-6-pc/index.html", "/gta-6-pc"],
+  ["gta-6-vehicles/index.html", "/gta-6-vehicles"],
+  ["gta-6-countdown/index.html", "/gta-6-countdown"],
 ];
 
 const failures = [];
