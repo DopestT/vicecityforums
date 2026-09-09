@@ -49,10 +49,10 @@ function decorateHome(){
   const copy = hero.querySelector('p');
   const actions = hero.querySelector('.hero-actions');
   if(eyebrow) eyebrow.innerHTML = `FOUNDING CITIZEN CAMPAIGN <span class="founding-hero-flag">FIRST 100</span>`;
-  if(title) title.textContent = 'VICE CITY IS OPEN.';
+  if(title) title.textContent = 'THE GTA 6 COMMUNITY IS OPEN.';
   if(copy) copy.textContent = full
-    ? 'The first 100 Founding Citizens have been claimed. Join the GTA VI community and get in before the city gets crowded.'
-    : 'Join the first 100 completed member profiles and become part of the founding generation of Vice City Forums.';
+    ? 'The first 100 Founding Citizens have been claimed. Follow verified GTA 6 news, clips, guides, and discussion as Vice City approaches.'
+    : 'Join the first 100 completed member profiles and help build the founding generation of this independent GTA 6 community.';
 
   if(actions){
     const panel = document.createElement('div');

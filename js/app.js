@@ -1,8 +1,9 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.115.0';
 
-const SUPABASE_URL = 'https://zyjapghvxmhnuvgvjeip.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_-3ngWLW6Vbcm41kjdCyHPQ_SZHpc-x0';
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+const SUPABASE_URL = 'https://mzqplhhtsnahxghxpwcd.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_iOZHjbnIztfwjLQ82WCmCw_-FyEQ51q';
+const FORUM_URL = 'https://vicecityforums.com/';
+const supabase = globalThis.__VCF_SUPABASE__ = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
 });
 
@@ -38,7 +39,7 @@ function closeMenu(){ document.body.classList.remove('menu-open'); }
 function closeModal(){ modalRoot.innerHTML=''; }
 
 async function bootstrap(){
-  const recoveryLink = new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
+  const recoveryLink = Boolean(globalThis.__VCF_RECOVERY_INTENT__) || new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
   const { data } = await supabase.auth.getSession();
   session = data.session;
   await loadCategories();
@@ -67,12 +68,13 @@ async function loadCategories(){
 async function refreshProfile(){
   profile = null;
   if(!session?.user?.id) return;
-  const { data } = await supabase.from('profiles').select('id,username,display_name,bio,avatar_url,onboarded').eq('id',session.user.id).maybeSingle();
+  const { data } = await supabase.from('profiles').select('id,username,display_name,bio,avatar_url,onboarded,is_admin').eq('id',session.user.id).maybeSingle();
   profile = data || null;
 }
 function renderAuth(){
   document.body.classList.toggle('signed-in', !!session);
   document.body.classList.toggle('guest', !session);
+  document.body.classList.toggle('admin', !!profile?.is_admin);
   if(session){
     const label = profile?.display_name || profile?.username || 'Member';
     authActions.innerHTML = `<button class="btn small" data-new-thread>NEW THREAD</button><span class="username">${esc(label)}</span><button class="btn small ghost" data-signout>LOG OUT</button>`;
@@ -101,7 +103,7 @@ function openAuth(mode='signup'){
     const fd = new FormData(e.currentTarget), email=String(fd.get('email')).trim(), password=String(fd.get('password'));
     const msg=$('#auth-message'); msg.innerHTML='<div class="notice">Connecting…</div>';
     if(signup){
-      const { data, error } = await supabase.auth.signUp({email,password});
+      const { data, error } = await supabase.auth.signUp({email,password,options:{emailRedirectTo:FORUM_URL}});
       if(error){ msg.innerHTML=`<div class="notice error">${esc(error.message)}</div>`; return; }
       if(data.session){
         session=data.session; await refreshProfile(); renderAuth(); closeModal(); openOnboarding();
@@ -127,7 +129,7 @@ function openForgotPassword(){
     const email=String(new FormData(e.currentTarget).get('email')).trim();
     const msg=$('#forgot-message');
     msg.innerHTML='<div class="notice">Sending reset link…</div>';
-    const { error } = await supabase.auth.resetPasswordForEmail(email,{redirectTo:`${location.origin}/`});
+    const { error } = await supabase.auth.resetPasswordForEmail(email,{redirectTo:FORUM_URL});
     if(error){ msg.innerHTML=`<div class="notice error">${esc(error.message)}</div>`; return; }
     msg.innerHTML='<div class="notice">If an account exists for that email, a reset link is on the way. Open it to choose your new password.</div>';
   };
@@ -177,12 +179,40 @@ function threadCard(row,authors){
   const cat=categoryMap.get(row.category_id); return `<article class="thread-card" data-thread="${esc(row.id)}"><div>${row.is_demo?'<span class="demo">DEMO</span> ':''}${row.is_pinned?'<span class="pinned">PINNED</span>':''}</div><h3 class="thread-title">${esc(row.title)}</h3><p>${esc(short(row.body,220))}</p><div class="thread-meta"><span>${esc(cat?.name||'Forum')}</span><span>by ${esc(authorLabel(row,authors))}</span><span>${row.reply_count||0} replies</span><span>${esc(fmt(row.last_activity_at))}</span></div></article>`;
 }
 
+const seoHubs = `
+  <a class="seo-hub-card" href="gta-6-news/"><b>GTA 6 NEWS</b><span>Verified updates and official announcements</span></a>
+  <a class="seo-hub-card" href="gta-6-countdown/"><b>LIVE COUNTDOWN</b><span>Days until November 19, 2026</span></a>
+  <a class="seo-hub-card" href="gta-6-pre-order/"><b>PRE-ORDER GUIDE</b><span>Editions, bonuses, and preload details</span></a>
+  <a class="seo-hub-card" href="gta-6-gameplay/"><b>GAMEPLAY</b><span>Confirmed footage versus interpretation</span></a>
+  <a class="seo-hub-card" href="gta-6-release-date/"><b>RELEASE DATE</b><span>Launch date, platforms, and status</span></a>
+  <a class="seo-hub-card" href="gta-6-pc/"><b>PC STATUS</b><span>What Rockstar has and has not announced</span></a>
+  <a class="seo-hub-card" href="gta-6-characters/"><b>CHARACTERS</b><span>Jason, Lucia, and the official cast</span></a>
+  <a class="seo-hub-card" href="gta-6-map-locations/"><b>MAP & LOCATIONS</b><span>Vice City and the state of Leonida</span></a>
+  <a class="seo-hub-card" href="gta-6-vehicles/"><b>VEHICLES</b><span>Official names, cars, boats, and bonuses</span></a>
+  <a class="seo-hub-card" href="gta-6-trailers/"><b>TRAILERS</b><span>Official videos and community breakdowns</span></a>
+  <a class="seo-hub-card" href="gta-6-funny-clips/"><b>FUNNY CLIPS</b><span>Fails, glitches, concepts, and NPC chaos</span></a>
+  <a class="seo-hub-card" href="gta-6-forums/"><b>FORUM DIRECTORY</b><span>Find the right GTA 6 discussion</span></a>`;
+
 async function home(){
   setHead('vice-wire','The city starts here.'); setActive('data-route','home');
   view.innerHTML='<div class="loading">Loading the city…</div>';
   try{
     const {rows,authors}=await getThreads(null,8);
-    view.innerHTML=`<div class="content"><section class="hero"><div class="eyebrow">GTA VI FAN COMMUNITY</div><h1>VICE CITY IS BIGGER WITH PEOPLE.</h1><p>News. Trailer breakdowns. World discoveries. Gameplay. Crews. Clips. One independent community built for the GTA VI era.</p><div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<button class="btn ghost" data-go-categories>BROWSE FORUMS</button></div><div class="launch-note">Unofficial fan community · Not affiliated with Rockstar Games or Take-Two Interactive</div></section><div class="section-head"><h2 class="section-title">LATEST DISCUSSIONS</h2><button class="btn small ghost" data-go-categories>ALL FORUMS</button></div><div class="thread-list">${rows.length?rows.map(r=>threadCard(r,authors)).join(''):'<div class="empty">No discussions yet. Be the first to post.</div>'}</div></div>`;
+    view.innerHTML=`<div class="content">
+      <section class="hero">
+        <div class="eyebrow">INDEPENDENT GTA 6 FAN COMMUNITY</div>
+        <h1>THE GTA 6 COMMUNITY IS OPEN.</h1>
+        <p>Track verified GTA 6 news, break down official trailers, explore Leonida, discover characters, share funny clips, and debate theories with people waiting for Vice City.</p>
+        <div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<button class="btn ghost" data-go-categories>BROWSE FORUMS</button><a class="btn ghost" href="gta-6-countdown/">LAUNCH COUNTDOWN</a></div>
+        <div class="launch-note">Unofficial fan community · Not affiliated with Rockstar Games or Take-Two Interactive</div>
+      </section>
+      <section aria-labelledby="explore-gta6">
+        <div class="section-head"><h2 id="explore-gta6" class="section-title">EXPLORE GTA 6</h2></div>
+        <div class="seo-hubs">${seoHubs}</div>
+      </section>
+      <div class="section-head"><h2 class="section-title">LATEST DISCUSSIONS</h2><button class="btn small ghost" data-go-categories>ALL FORUMS</button></div>
+      <div class="thread-list">${rows.length?rows.map(r=>threadCard(r,authors)).join(''):'<div class="empty">No discussions yet. Be the first to post.</div>'}</div>
+    </div>`;
     bindPageActions();
   }catch(e){ showError(e); }
 }

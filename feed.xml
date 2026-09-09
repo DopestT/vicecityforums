@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Vice City Forums — GTA 6 News & Guides</title>
+  <link>https://vicecityforums.com/</link>
+  <description>Verified GTA 6 news, guides, clips and independent community discussion.</description>
+  <language>en-us</language>
+  <lastBuildDate>Wed, 09 Sep 2026 16:00:00 GMT</lastBuildDate>
+  <atom:link href="https://vicecityforums.com/feed.xml" rel="self" type="application/rss+xml"/>
+  
+  <item>
+    <title>GTA 6 News: Confirmed Updates</title>
+    <link>https://vicecityforums.com/gta-6-news/</link>
+    <guid isPermaLink="true">https://vicecityforums.com/gta-6-news/</guid>
+    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <description>Track confirmed GTA 6 news, official Rockstar announcements, release-date updates, trailers, platforms, characters, and Vice City developments.</description>
+  </item>
+  <item>
+    <title>GTA 6 Release Date &amp; Platforms</title>
+    <link>https://vicecityforums.com/gta-6-release-date/</link>
+    <guid isPermaLink="true">https://vicecityforums.com/gta-6-release-date/</guid>
+    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <description>GTA 6 is scheduled for November 19, 2026. See confirmed platforms, current PC status, official source links, and what remains unannounced.</description>
+  </item>
+  <item>
+    <title>GTA 6 Characters</title>
+    <link>https://vicecityforums.com/gta-6-characters/</link>
+    <guid isPermaLink="true">https://vicecityforums.com/gta-6-characters/</guid>
+    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <description>Meet the confirmed GTA 6 characters: Jason Duval, Lucia Caminos, Cal Hampton, Boobie Ike, Dre&#39;Quan Priest, Real Dimez, Raul Bautista, and Brian Heder.</description>
+  </item>
+  <item>
+    <title>GTA 6 Map &amp; Leonida Locations</title>
+    <link>https://vicecityforums.com/gta-6-map-locations/</link>
+    <guid isPermaLink="true">https://vicecityforums.com/gta-6-map-locations/</guid>
+    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <description>Explore the officially named GTA 6 map locations: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga.</description>
+  </item>
+  <item>
+    <title>GTA 6 Trailers &amp; Official Videos</title>
+    <link>https://vicecityforums.com/gta-6-trailers/</link>
+    <guid isPermaLink="true">https://vicecityforums.com/gta-6-trailers/</guid>
+    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <description>Watch the official GTA 6 video lineup and explore source-labeled breakdowns of An Extended Look, Trailer 2, Trailer 1, and Rockstar&#39;s character clips.</description>
+  </item>
+  <item>
+    <title>GTA 6 Funny Clips &amp; NPC Chaos</title>
+    <link>https://vicecityforums.com/gta-6-funny-clips/</link>
+    <guid isPermaLink="true">https://vicecityforums.com/gta-6-funny-clips/</guid>
+    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <description>Discover source-labeled GTA 6 funny clips, fails, glitches, fan videos, and NPC chaos. Official, community, and AI footage are clearly identified.</description>
+  </item>
+</channel>
+</rss>
