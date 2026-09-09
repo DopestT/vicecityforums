@@ -69,6 +69,12 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/gta-6-countdown",
+      "destination": "/gta-6-countdown/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
