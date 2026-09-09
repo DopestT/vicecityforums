@@ -1,4 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.115.0';
+import { createClipsModule } from './clips.js?v=20260909-1';
 
 const SUPABASE_URL = 'https://mzqplhhtsnahxghxpwcd.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_iOZHjbnIztfwjLQ82WCmCw_-FyEQ51q';
@@ -37,6 +38,22 @@ function setActive(selector, value){
 }
 function closeMenu(){ document.body.classList.remove('menu-open'); }
 function closeModal(){ modalRoot.innerHTML=''; }
+
+const clipsModule = createClipsModule({
+  supabase,
+  view,
+  modalRoot,
+  toast,
+  esc,
+  setHead,
+  setActive,
+  getSession:()=>session,
+  getProfile:()=>profile,
+  requireMember:ensureOnboarded,
+  openAuth,
+  openOnboarding,
+  goToThread:id=>{ location.hash='#thread/'+id; }
+});
 
 async function bootstrap(){
   const recoveryLink = Boolean(globalThis.__VCF_RECOVERY_INTENT__) || new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
@@ -203,7 +220,7 @@ async function home(){
         <div class="eyebrow">INDEPENDENT GTA 6 FAN COMMUNITY</div>
         <h1>THE GTA 6 COMMUNITY IS OPEN.</h1>
         <p>Track verified GTA 6 news, break down official trailers, explore Leonida, discover characters, share funny clips, and debate theories with people waiting for Vice City.</p>
-        <div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<button class="btn ghost" data-go-categories>BROWSE FORUMS</button><a class="btn ghost" href="gta-6-countdown">LAUNCH COUNTDOWN</a></div>
+        <div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<a class="btn ghost" href="#clips">WATCH VCF CLIPS</a><button class="btn ghost" data-go-categories>BROWSE FORUMS</button><a class="btn ghost" href="gta-6-countdown">LAUNCH COUNTDOWN</a></div>
         <div class="launch-note">Unofficial fan community · Not affiliated with Rockstar Games or Take-Two Interactive</div>
       </section>
       <section aria-labelledby="explore-gta6">
@@ -253,7 +270,7 @@ function newThreadPage(){
   $('#thread-form').onsubmit=async e=>{e.preventDefault();const fd=new FormData(e.currentTarget);const row={category_id:String(fd.get('category_id')),author_id:session.user.id,title:String(fd.get('title')).trim(),body:String(fd.get('body')).trim()};const {data,error}=await supabase.from('threads').insert(row).select('id').single();if(error)return toast(error.message,true);toast('Thread published.');location.hash='#thread/'+data.id;};
 }
 
-function comingSoon(kind){ const crews=kind==='crews'; setHead(kind,crews?'Find your people. Build your crew.':'Community clips and compilations.'); setActive('data-route',kind); view.innerHTML=`<div class="content"><div class="eyebrow">COMING NEXT</div><h1 class="page-title">${crews?'CREWS & ROLEPLAY':'CLIPS & COMPILATIONS'}</h1><article class="panel"><p>${crews?'Crew discovery and recruitment are being connected to the forum accounts. The discussion board is already open now.':'Direct media uploads are next. For launch, use the Clips & Compilations forum to post links and discuss videos.'}</p><button class="btn" data-category="${crews?'crews-roleplay':'clips-compilations'}">OPEN THE FORUM</button></article></div>`; bindPageActions(); }
+function comingSoon(){ setHead('crews','Find your people. Build your crew.'); setActive('data-route','crews'); view.innerHTML='<div class="content"><div class="eyebrow">COMING NEXT</div><h1 class="page-title">CREWS & ROLEPLAY</h1><article class="panel"><p>Crew discovery and recruitment are being connected to the forum accounts. The discussion board is already open now.</p><button class="btn" data-category="crews-roleplay">OPEN THE FORUM</button></article></div>'; bindPageActions(); }
 function legal(kind){ setHead(kind,kind==='privacy'?'Privacy information':'Community terms'); const terms=kind==='terms'; view.innerHTML=`<div class="content legal"><div class="eyebrow">VICE CITY FORUMS</div><h1 class="page-title">${terms?'TERMS':'PRIVACY'}</h1><h2>${terms?'Community Use':'Account Data'}</h2><p>${terms?'Vice City Forums is an independent fan community. Users are responsible for what they post. Harassment, illegal content, impersonation, spam, and attempts to compromise the service may be removed or restricted.':'Account authentication is handled through Supabase. Public profile fields may include username, display name, bio and avatar. Email addresses are used for authentication and are not displayed publicly by the forum.'}</p><h2>Fan Community Notice</h2><p>Vice City Forums is not affiliated with, endorsed by, sponsored by, or associated with Rockstar Games or Take-Two Interactive. Grand Theft Auto and related marks belong to their respective owners.</p></div>`; }
 
 function bindPageActions(){
@@ -265,7 +282,8 @@ function bindPageActions(){
 function showError(e){ console.error(e); view.innerHTML=`<div class="content"><div class="notice error">The forum could not load this view. Refresh and try again.</div></div>`; }
 function route(){
   closeMenu(); const raw=location.hash.replace(/^#/,'')||'home'; const [page,arg]=raw.split('/');
-  if(page==='home') return home(); if(page==='categories') return allCategories(); if(page==='category') return categoryPage(arg); if(page==='thread') return threadPage(arg); if(page==='new') return newThreadPage(); if(page==='clips'||page==='crews') return comingSoon(page); if(page==='privacy'||page==='terms') return legal(page); return home();
+  if(page!=='clips') clipsModule.destroy();
+  if(page==='home') return home(); if(page==='categories') return allCategories(); if(page==='category') return categoryPage(arg); if(page==='thread') return threadPage(arg); if(page==='new') return newThreadPage(); if(page==='clips') return clipsModule.show(arg); if(page==='crews') return comingSoon(); if(page==='privacy'||page==='terms') return legal(page); return home();
 }
 
 $('#mobile-menu').onclick=()=>document.body.classList.toggle('menu-open');

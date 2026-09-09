@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=20260909-3">
 <style>
-  .admin-shell{max-width:1180px;margin:0 auto;padding:24px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.admin-title{font-family:Anton,Impact,sans-serif;font-size:42px;margin:4px 0}.admin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:14px;padding:18px}.stat b{font:32px Anton;display:block}.stat span{color:var(--muted);font-size:10px;letter-spacing:.1em}.admin-row{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:12px;padding:14px;margin:9px 0}.admin-row h3{margin:0 0 6px}.row-meta{color:var(--muted);font-size:10px;display:flex;gap:10px;flex-wrap:wrap}.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-nav{display:flex;gap:8px;flex-wrap:wrap}.status-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#10251e;color:#75f5bd;font-size:10px;font-weight:800}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.login-panel{max-width:470px;margin:34px auto 0;border:1px solid var(--edge);background:rgba(21,17,36,.96);border-radius:16px;padding:22px}.campaign-tools{margin:18px 0;border:1px solid #4b3768;background:radial-gradient(circle at 90% 20%,rgba(80,215,255,.10),transparent 24%),linear-gradient(120deg,rgba(255,59,145,.08),rgba(123,82,255,.08)),rgba(21,17,36,.96);border-radius:14px;padding:18px}.campaign-tools h2{margin:3px 0 8px}.campaign-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.campaign-status{font-size:11px;color:var(--muted)}@media(max-width:900px){.admin-grid{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}}@media(max-width:560px){.admin-grid{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
+  .admin-shell{max-width:1180px;margin:0 auto;padding:24px}.admin-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.admin-title{font-family:Anton,Impact,sans-serif;font-size:42px;margin:4px 0}.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px}.stat{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:14px;padding:18px}.stat b{font:32px Anton;display:block}.stat span{color:var(--muted);font-size:10px;letter-spacing:.1em}.admin-row{border:1px solid var(--edge);background:rgba(21,17,36,.92);border-radius:12px;padding:14px;margin:9px 0}.admin-row h3{margin:0 0 6px}.row-meta{color:var(--muted);font-size:10px;display:flex;gap:10px;flex-wrap:wrap}.row-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.admin-nav{display:flex;gap:8px;flex-wrap:wrap}.status-pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#10251e;color:#75f5bd;font-size:10px;font-weight:800}.status-pill.pending{background:#2c2110;color:#ffd889}.status-pill.report{background:#30131e;color:#ffadc9}.two-col,.clip-review-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.login-panel{max-width:470px;margin:34px auto 0;border:1px solid var(--edge);background:rgba(21,17,36,.96);border-radius:16px;padding:22px}.campaign-tools{margin:18px 0;border:1px solid #4b3768;background:radial-gradient(circle at 90% 20%,rgba(80,215,255,.10),transparent 24%),linear-gradient(120deg,rgba(255,59,145,.08),rgba(123,82,255,.08)),rgba(21,17,36,.96);border-radius:14px;padding:18px}.campaign-tools h2{margin:3px 0 8px}.campaign-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.campaign-status{font-size:11px;color:var(--muted)}.clip-admin{margin:18px 0}.clip-admin-card{display:grid;grid-template-columns:190px minmax(0,1fr);gap:14px}.clip-preview{width:100%;aspect-ratio:16/9;border:1px solid var(--edge);border-radius:9px;background:#050409;object-fit:contain}.clip-preview.placeholder{display:grid;place-items:center;color:var(--muted);font-size:10px}.clip-admin-copy h3{margin:3px 0 7px}.clip-admin-copy p{color:var(--muted);font-size:11px;line-height:1.5}.clip-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:9px;font-size:10px;font-weight:800}.moderation-note{margin-top:9px;border-left:2px solid var(--danger);padding-left:9px;color:#ffc3d0;font-size:11px}.report-card{border-color:#5a2d41}.danger-link{color:#ffadc9}@media(max-width:900px){.two-col,.clip-review-grid{grid-template-columns:1fr}}@media(max-width:600px){.admin-shell{padding:14px}.clip-admin-card{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
@@ -30,6 +30,15 @@
       <p class="muted">Creates up to 20 real staff-started GTA VI discussions under your administrator account. Existing matching titles are skipped, so the tool is safe to run again.</p>
       <div class="campaign-actions"><button class="btn" id="seed-discussions" type="button">SEED 20 DISCUSSIONS</button><span id="seed-status" class="campaign-status"></span></div>
     </section>
+    <section class="clip-admin" aria-labelledby="clip-moderation-title">
+      <div class="section-head"><h2 class="section-title" id="clip-moderation-title">VCF CLIP MODERATION</h2><span id="clip-status" class="muted"></span></div>
+      <div class="clip-review-grid">
+        <section><div class="section-head"><h2 class="section-title">REVIEW QUEUE</h2><span class="status-pill pending" id="queue-count">0 PENDING</span></div><div id="clip-queue"></div></section>
+        <section><div class="section-head"><h2 class="section-title">OPEN REPORTS</h2><span class="status-pill report" id="report-count">0 OPEN</span></div><div id="clip-reports"></div></section>
+      </div>
+      <div class="section-head"><h2 class="section-title">PUBLISHED CLIPS</h2><a class="btn small ghost" href="./#clips">OPEN PUBLIC FEED</a></div>
+      <div id="clip-library"></div>
+    </section>
     <div class="two-col">
       <section><div class="section-head"><h2 class="section-title">THREAD MODERATION</h2></div><div id="threads"></div></section>
       <section><div class="section-head"><h2 class="section-title">CATEGORIES</h2></div><div id="categories"></div></section>
@@ -37,7 +46,7 @@
   </section>
 </main>
 <script type="module">
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.115.0';
 
 const supabase = createClient(
   'https://mzqplhhtsnahxghxpwcd.supabase.co',
@@ -47,6 +56,8 @@ const supabase = createClient(
 const $=s=>document.querySelector(s);
 const esc=(v='')=>String(v).replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
 const fmt=v=>{try{return new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date(v));}catch{return ''}};
+const safeUrl=v=>{try{const url=new URL(String(v||''));return url.protocol==='https:'?url.href:''}catch{return ''}};
+const sourceLabel=v=>({'official-rockstar':'OFFICIAL ROCKSTAR','user-gameplay':'USER GAMEPLAY','fan-made':'FAN-MADE','ai-generated':'AI-GENERATED'}[v]||String(v||'UNKNOWN').toUpperCase());
 let profile=null;
 let categoryBySlug=new Map();
 
@@ -102,20 +113,81 @@ async function load(){
   if(!profile && !(await requireAdmin())) return;
   $('#threads').innerHTML='<div class="loading">Loading threads…</div>';
   $('#categories').innerHTML='<div class="loading">Loading categories…</div>';
-  const [threadsRes,repliesRes,catsRes,profilesRes]=await Promise.all([
+  $('#clip-queue').innerHTML='<div class="loading">Loading submissions…</div>';
+  $('#clip-reports').innerHTML='<div class="loading">Loading reports…</div>';
+  $('#clip-library').innerHTML='<div class="loading">Loading published clips…</div>';
+  const [threadsRes,repliesRes,catsRes,profilesRes,clipsRes,reportsRes]=await Promise.all([
     supabase.from('threads').select('id,title,is_pinned,is_locked,reply_count,created_at,last_activity_at,category_id',{count:'exact'}).order('last_activity_at',{ascending:false}).limit(50),
     supabase.from('replies').select('id',{count:'exact',head:true}),
     supabase.from('categories').select('id,name,slug,description,sort_order').order('sort_order'),
-    supabase.from('profiles').select('id',{count:'exact',head:true})
+    supabase.from('profiles').select('id,username,display_name',{count:'exact'}),
+    supabase.from('clips').select('id,uploader_id,thread_id,slug,title,description,video_url,poster_url,source_type,source_url,creator_credit,provider,status,rights_attested,disclosure,moderation_note,is_featured,like_count,save_count,report_count,published_at,created_at').order('created_at',{ascending:false}).limit(100),
+    supabase.from('clip_reports').select('id,clip_id,reporter_id,reason,details,status,created_at').eq('status','open').order('created_at',{ascending:false}).limit(100)
   ]);
   const threads=threadsRes.data||[], cats=catsRes.data||[], catMap=new Map(cats.map(c=>[c.id,c]));
+  const clips=clipsRes.data||[], reports=reportsRes.data||[], profiles=profilesRes.data||[], profileMap=new Map(profiles.map(p=>[p.id,p]));
   categoryBySlug=new Map(cats.map(c=>[c.slug,c]));
   $('#stats').innerHTML=[
-    ['THREADS',threadsRes.count ?? threads.length],['REPLIES',repliesRes.count ?? 0],['MEMBERS',profilesRes.count ?? 0],['CATEGORIES',cats.length]
+    ['THREADS',threadsRes.count ?? threads.length],['REPLIES',repliesRes.count ?? 0],['MEMBERS',profilesRes.count ?? profiles.length],['CLIPS',clips.filter(c=>c.status==='published').length],['PENDING',clips.filter(c=>c.status==='pending_review').length],['REPORTS',reports.length]
   ].map(([label,n])=>`<div class="stat"><b>${Number(n)||0}</b><span>${label}</span></div>`).join('');
   $('#threads').innerHTML=threads.length?threads.map(t=>`<article class="admin-row" data-thread="${t.id}"><h3>${esc(t.title)}</h3><div class="row-meta"><span>${esc(catMap.get(t.category_id)?.name||'Forum')}</span><span>${t.reply_count||0} replies</span><span>${esc(fmt(t.last_activity_at||t.created_at))}</span>${t.is_pinned?'<span class="pinned">PINNED</span>':''}${t.is_locked?'<span class="pinned">LOCKED</span>':''}</div><div class="row-actions"><button class="btn small ghost" data-action="pin">${t.is_pinned?'UNPIN':'PIN'}</button><button class="btn small ghost" data-action="lock">${t.is_locked?'UNLOCK':'LOCK'}</button><button class="btn small danger" data-action="delete">DELETE</button></div></article>`).join(''):'<div class="empty">No threads yet.</div>';
   $('#categories').innerHTML=cats.length?cats.map(c=>`<article class="admin-row"><h3>${esc(c.name)}</h3><div class="row-meta"><span>#${esc(c.slug)}</span><span>order ${c.sort_order??0}</span></div><p class="muted">${esc(c.description||'')}</p></article>`).join(''):'<div class="empty">No categories.</div>';
+  renderClipModeration(clips,reports,profileMap);
   bindThreadActions(threads);
+  bindClipActions(clips,reports);
+}
+
+function clipCard(c,profileMap,mode='published'){
+  const video=safeUrl(c.video_url),poster=safeUrl(c.poster_url),source=safeUrl(c.source_url),uploader=profileMap.get(c.uploader_id);
+  const direct=c.provider==='external'&&/\.mp4(?:$|[?#])/i.test(video);
+  const media=direct?`<video class="clip-preview" src="${esc(video)}"${poster?` poster="${esc(poster)}"`:''} muted controls preload="metadata"></video>`:poster?`<img class="clip-preview" src="${esc(poster)}" alt="Preview for ${esc(c.title)}">`:'<div class="clip-preview placeholder">LINKED VIDEO</div>';
+  const action=mode==='pending'?'<button class="btn small" data-clip-action="publish">PUBLISH + CREATE THREAD</button><button class="btn small danger" data-clip-action="reject">REJECT</button>':`<button class="btn small ghost" data-clip-action="feature">${c.is_featured?'REMOVE FEATURE':'FEATURE'}</button><button class="btn small danger" data-clip-action="take-down">TAKE DOWN</button>`;
+  return `<article class="admin-row clip-admin-card" data-clip="${esc(c.id)}">${media}<div class="clip-admin-copy"><div class="row-meta"><span class="status-pill ${mode==='pending'?'pending':''}">${esc(c.status.toUpperCase())}</span><span>${esc(sourceLabel(c.source_type))}</span><span>${esc(fmt(c.created_at))}</span><span>${Number(c.like_count)||0} likes</span><span>${Number(c.report_count)||0} reports</span></div><h3>${esc(c.title)}</h3><p>${esc(c.description||'No description supplied.')}</p><div class="row-meta"><span>Credit: ${esc(c.creator_credit)}</span>${uploader?`<span>Submitted by ${esc(uploader.display_name||uploader.username||'Member')}</span>`:''}</div>${c.disclosure?`<div class="moderation-note">${esc(c.disclosure)}</div>`:''}${c.moderation_note?`<div class="moderation-note">${esc(c.moderation_note)}</div>`:''}<div class="clip-links">${video?`<a href="${esc(video)}" target="_blank" rel="noopener noreferrer">OPEN VIDEO ↗</a>`:''}${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">VERIFY SOURCE ↗</a>`:''}${c.thread_id?`<a href="./#thread/${esc(c.thread_id)}">OPEN THREAD</a>`:''}</div><div class="row-actions">${action}</div></div></article>`;
+}
+
+function renderClipModeration(clips,reports,profileMap){
+  const pending=clips.filter(c=>c.status==='pending_review'),published=clips.filter(c=>c.status==='published');
+  const clipMap=new Map(clips.map(c=>[c.id,c]));
+  $('#queue-count').textContent=`${pending.length} PENDING`;
+  $('#report-count').textContent=`${reports.length} OPEN`;
+  $('#clip-status').textContent=clips.length?`${published.length} live · ${pending.length} awaiting review`:'No clips yet';
+  $('#clip-queue').innerHTML=pending.length?pending.map(c=>clipCard(c,profileMap,'pending')).join(''):'<div class="empty">The review queue is clear.</div>';
+  $('#clip-library').innerHTML=published.length?published.map(c=>clipCard(c,profileMap)).join(''):'<div class="empty">No clips have been published.</div>';
+  $('#clip-reports').innerHTML=reports.length?reports.map(r=>{const c=clipMap.get(r.clip_id),source=safeUrl(c?.source_url);return `<article class="admin-row report-card" data-report="${esc(r.id)}"><div class="row-meta"><span class="status-pill report">${esc(r.reason.toUpperCase())}</span><span>${esc(fmt(r.created_at))}</span></div><h3>${esc(c?.title||'Unavailable clip')}</h3><p class="muted">${esc(r.details||'No additional details supplied.')}</p><div class="clip-links">${source?`<a href="${esc(source)}" target="_blank" rel="noopener noreferrer">VERIFY SOURCE ↗</a>`:''}</div><div class="row-actions"><button class="btn small danger" data-report-action="take-down" data-clip-id="${esc(r.clip_id)}">TAKE DOWN</button><button class="btn small ghost" data-report-action="reviewed">MARK REVIEWED</button><button class="btn small ghost" data-report-action="dismissed">DISMISS</button></div></article>`}).join(''):'<div class="empty">No open reports.</div>';
+}
+
+function bindClipActions(clips,reports){
+  document.querySelectorAll('[data-clip]').forEach(row=>row.querySelectorAll('[data-clip-action]').forEach(btn=>btn.onclick=async()=>{
+    const clip=clips.find(c=>c.id===row.dataset.clip);if(!clip)return;
+    btn.disabled=true;let error=null;
+    if(btn.dataset.clipAction==='publish')({error}=await supabase.rpc('publish_clip',{target_clip_id:clip.id}));
+    if(btn.dataset.clipAction==='feature')({error}=await supabase.from('clips').update({is_featured:!clip.is_featured}).eq('id',clip.id));
+    if(btn.dataset.clipAction==='take-down'){
+      const note=prompt('Why is this clip being removed? The submitter can see this note.');
+      if(note===null){btn.disabled=false;return;}
+      if(!note.trim()){alert('Add a short removal reason.');btn.disabled=false;return;}
+      ({error}=await supabase.from('clips').update({status:'rejected',moderation_note:note.trim(),published_at:null,is_featured:false}).eq('id',clip.id));
+    }
+    if(btn.dataset.clipAction==='reject'){
+      const note=prompt('Why is this clip being rejected? The submitter can see this note.');
+      if(note===null){btn.disabled=false;return;}
+      if(!note.trim()){alert('Add a short rejection reason.');btn.disabled=false;return;}
+      ({error}=await supabase.from('clips').update({status:'rejected',moderation_note:note.trim(),published_at:null,is_featured:false}).eq('id',clip.id));
+    }
+    if(error){alert(error.message);btn.disabled=false;return;}await load();
+  }));
+  document.querySelectorAll('[data-report]').forEach(row=>row.querySelectorAll('[data-report-action]').forEach(btn=>btn.onclick=async()=>{
+    const report=reports.find(r=>r.id===row.dataset.report);if(!report)return;
+    btn.disabled=true;let error=null;
+    if(btn.dataset.reportAction==='take-down'){
+      if(!confirm('Remove this clip from the public feed and mark the report reviewed?')){btn.disabled=false;return;}
+      ({error}=await supabase.from('clips').update({status:'rejected',moderation_note:`Taken down after ${report.reason} report`,published_at:null,is_featured:false}).eq('id',btn.dataset.clipId));
+      if(!error)({error}=await supabase.from('clip_reports').update({status:'reviewed',reviewed_at:new Date().toISOString()}).eq('id',report.id));
+    }else{
+      ({error}=await supabase.from('clip_reports').update({status:btn.dataset.reportAction,reviewed_at:new Date().toISOString()}).eq('id',report.id));
+    }
+    if(error){alert(error.message);btn.disabled=false;return;}await load();
+  }));
 }
 
 async function seedFoundingDiscussions(){

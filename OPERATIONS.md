@@ -24,6 +24,9 @@ Public application tables:
 - `categories`
 - `threads`
 - `replies`
+- `clips`
+- `clip_engagements`
+- `clip_reports`
 
 ## Authentication and admin
 
@@ -48,9 +51,16 @@ The public discovery layer contains 13 indexable routes: the forum homepage plus
 ```bash
 node scripts/build-seo-pages.mjs
 node scripts/validate-seo.mjs
+node scripts/validate-clips.mjs
 ```
 
 The validator checks unique titles/descriptions, canonicals, index directives, social metadata, JSON-LD, minimum source depth, local links, and exact sitemap coverage.
+
+## Native clips
+
+Migrations `clips_foundation`, `clips_foundation_hardening`, and `clips_public_read_policy` add the source-labeled VCF Clips feed, member likes and saves, private reports, a moderator review queue, and RLS-aware atomic publication into a linked Clips & Compilations thread. Guest and signed-in read policies are deliberately separate so public viewing never requires access to the administrator helper. Official Rockstar media seeds the launch feed. Community submissions require an HTTPS source, creator credit, rights attestation, and one of four explicit provenance labels; unknown-source footage is blocked. Fan-made and AI-generated clips receive an enforced disclosure, and user-gameplay submissions remain database-blocked until the GTA VI launch date.
+
+The first release accepts direct HTTPS MP4 and YouTube links. Cloudflare Stream is the intended direct-upload adapter once a Cloudflare account is connected; it should reuse the existing `provider`, `provider_uid`, `status`, and review fields rather than introducing a second clips system.
 
 ## Email
 

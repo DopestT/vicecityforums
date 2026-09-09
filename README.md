@@ -31,6 +31,7 @@ Regenerate the static GTA 6 search hubs, sitemap, RSS feed, robots file, and man
 ```bash
 node scripts/build-seo-pages.mjs
 node scripts/validate-seo.mjs
+node scripts/validate-clips.mjs
 ```
 
 ## Project structure
@@ -57,7 +58,11 @@ css/styles.css
 css/content.css
 js/app.js
 js/backend-bootstrap.js
+js/clips.js
 supabase/forum_growth_foundation.sql
+supabase/clips_foundation.sql
+supabase/clips_foundation_hardening.sql
+supabase/clips_public_read_policy.sql
 GROWTH.md
 OPERATIONS.md
 ```

@@ -3,7 +3,7 @@
 globalThis.__VCF_RECOVERY_INTENT__ =
   new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
 
-await import('./app.js?v=20260909-1');
+await import('./app.js?v=20260909-2');
 
 // Reuse the app's auth client so recovery handling and admin status share
 // one session lifecycle and one storage lock.
