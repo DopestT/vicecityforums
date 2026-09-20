@@ -1,6 +1,6 @@
 # Vice City Forums — Operations Source of Truth
 
-Last verified: 2026-09-09
+Last verified: 2026-09-20
 
 ## Canonical production stack
 
@@ -38,11 +38,11 @@ Do not create a second forum auth system or a second Supabase project for this s
 
 ## Current frontend wiring
 
-`index.html` loads `js/backend-bootstrap.js`, which preserves password-recovery intent and loads the application module. `js/app.js` is wired directly to the canonical Supabase project and exposes its client for the admin-state layer.
+`index.html` now loads `js/app.js` directly. The canonical application captures password-recovery intent before Supabase initialization, uses the canonical Supabase project, loads administrator state from `profiles.is_admin`, exposes the admin link to authorized sessions, and loads the Founding Citizen campaign after the app bootstrap completes. `js/backend-bootstrap.js` remains in the repository only as a rollback reference and is no longer loaded by production HTML.
 
 ## Deployment
 
-Pushes to `main` publish the repository through the configured Vercel project and also trigger `.github/workflows/pages.yml` for the GitHub Pages mirror. All public metadata, sitemaps, feed URLs, auth callbacks, and social links must use `https://vicecityforums.com/`.
+Pushes to `main` trigger `.github/workflows/pages.yml` for the GitHub Pages mirror after the auth, SEO, and clips quality gates pass. The canonical production origin remains `https://vicecityforums.com/`. On 2026-09-20, the currently connected Vercel team exposed only an unrelated project and did not expose Vice City Forums, so Vercel-side deployment/observability must be reconnected to the account that owns the production VCF project before it can be treated as verified from this operating environment. All public metadata, sitemaps, feed URLs, auth callbacks, and social links must use `https://vicecityforums.com/`.
 
 `vercel.json` consolidates the `.com` and `.net` host variants onto the apex `.com`, adds baseline browser security headers, and adds `X-Robots-Tag` headers to private utility pages.
 
@@ -86,6 +86,13 @@ Migration `forum_growth_foundation` was applied on 2026-09-09 and is tracked at 
 The 2026-09-09 performance advisor has no actionable warnings after the growth migration. It reports the two new author indexes as unused information because they have not yet accumulated production query traffic.
 
 One security warning remains: enable leaked-password protection in Supabase Auth. That setting is managed in the Supabase dashboard rather than this repository.
+
+## Automated production protection
+
+- `.github/workflows/quality.yml` runs the static quality gate on pushes and pull requests.
+- `.github/workflows/daily-health.yml` runs daily static checks plus live canonical-domain and Supabase-read checks.
+- `scripts/verify-production.mjs` is the reusable live production verifier.
+- `DAILY-OPS.md` is the daily operating playbook.
 
 ## Next work order
 
