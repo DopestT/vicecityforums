@@ -1,0 +1,27 @@
+name: Vice City Forums Quality Gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate discovery pages
+        run: node scripts/build-seo-pages.mjs
+      - name: Validate auth and operations
+        run: node scripts/validate-auth.mjs
+      - name: Validate SEO
+        run: node scripts/validate-seo.mjs
+      - name: Validate clips
+        run: node scripts/validate-clips.mjs
+      - name: Ensure generated files are committed
+        run: git diff --exit-code
