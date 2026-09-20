@@ -1,6 +1,8 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.115.0';
 import { createClipsModule } from './clips.js?v=20260909-1';
 
+const RECOVERY_INTENT = new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
+
 const SUPABASE_URL = 'https://mzqplhhtsnahxghxpwcd.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_iOZHjbnIztfwjLQ82WCmCw_-FyEQ51q';
 const FORUM_URL = 'https://vicecityforums.com/';
@@ -56,7 +58,7 @@ const clipsModule = createClipsModule({
 });
 
 async function bootstrap(){
-  const recoveryLink = Boolean(globalThis.__VCF_RECOVERY_INTENT__) || new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
+  const recoveryLink = RECOVERY_INTENT;
   const { data } = await supabase.auth.getSession();
   session = data.session;
   await loadCategories();
@@ -94,8 +96,9 @@ function renderAuth(){
   document.body.classList.toggle('admin', !!profile?.is_admin);
   if(session){
     const label = profile?.display_name || profile?.username || 'Member';
-    authActions.innerHTML = `<button class="btn small" data-new-thread>NEW THREAD</button><span class="username">${esc(label)}</span><button class="btn small ghost" data-signout>LOG OUT</button>`;
-    sideUser.innerHTML = `<div class="userline"><span class="avatar">${esc(initials(label))}</span><div><b>${esc(label)}</b><small>${profile?.username?'@'+esc(profile.username):'Finish profile setup'}</small></div></div>`;
+    const adminAction = profile?.is_admin ? '<a class="btn small ghost" href="admin.html">ADMIN</a>' : '';
+    authActions.innerHTML = `${adminAction}<button class="btn small" data-new-thread>NEW THREAD</button><span class="username">${esc(label)}</span><button class="btn small ghost" data-signout>LOG OUT</button>`;
+    sideUser.innerHTML = `<div class="userline"><span class="avatar">${esc(initials(label))}</span><div><b>${esc(label)}</b><small>${profile?.username?'@'+esc(profile.username):'Finish profile setup'}${profile?.is_admin?' · ADMIN':''}</small></div></div>`;
   } else {
     authActions.innerHTML = `<button class="btn small ghost" data-auth="login">LOG IN</button><button class="btn small desktop-create" data-auth="signup">CREATE ACCOUNT</button>`;
     sideUser.innerHTML = `<button class="btn" style="width:100%" data-auth="signup">JOIN THE CITY</button>`;
@@ -291,4 +294,6 @@ mobileCta.onclick=()=>openAuth('signup');
 document.querySelectorAll('[data-route]').forEach(b=>b.onclick=()=>{location.hash='#'+b.dataset.route;});
 document.querySelectorAll('.sidebar [data-category]').forEach(b=>b.onclick=()=>{location.hash='#category/'+b.dataset.category;});
 window.addEventListener('hashchange',route);
-bootstrap().catch(showError);
+bootstrap()
+  .then(()=>import('./founding-citizens.js?v=20260920-1'))
+  .catch(showError);

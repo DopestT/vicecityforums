@@ -1,0 +1,22 @@
+name: Vice City Forums Daily Health
+
+on:
+  schedule:
+    - cron: '17 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Static quality checks
+        run: |
+          node scripts/validate-auth.mjs
+          node scripts/validate-seo.mjs
+          node scripts/validate-clips.mjs
+      - name: Live production checks
+        run: node scripts/verify-production.mjs
