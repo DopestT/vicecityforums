@@ -231,6 +231,9 @@ const pages = [
   },
   {
     slug: "gta-6-forums",
+    modified: "2026-10-27",
+    modifiedLabel: "October 27, 2026",
+    reviewLabel: "Community guide reviewed",
     title: "GTA 6 Forums: News, Theories, Clips & Community",
     description: "Join GTA 6 forums for verified news, trailer theories, Vice City map discussion, characters, vehicles, funny clips, crews, and community discoveries.",
     kicker: "Community directory",
@@ -243,14 +246,22 @@ const pages = [
       ["Community status", "Independent and fan-run"],
     ],
     body: `
+      <div class="callout"><strong>Start with one conversation</strong><p>You do not need a finished theory or a big following. Pick a topic, read the discussion, and bring one question, observation, or source.</p><p><a class="nav-cta" href="/#categories">Find your first discussion →</a></p></div>
+      <h2>How to join Vice City Forums</h2>
+      <ol>
+        <li><strong>Browse first.</strong> Open the forum directory and choose a topic. Public reading does not require an account.</li>
+        <li><strong>Create your account.</strong> On the forum, choose <strong>CREATE ACCOUNT</strong> or <strong>JOIN THE CITY</strong> and follow the email and password prompts. If a confirmation email is requested, complete that step before logging in.</li>
+        <li><strong>Make it yours.</strong> Complete the profile prompts, then reply to a discussion or start a clearly titled thread in the matching forum.</li>
+      </ol>
+      <p>If a confirmation email does not arrive, check your spam folder and confirm that you entered the right address. Keep passwords and confirmation links private; never post them in a discussion.</p>
       <h2>Choose a GTA 6 discussion</h2>
       <div class="card-grid">
-        <article class="card"><span class="meta">Verified updates</span><h3>Official News</h3><p>Rockstar announcements, launch information, and source-linked updates without rumor presented as fact.</p></article>
-        <article class="card"><span class="meta">World discovery</span><h3>Vice City & Leonida</h3><p>Map locations, environmental details, businesses, landmarks, wildlife, and what official footage reveals about the world.</p></article>
-        <article class="card"><span class="meta">Game systems</span><h3>Gameplay & Vehicles</h3><p>Movement, driving, police behavior, weapons, activities, immersion systems, and vehicle wish lists.</p></article>
-        <article class="card"><span class="meta">Video community</span><h3>Clips & Compilations</h3><p>Funny moments, fails, glitches, edits, trailer cuts, creator submissions, and source verification.</p></article>
-        <article class="card"><span class="meta">Open conversation</span><h3>General Discussion</h3><p>Predictions, questions, rankings, memories from earlier GTA games, and everything that does not fit one district.</p></article>
-        <article class="card"><span class="meta">Play together</span><h3>Crews & Roleplay</h3><p>Meet players, shape group identities, and prepare for shared stories—without pretending unannounced features are confirmed.</p></article>
+        <article class="card"><span class="meta">Verified updates</span><h3>Official News</h3><p>Rockstar announcements, launch information, and source-linked updates without rumor presented as fact.</p><p><a href="/#category/official-news">Read official-news discussions →</a></p></article>
+        <article class="card"><span class="meta">World discovery</span><h3>Vice City & Leonida</h3><p>Map locations, environmental details, businesses, landmarks, wildlife, and what official footage reveals about the world.</p><p><a href="/#category/vice-city-world">Explore world discussions →</a></p></article>
+        <article class="card"><span class="meta">Game systems</span><h3>Gameplay & Vehicles</h3><p>Movement, driving, police behavior, weapons, activities, immersion systems, and vehicle wish lists.</p><p><a href="/#category/gameplay-vehicles">Open gameplay discussions →</a></p></article>
+        <article class="card"><span class="meta">Video community</span><h3>Clips & Compilations</h3><p>Funny moments, fails, glitches, edits, trailer cuts, creator submissions, and source verification.</p><p><a href="/#clips">Watch the clips feed →</a></p></article>
+        <article class="card"><span class="meta">Open conversation</span><h3>General Discussion</h3><p>Predictions, questions, rankings, memories from earlier GTA games, and everything that does not fit one district.</p><p><a href="/#category/general-discussion">Open general discussion →</a></p></article>
+        <article class="card"><span class="meta">Play together</span><h3>Crews & Roleplay</h3><p>Meet players, shape group identities, and prepare for shared stories—without pretending unannounced features are confirmed.</p><p><a href="/#category/crews-roleplay">Open crews discussion →</a></p></article>
       </div>
       <h2>Community rules in plain language</h2>
       <p>Anyone can read. Members can post and reply. Harassment, impersonation, spam, illegal content, and attempts to compromise the service may be removed. Label spoilers, credit creators, link sources, and distinguish confirmed information from theories.</p>
@@ -499,7 +510,7 @@ function jsonLd(page) {
       name: page.h1,
       description: page.description,
       datePublished: modified,
-      dateModified: modified,
+      dateModified: page.modified || modified,
       inLanguage: "en-US",
       isPartOf: { "@id": `${base}/#website` },
       publisher: { "@id": `${base}/#organization` },
@@ -544,6 +555,9 @@ function jsonLd(page) {
 
 function render(page) {
   const url = `${base}/${page.slug}`;
+  const pageModified = page.modified || modified;
+  const pageModifiedLabel = page.modifiedLabel || modifiedLabel;
+  const reviewLabel = page.reviewLabel || "Verified and updated";
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(`${page.h1} | Vice City Forums`);
   const currentIndex = related.findIndex((candidate) => candidate.slug === page.slug);
@@ -578,7 +592,7 @@ function render(page) {
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Vice City Forums — GTA 6 news, guides and community discussion">
   <meta property="article:published_time" content="${modified}">
-  <meta property="article:modified_time" content="${modified}">
+  <meta property="article:modified_time" content="${pageModified}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(page.title)} | Vice City Forums">
   <meta name="twitter:description" content="${esc(page.description)}">
@@ -604,13 +618,13 @@ function render(page) {
       <div class="kicker">${esc(page.kicker)}</div>
       <h1>${esc(page.h1)}</h1>
       <p class="dek">${esc(page.intro)}</p>
-      <time class="updated" datetime="${modified}">Verified and updated ${modifiedLabel}</time>
+      <time class="updated" datetime="${pageModified}">${esc(reviewLabel)} ${esc(pageModifiedLabel)}</time>
     </header>
     <section class="fact-grid" aria-label="Key facts">${facts}</section>
     <div class="share-bar" aria-label="Share this guide"><strong>Share</strong><a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}" target="_blank" rel="noopener noreferrer">Reddit</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" rel="noopener noreferrer">Facebook</a><button type="button" data-copy-link>Copy link</button><span data-copy-status aria-live="polite"></span></div>
     <div class="content-grid">
       <article class="article-body">${page.body}<h2>Frequently asked questions</h2><div class="faq-list">${faqHtml}</div><section class="join-card"><span class="meta">Your take belongs here</span><h2>Continue the conversation</h2><p>Bring the evidence, theory, clip, or question to a real GTA 6 discussion. Reading is public; posting takes a free member profile.</p><a class="nav-cta" href="${base}/#categories">Enter Vice City Forums →</a></section></article>
-      <aside class="source-box"><h2>Primary sources</h2><p>Facts on this page are checked against first-party material. Community interpretation is labeled separately.</p><ul>${sourceHtml}</ul><p><strong>Last checked:</strong><br>${modifiedLabel}</p></aside>
+      <aside class="source-box"><h2>Primary sources</h2><p>Facts on this page are checked against first-party material. Community interpretation is labeled separately.</p><ul>${sourceHtml}</ul><p><strong>${page.reviewLabel ? "Guide reviewed:" : "Last checked:"}</strong><br>${esc(pageModifiedLabel)}</p></aside>
     </div>
     <section class="related" aria-labelledby="related-title"><h2 id="related-title">Keep exploring GTA 6</h2><div class="related-grid">${relatedCards}</div></section>
   </main>
@@ -640,11 +654,11 @@ for (const page of pages) {
 
 const sitemapEntries = [
   { path: "/", priority: "1.0", changefreq: "daily" },
-  ...pages.map((page) => ({ path: `/${page.slug}`, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
+  ...pages.map((page) => ({ path: `/${page.slug}`, modified: page.modified || modified, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapEntries.map((entry) => `  <url><loc>${base}${entry.path}</loc><lastmod>${modified}</lastmod><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority></url>`).join("\n")}
+${sitemapEntries.map((entry) => `  <url><loc>${base}${entry.path}</loc><lastmod>${entry.modified || modified}</lastmod><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority></url>`).join("\n")}
 </urlset>\n`;
 await writeFile(resolve(root, "sitemap.xml"), sitemap);
 
