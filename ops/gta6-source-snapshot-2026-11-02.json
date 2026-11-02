@@ -1,0 +1,75 @@
+{
+  "verified_at": "2026-11-02T11:03:00Z",
+  "verification_policy": "First-party Rockstar-controlled sources are authoritative for confirmed GTA VI status. Observations and theories remain separately labeled.",
+  "release": {
+    "date": "2026-11-19",
+    "platforms": ["PlayStation 5", "Xbox Series X|S"],
+    "pc_release_date": null,
+    "source": "https://www.rockstargames.com/VI"
+  },
+  "official_media": {
+    "major_video_count": 4,
+    "videos": [
+      {
+        "title": "Grand Theft Auto VI Launch Trailer",
+        "published": "2026-10-15",
+        "source": "https://www.rockstargames.com/VI/launch-trailer"
+      },
+      {
+        "title": "Grand Theft Auto VI: An Extended Look",
+        "published": "2026-08-27",
+        "source": "https://www.rockstargames.com/VI/an-extended-look",
+        "note": "Rockstar states this was captured entirely from in-game footage on PlayStation 5."
+      },
+      {
+        "title": "Grand Theft Auto VI Trailer 2",
+        "published": "2025-05-06",
+        "source": "https://www.rockstargames.com/VI/trailer-2"
+      },
+      {
+        "title": "Grand Theft Auto VI Trailer 1",
+        "published": "2023-12-04",
+        "source": "https://www.rockstargames.com/VI/trailer-1"
+      }
+    ],
+    "clip_count": 9,
+    "index_source": "https://www.rockstargames.com/VI/media/videos"
+  },
+  "latest_featured_news": [
+    {
+      "title": "Grand Theft Auto VI: Original Score by Justice",
+      "published": "2026-10-29",
+      "source": "https://www.rockstargames.com/newswire/article/39ak8a12395591/grand-theft-auto-vi-original-score-by-justice",
+      "confirmed_details": [
+        "The original score is composed by Justice.",
+        "The score album is scheduled for December 11, 2026.",
+        "Rockstar says the album contains 30 tracks plus digital bonus tracks."
+      ]
+    },
+    {
+      "title": "Watch the Grand Theft Auto VI Launch Trailer",
+      "published": "2026-10-15",
+      "source": "https://www.rockstargames.com/newswire/article/517572321a549a/watch-the-grand-theft-auto-vi-launch-trailer",
+      "confirmed_details": [
+        "The Launch Trailer features music from Justice.",
+        "Rockstar reiterates the November 19, 2026 release on PlayStation 5 and Xbox Series X|S."
+      ]
+    }
+  ],
+  "required_vcf_refresh": {
+    "reason": "VCF discovery pages currently identify September 2026 material as the latest verified state.",
+    "targets": [
+      "/gta-6-news",
+      "/gta-6-trailers",
+      "/gta-6-release-date",
+      "/gta-6-pc"
+    ],
+    "minimum_changes": [
+      "Update the visible verification date only after the corresponding content is source-checked.",
+      "Recognize four major official videos and the October 15 Launch Trailer.",
+      "Recognize the October 29 Justice score announcement as newer first-party GTA VI news.",
+      "Remove September 9 language that claims to describe the current status where no longer accurate.",
+      "Preserve the distinction between confirmed facts, footage observations, and community theory."
+    ]
+  }
+}
