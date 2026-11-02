@@ -23,5 +23,7 @@ jobs:
         run: node scripts/validate-seo.mjs
       - name: Validate clips
         run: node scripts/validate-clips.mjs
+      - name: Validate traffic opportunity contract
+        run: node scripts/validate-traffic-opportunity.mjs
       - name: Ensure generated files are committed
         run: git diff --exit-code
