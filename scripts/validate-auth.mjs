@@ -6,6 +6,7 @@ const read = path => readFileSync(resolve(root, path), 'utf8');
 const app = read('js/app.js');
 const index = read('index.html');
 const admin = read('admin.html');
+const founding = read('js/founding-citizens.js');
 
 const failures = [];
 const requireText = (source, needle, label) => {
@@ -24,6 +25,8 @@ if (index.includes('src="js/backend-bootstrap.js')) failures.push('homepage stil
 requireText(admin, "https://mzqplhhtsnahxghxpwcd.supabase.co", 'admin uses the canonical Supabase project');
 requireText(admin, '@supabase/supabase-js@2.115.0', 'admin Supabase client is version-pinned');
 requireText(admin, 'SEED 30 DISCUSSIONS', 'admin exposes the 30-discussion legitimate seed tool');
+requireText(founding, "const label = full ? 'CREATE ACCOUNT' : 'JOIN THE FIRST 100';", 'mobile auth CTA computes one stable label');
+requireText(founding, 'if(cta.textContent !== label) cta.textContent = label;', 'mobile auth CTA avoids rewriting unchanged text and retriggering the MutationObserver');
 
 const seedCount = (admin.match(/\['(?:general-discussion|vice-city-world|gameplay-vehicles)'/g) || []).length;
 if (seedCount < 30) failures.push(`expected at least 30 staff discussion seeds, found ${seedCount}`);
@@ -34,4 +37,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Auth/operations validation passed: canonical auth wiring, admin access, recovery flow, and ${seedCount} staff discussion seeds verified.`);
+console.log(`Auth/operations validation passed: canonical auth wiring, admin access, recovery flow, stable founding CTA observer behavior, and ${seedCount} staff discussion seeds verified.`);
