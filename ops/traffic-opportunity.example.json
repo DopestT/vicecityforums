@@ -1,5 +1,27 @@
 {
-  "id": "vcf-example-opportunity",
+  "id": "vcf-2026-11-02-launch-trailer-refresh",
   "detected_at": "2026-11-02T11:00:00Z",
-  "topic": "Example GTA VI opportunity"
+  "topic": "Refresh VCF for Rockstar's current GTA VI launch-era media",
+  "source_urls": [
+    "https://www.rockstargames.com/VI",
+    "https://www.rockstargames.com/VI/media/videos"
+  ],
+  "confidence": "high",
+  "audience_intent": "Find the newest official GTA VI videos and understand what Rockstar has actually confirmed before launch.",
+  "target_vcf_destination": "https://vicecityforums.com/gta-6-news",
+  "recommended_asset": "guide_update",
+  "conversion_goal": "Move a qualified visitor from the verified news page into a relevant discussion and toward a completed member profile.",
+  "claude_brief": "Create a source-first update brief for the VCF GTA 6 news and trailer pages. Separate Rockstar-confirmed facts from observations and theories, prioritize the newest official material, and end with one discussion question that gives a visitor a reason to participate.",
+  "codex_task": "Update the builder-owned GTA VI discovery pages from the verified source snapshot, add freshness assertions first, regenerate outputs, run all VCF quality gates, and return a reviewable PR without deploying production.",
+  "status": "verified",
+  "approval_required": true,
+  "utm_campaign": "gta6_launch_refresh_2026_11",
+  "published_url": null,
+  "outcomes": {
+    "impressions": null,
+    "visits": null,
+    "completed_profiles": null,
+    "first_posts_or_replies": null,
+    "returning_members_7d": null
+  }
 }
