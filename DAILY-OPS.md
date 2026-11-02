@@ -10,8 +10,9 @@ Keep Vice City Forums active, accurate, growing, technically healthy, and ready 
    - `node scripts/validate-auth.mjs`
    - `node scripts/validate-seo.mjs`
    - `node scripts/validate-clips.mjs`
+   - `node scripts/validate-traffic-opportunity.mjs`
 2. Run `node scripts/verify-production.mjs` against the canonical production origin.
-3. Treat any failed canonical-domain, redirect, Supabase-read, sitemap, feed, auth/static, SEO, or clips check as a release blocker.
+3. Treat any failed canonical-domain, redirect, Supabase-read, sitemap, feed, auth/static, SEO, clips, or opportunity-contract check as a release blocker.
 4. Verify the latest production deployment corresponds to `main` before publishing campaign traffic.
 
 ## Community activity
@@ -29,6 +30,17 @@ Keep Vice City Forums active, accurate, growing, technically healthy, and ready 
 - Keep sitemap, RSS, robots, social metadata, structured data, and internal links passing validation.
 - Submit/update the sitemap in Google Search Console and Bing Webmaster Tools when access is available.
 
+## Perception traffic scout
+
+- Reuse the existing VCF monitoring worker; do not create a second overlapping monitor.
+- On each scheduled check, rank no more than three strong GTA VI opportunities using first-party evidence, freshness, audience usefulness, conversion fit, and measurable demand.
+- Write each selected opportunity in the contract defined by `ops/traffic-opportunity.schema.json`.
+- The opportunity must name a concrete VCF destination and conversion goal before model work begins.
+- Perception/Astra owns verification, routing, status, and outcome state. Provider chat/session history is not canonical state.
+- Claude receives the bounded strategy/research brief; Codex receives the bounded implementation task when build work is warranted.
+- Default Codex output is a branch/pull request plus test evidence, not a production deployment.
+- If no strong source-backed opportunity exists, record no opportunity rather than manufacturing work.
+
 ## Publishing and acquisition
 
 - Daily mix: one short-form video, one story/poll, one discussion prompt, plus substantive replies to legitimate comments.
@@ -36,6 +48,7 @@ Keep Vice City Forums active, accurate, growing, technically healthy, and ready 
 - Preserve source/provenance labels for official, user-gameplay, fan-made, and AI-generated clips.
 - Never publish an exact or near-duplicate image used by the same brand/channel in the previous 7 days unless explicitly approved.
 - Track search impressions, organic clicks, short-form views, completed profiles, posting members, real replies, and 7-day returning members.
+- A generated asset or successful build is not a completed acquisition outcome; verify the intended visitor can reach, join, and participate.
 
 ## Escalation
 
@@ -46,4 +59,5 @@ Human intervention is required for:
 - moderation or rights disputes;
 - unverified factual claims;
 - Vercel/domain/DNS ownership or account-access problems;
+- production merge/deploy, public publishing, spend, credentials/permissions, or production database writes;
 - repeated publication failures after one retry/fallback.

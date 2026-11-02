@@ -113,7 +113,8 @@ function decorateMobileCta(){
   const cta = document.querySelector('#mobile-auth-cta');
   if(!cta || document.body.classList.contains('signed-in')) return;
   const {full} = campaignState();
-  cta.textContent = full ? 'CREATE ACCOUNT' : 'JOIN THE FIRST 100';
+  const label = full ? 'CREATE ACCOUNT' : 'JOIN THE FIRST 100';
+  if(cta.textContent !== label) cta.textContent = label;
 }
 
 function decorate(){
