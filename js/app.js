@@ -173,14 +173,20 @@ function openPasswordReset(){
 
 function openOnboarding(){
   if(!session) return openAuth('signup');
-  modalRoot.innerHTML = `<div class="modal-backdrop"><div class="modal"><div class="eyebrow">ONE LAST STEP</div><h2>CLAIM YOUR HANDLE</h2><p class="muted">Choose how you appear across Vice City Forums.</p><form id="onboard-form" class="form"><div class="field"><label>USERNAME</label><input name="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" placeholder="vicecitizen" required></div><div class="field"><label>DISPLAY NAME</label><input name="display_name" minlength="2" maxlength="40" placeholder="Vice Citizen" required></div><div class="field"><label>BIO <span class="muted">(optional)</span></label><textarea name="bio" maxlength="400" style="min-height:90px"></textarea></div><div id="onboard-message"></div><button class="btn" type="submit">ENTER THE CITY</button></form></div></div>`;
+  modalRoot.innerHTML = `<div class="modal-backdrop"><div class="modal"><div class="eyebrow">ONE LAST STEP</div><h2>CLAIM YOUR HANDLE</h2><p class="muted">Choose how you appear across Vice City Forums.</p><form id="onboard-form" class="form"><div class="field"><label>USERNAME</label><input name="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" placeholder="vicecitizen" required></div><div class="field"><label>DISPLAY NAME</label><input name="display_name" minlength="2" maxlength="40" placeholder="Vice Citizen" required></div><div class="field"><label>BIO <span class="muted">(optional)</span></label><textarea name="bio" maxlength="400" style="min-height:90px"></textarea></div><div class="field"><label style="display:flex;align-items:flex-start;gap:10px"><input name="vcf_newsletter" type="checkbox" value="on" style="width:auto;margin-top:4px"><span>Send me optional Vice City Forums GTA 6 news, community updates, and occasional emails. I can unsubscribe anytime.</span></label></div><div id="onboard-message"></div><button class="btn" type="submit">ENTER THE CITY</button></form></div></div>`;
   $('#onboard-form').onsubmit = async e => {
     e.preventDefault(); const fd=new FormData(e.currentTarget);
-    const username=String(fd.get('username')).trim().toLowerCase(), display_name=String(fd.get('display_name')).trim(), bio=String(fd.get('bio')||'').trim();
+    const username=String(fd.get('username')).trim().toLowerCase(), display_name=String(fd.get('display_name')).trim(), bio=String(fd.get('bio')||'').trim(), wantsNews=fd.get('vcf_newsletter')==='on';
     const msg=$('#onboard-message');
     const { error } = await supabase.from('profiles').update({username,display_name,bio,onboarded:true}).eq('id',session.user.id);
     if(error){ msg.innerHTML=`<div class="notice error">${esc(error.code==='23505'?'That username is already taken.':error.message)}</div>`; return; }
-    await refreshProfile(); renderAuth(); closeModal(); toast('Profile ready. Welcome to Vice City Forums.'); location.hash='#categories';
+    await refreshProfile(); renderAuth(); closeModal(); location.hash='#categories';
+    if(wantsNews){
+      try {
+        const {error: newsletterError} = await supabase.functions.invoke('vcf-newsletter-subscribe',{body:{consent:true}});
+        toast(newsletterError?'Profile ready. Newsletter opt-in unavailable; try again later.':'Profile ready. GTA updates subscription requested.',!!newsletterError);
+      } catch { toast('Profile ready. Newsletter opt-in unavailable; try again later.',true); }
+    } else toast('Profile ready. Welcome to Vice City Forums.');
   };
 }
 
