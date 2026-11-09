@@ -4,7 +4,7 @@
 
 Canonical site: https://vicecityforums.com/
 Official GTA VI source used for fact checking: https://www.rockstargames.com/VI
-Last verified: 2026-09-09
+Last verified: 2026-11-08
 
 ## Core pages
 - [GTA 6 News: Confirmed Updates](https://vicecityforums.com/gta-6-news): Track confirmed GTA 6 news, official Rockstar announcements, release-date updates, trailers, platforms, characters, and Vice City developments.
