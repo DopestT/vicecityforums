@@ -122,7 +122,7 @@ const currentPreloadChecks = [
   },
   {
     file: "gta-6-countdown/index.html",
-    required: ["November 10, 2026", "212 GB", "November 12, 2026", "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq", "2026-11-08"],
+    required: ["November 10, 2026", "212 GB", "November 12, 2026", "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq", "2026-11-08", "How much storage does the preload need?"],
     forbidden: ["November 12, 2026 as the preload date"],
   },
 ];
