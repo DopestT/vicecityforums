@@ -13,10 +13,15 @@ const officialExtendedLook = "https://www.rockstargames.com/VI/an-extended-look"
 const officialStore = "https://store.rockstargames.com/game/buy-gta-vi";
 const officialScreenshots = "https://www.rockstargames.com/VI/media/screenshots";
 const officialControllerNews = "https://blog.playstation.com/2026/09/03/first-look-at-the-grand-theft-auto-vi-limited-edition-dualsense-wireless-controllers/";
+const officialPreloadFaq = "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq";
+const officialPreloadTimes = "https://support.rockstargames.com/articles/29jV3Cv2cCgvwM1XgtMO5o/grand-theft-auto-vi-regional-pre-load-and-release-times-on-playstation-5-and-xbox-series-x-or-s?pubDate=20261107";
+const officialPreloadNewswire = "https://www.rockstargames.com/newswire/article/k4ak9okk485712/grand-theft-auto-vi-pre-load-begins-on-november-10";
 
 const pages = [
   {
     slug: "gta-6-news",
+    modified: "2026-11-08",
+    modifiedLabel: "November 8, 2026",
     title: "GTA 6 News: Confirmed Updates & Release Tracker",
     description: "Track confirmed GTA 6 news, official Rockstar announcements, release-date updates, trailers, platforms, characters, and Vice City developments.",
     kicker: "Verified update tracker",
@@ -26,11 +31,12 @@ const pages = [
     facts: [
       ["Release date", "November 19, 2026"],
       ["Confirmed consoles", "PlayStation 5 · Xbox Series X|S"],
-      ["Latest first-party update", "DualSense controllers · September 3, 2026"],
+      ["Latest first-party update", "Pre-load schedule · November 3, 2026"],
     ],
     body: `
       <h2>Latest confirmed GTA 6 news</h2>
       <div class="card-grid">
+        <article class="card"><span class="meta">November 3, 2026</span><h3>Digital pre-load dates and storage confirmed</h3><p>Rockstar's dedicated Pre-Load FAQ says PS5 digital pre-load begins at midnight local time on November 10, while Xbox Series X|S begins globally at 00:00 GMT that day. The download requires up to 212 GB depending on device.</p></article>
         <article class="card"><span class="meta">September 3, 2026</span><h3>Two limited-edition DualSense controllers revealed</h3><p>PlayStation revealed Black and White GTA VI Limited Edition DualSense controllers. Pre-orders begin September 10 at 10 a.m. local time, and both launch alongside the game on November 19.</p></article>
         <article class="card"><span class="meta">August 27, 2026</span><h3>An Extended Look is now playing</h3><p>Rockstar added <strong>Grand Theft Auto VI: An Extended Look</strong> to the official media lineup. It now appears beside Trailer 2 and Trailer 1 on Rockstar's GTA VI site.</p></article>
         <article class="card"><span class="meta">June 25, 2026</span><h3>Pre-order timing announced</h3><p>Rockstar's featured-news list records its pre-order announcement for June 25, 2026. Platform and edition details should always be checked against the current official store page.</p></article>
@@ -39,7 +45,7 @@ const pages = [
       </div>
       <div class="callout"><strong>Our verification rule</strong><p>A claim is labeled “confirmed” only when it appears on a Rockstar-controlled page or another direct first-party source. Trailer observations are identified as observations; predictions and theories stay labeled as community discussion.</p></div>
       <h2>What is confirmed right now?</h2>
-      <p>Rockstar currently lists <strong>November 19, 2026</strong> as the launch date and names <strong>PlayStation 5</strong> and <strong>Xbox Series X|S</strong> as platforms. The official world material identifies Vice City as part of the state of Leonida and introduces Jason, Lucia, and a wider supporting cast. Rockstar's store also lists Standard and Ultimate editions, a November 12 preload date, and a Vintage Vice City pre-order pack.</p>
+      <p>Rockstar currently lists <strong>November 19, 2026</strong> as the launch date and names <strong>PlayStation 5</strong> and <strong>Xbox Series X|S</strong> as platforms. The official world material identifies Vice City as part of the state of Leonida and introduces Jason, Lucia, and a wider supporting cast. Rockstar's dedicated Pre-Load FAQ, last updated November 3, says digital pre-load begins November 10: midnight local time on PS5 and 00:00 GMT on Xbox Series X|S. The download requires up to 212 GB depending on device; code-in-box copies are expected from November 12.</p>
       <p>Rockstar's media library currently groups three major videos—An Extended Look, Trailer 2, and Trailer 1—along with official character and cover-art clips. That gives the community more material to study while keeping speculation anchored to footage Rockstar actually published.</p>
       <h2>What is not confirmed?</h2>
       <p>An exact PC release date is not listed on Rockstar's current GTA VI landing page. Exact map dimensions, every gameplay system, the full mission list, and a complete post-launch roadmap also remain unconfirmed. Treat unattributed screenshots, “insider” posts, and unlabeled AI footage as unverified until a primary source supports them.</p>
@@ -48,8 +54,10 @@ const pages = [
       ["What is the confirmed GTA 6 release date?", "Rockstar currently lists November 19, 2026 as the GTA 6 release date."],
       ["Which platforms are confirmed for GTA 6?", "Rockstar currently lists PlayStation 5 and Xbox Series X|S."],
       ["Has Rockstar confirmed GTA 6 for PC?", "A PC version is not listed on Rockstar's current GTA VI landing page as of September 9, 2026."],
+      ["When does GTA 6 digital pre-load start?", "Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says PS5 pre-load starts at midnight local time on November 10; Xbox Series X|S starts globally at 00:00 GMT on November 10."],
+      ["How much storage does the GTA 6 pre-load need?", "Rockstar says up to 212 GB of available space, depending on the device."],
     ],
-    sources: [["Official GTA VI site", officialHome], ["Official GTA VI store", officialStore], ["PlayStation Blog — limited-edition controllers", officialControllerNews], ["Official GTA VI videos", officialVideos], ["Official people and places", officialWorld]],
+    sources: [["Official GTA VI site", officialHome], ["Official GTA VI store", officialStore], ["PlayStation Blog — limited-edition controllers", officialControllerNews], ["Official GTA VI videos", officialVideos], ["Official people and places", officialWorld], ["Rockstar Support — GTA VI Pre-Load FAQ", officialPreloadFaq], ["Rockstar Support — Regional pre-load times", officialPreloadTimes], ["Rockstar Newswire — Pre-load begins November 10", officialPreloadNewswire]],
   },
   {
     slug: "gta-6-release-date",
@@ -266,15 +274,18 @@ const pages = [
   },
   {
     slug: "gta-6-pre-order",
+    modified: "2026-11-08",
+    modifiedLabel: "November 8, 2026",
     title: "GTA 6 Pre-Order: Editions, Bonuses & Preload",
-    description: "Compare the official GTA 6 Standard and Ultimate editions, Vintage Vice City pre-order bonuses, preload date, and physical code-in-box details.",
+    description: "Compare GTA 6 Standard and Ultimate editions, the November 10 digital pre-load schedule, up to 212 GB of storage, and November 12 code-in-box availability.",
     kicker: "Official buying guide",
     h1: "GTA 6 Pre-Order & Editions",
     intro: "A source-checked guide to the versions, bonuses, preload timing, and format details Rockstar currently lists for GTA 6.",
     type: "Article",
     facts: [
-      ["Preload begins", "November 12, 2026"],
+      ["Digital pre-load begins", "November 10, 2026"],
       ["Launch date", "November 19, 2026"],
+      ["Pre-load storage", "Up to 212 GB"],
       ["Official editions", "Standard · Ultimate"],
     ],
     body: `
@@ -286,18 +297,19 @@ const pages = [
       <h2>What is in the Vintage Vice City pre-order pack?</h2>
       <p>Rockstar currently lists a <strong>1955 Vapid Stanier sedan and garage</strong>, three outfits, three hairstyles, and a weapon pattern in the Vintage Vice City pack. The store also advertises one free month of GTA+ for eligible digital pre-orders made through the Rockstar Store. Eligibility, redemption timing, platform requirements, and regional terms can change, so verify the live offer before paying.</p>
       <h2>When can GTA 6 be preloaded?</h2>
-      <p>The official store displays <strong>November 12, 2026</strong> as the preload date, one week before the listed November 19 launch. A preload lets supported consoles download game data early; it does not necessarily mean the game will unlock at the same clock time in every region.</p>
-      <div class="callout"><strong>Physical-copy detail</strong><p>Rockstar's store says its physical versions are code-in-box and do not include a disc. If a disc matters to you, read the format line on the exact retailer and edition listing before ordering.</p></div>
+      <p>Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says digital pre-load begins at midnight local time on PlayStation 5 on November 10, and globally at 00:00 GMT on Xbox Series X|S. In U.S. Eastern time, the Xbox start is 7:00 p.m. ET on November 9. Rockstar says the pre-load requires up to 212 GB of available space depending on device.</p>
+      <div class="callout"><strong>Physical-copy detail</strong><p>Rockstar says physical code-in-box versions should be available from retailers starting November 12. The box contains a download code, not a disc. November 12 is the code-in-box availability date, not the digital pre-load date.</p></div>
       <h2>How to compare prices safely</h2>
       <p>Use Rockstar's official store as the baseline, then compare the same platform, edition, region, tax treatment, and delivery format at authorized retailers. Avoid listings that promise unannounced access, unknown “exclusive” content, or account credentials instead of a legitimate game code.</p>
       <p>Prices are deliberately not copied onto this page because currency, tax, and regional storefronts vary. The source link remains the fastest way to see the amount and legal terms that apply to you.</p>
     `,
     faqs: [
-      ["When does GTA 6 preload start?", "Rockstar's store currently lists November 12, 2026 as the preload date."],
+      ["When does GTA 6 digital pre-load start?", "Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says PS5 starts at midnight local time on November 10 and Xbox Series X|S starts at 00:00 GMT on November 10."],
+      ["How much storage does the digital pre-load need?", "Rockstar says up to 212 GB of available space depending on your device."],
       ["What GTA 6 editions are official?", "Rockstar currently lists Standard and Ultimate editions on its official store."],
-      ["Does the physical GTA 6 box include a disc?", "Rockstar's store currently describes its physical versions as code-in-box with no disc."],
+      ["Does the physical GTA 6 box include a disc?", "No. Rockstar says the physical version is code-in-box and does not include a disc; retailers are expected to have it from November 12."],
     ],
-    sources: [["Rockstar Store — GTA VI", officialStore], ["Official GTA VI site", officialHome]],
+    sources: [["Rockstar Store — GTA VI", officialStore], ["Official GTA VI site", officialHome], ["Rockstar Support — GTA VI Pre-Load FAQ", officialPreloadFaq], ["Rockstar Support — Regional pre-load times", officialPreloadTimes], ["Rockstar Newswire — Pre-load begins November 10", officialPreloadNewswire]],
   },
   {
     slug: "gta-6-gameplay",
@@ -408,6 +420,8 @@ const pages = [
   },
   {
     slug: "gta-6-countdown",
+    modified: "2026-11-08",
+    modifiedLabel: "November 8, 2026",
     title: "GTA 6 Countdown to November 19, 2026",
     description: "Follow a live calendar countdown to the confirmed GTA 6 release date, November 19, 2026, plus preload timing and launch-status source links.",
     kicker: "Live launch tracker",
@@ -416,7 +430,7 @@ const pages = [
     type: "WebPage",
     facts: [
       ["Launch date", "November 19, 2026"],
-      ["Preload date", "November 12, 2026"],
+      ["Digital pre-load", "November 10, 2026"],
       ["Countdown basis", "Your local calendar"],
     ],
     body: `
@@ -429,10 +443,11 @@ const pages = [
       </div>
       <p class="countdown-note" id="countdown-note">Calendar countdown to November 19 in your device's local timezone. Exact digital unlock times can vary by platform and region.</p>
       <h2>What happens before launch?</h2>
-      <p>Rockstar's store currently lists <strong>November 12, 2026</strong> as the preload date. That gives eligible digital orders time to download game data before the scheduled November 19 release. Preload access is not the same thing as early gameplay access.</p>
+      <p>Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says digital pre-load starts at midnight local time on PS5 on November 10, and at 00:00 GMT on Xbox Series X|S. In U.S. Eastern time, the Xbox start is 7:00 p.m. ET on November 9. The download requires up to 212 GB depending on device. Pre-load access is not early gameplay access.</p>
       <div class="card-grid">
-        <article class="card"><span class="meta">November 12</span><h3>Preload date</h3><p>Check storage space, system updates, account access, and the exact platform listing before downloads begin. File-size rumors are not a substitute for the figure shown by your console.</p></article>
-        <article class="card"><span class="meta">November 19</span><h3>Current launch date</h3><p>Rockstar's official game page and store both display November 19, 2026. Any later change should be verified on those primary pages.</p></article>
+        <article class="card"><span class="meta">November 10</span><h3>Digital pre-load</h3><p>PS5: midnight local time. Xbox Series X|S: 00:00 GMT worldwide (7:00 p.m. ET on November 9). Allow up to 212 GB of free space, depending on device.</p></article>
+        <article class="card"><span class="meta">November 12</span><h3>Code-in-box availability</h3><p>Rockstar says physical code-in-box versions should be available from retailers starting November 12. The package contains a download code, not a disc.</p></article>
+        <article class="card"><span class="meta">November 19</span><h3>Current launch date</h3><p>Rockstar's regional support page says the game releases at midnight local time on November 19 in all regions for both consoles.</p></article>
       </div>
       <div class="callout"><strong>This is a calendar countdown</strong><p>Rockstar has announced a date, not one universal worldwide unlock timestamp on the sources cited here. The timer targets the beginning of November 19 on your device and should not be used to predict a storefront's exact unlock hour.</p></div>
       <h2>Build your launch crew now</h2>
@@ -441,10 +456,11 @@ const pages = [
     `,
     faqs: [
       ["When does GTA 6 release?", "Rockstar currently lists November 19, 2026 as the release date."],
-      ["When can GTA 6 be preloaded?", "Rockstar's store currently lists November 12, 2026 as the preload date."],
+      ["When can GTA 6 be preloaded?", "Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says PS5 begins at midnight local time on November 10 and Xbox Series X|S begins at 00:00 GMT on November 10."],
+      ["How much storage does the preload need?", "Rockstar says up to 212 GB of available space depending on the device."],
       ["Is the countdown an exact unlock timer?", "No. It counts to the launch-date calendar day in your local timezone; exact store unlock times can vary."],
     ],
-    sources: [["Official GTA VI site", officialHome], ["Rockstar Store — GTA VI", officialStore]],
+    sources: [["Official GTA VI site", officialHome], ["Rockstar Store — GTA VI", officialStore], ["Rockstar Support — GTA VI Pre-Load FAQ", officialPreloadFaq], ["Rockstar Support — Regional pre-load times", officialPreloadTimes], ["Rockstar Newswire — Pre-load begins November 10", officialPreloadNewswire]],
     script: `<script>
   (() => {
     const target = new Date(2026, 10, 19, 0, 0, 0);
@@ -498,8 +514,8 @@ function jsonLd(page) {
       headline: page.h1,
       name: page.h1,
       description: page.description,
-      datePublished: modified,
-      dateModified: modified,
+      datePublished: page.published ?? modified,
+      dateModified: page.modified ?? modified,
       inLanguage: "en-US",
       isPartOf: { "@id": `${base}/#website` },
       publisher: { "@id": `${base}/#organization` },
@@ -544,6 +560,9 @@ function jsonLd(page) {
 
 function render(page) {
   const url = `${base}/${page.slug}`;
+  const pagePublished = page.published ?? modified;
+  const pageModified = page.modified ?? modified;
+  const pageModifiedLabel = page.modifiedLabel ?? modifiedLabel;
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(`${page.h1} | Vice City Forums`);
   const currentIndex = related.findIndex((candidate) => candidate.slug === page.slug);
@@ -577,8 +596,8 @@ function render(page) {
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Vice City Forums — GTA 6 news, guides and community discussion">
-  <meta property="article:published_time" content="${modified}">
-  <meta property="article:modified_time" content="${modified}">
+  <meta property="article:published_time" content="${pagePublished}">
+  <meta property="article:modified_time" content="${pageModified}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(page.title)} | Vice City Forums">
   <meta name="twitter:description" content="${esc(page.description)}">
@@ -604,13 +623,13 @@ function render(page) {
       <div class="kicker">${esc(page.kicker)}</div>
       <h1>${esc(page.h1)}</h1>
       <p class="dek">${esc(page.intro)}</p>
-      <time class="updated" datetime="${modified}">Verified and updated ${modifiedLabel}</time>
+      <time class="updated" datetime="${pageModified}">Verified and updated ${pageModifiedLabel}</time>
     </header>
     <section class="fact-grid" aria-label="Key facts">${facts}</section>
     <div class="share-bar" aria-label="Share this guide"><strong>Share</strong><a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}" target="_blank" rel="noopener noreferrer">Reddit</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" rel="noopener noreferrer">Facebook</a><button type="button" data-copy-link>Copy link</button><span data-copy-status aria-live="polite"></span></div>
     <div class="content-grid">
       <article class="article-body">${page.body}<h2>Frequently asked questions</h2><div class="faq-list">${faqHtml}</div><section class="join-card"><span class="meta">Your take belongs here</span><h2>Continue the conversation</h2><p>Bring the evidence, theory, clip, or question to a real GTA 6 discussion. Reading is public; posting takes a free member profile.</p><a class="nav-cta" href="${base}/#categories">Enter Vice City Forums →</a></section></article>
-      <aside class="source-box"><h2>Primary sources</h2><p>Facts on this page are checked against first-party material. Community interpretation is labeled separately.</p><ul>${sourceHtml}</ul><p><strong>Last checked:</strong><br>${modifiedLabel}</p></aside>
+      <aside class="source-box"><h2>Primary sources</h2><p>Facts on this page are checked against first-party material. Community interpretation is labeled separately.</p><ul>${sourceHtml}</ul><p><strong>Last checked:</strong><br>${pageModifiedLabel}</p></aside>
     </div>
     <section class="related" aria-labelledby="related-title"><h2 id="related-title">Keep exploring GTA 6</h2><div class="related-grid">${relatedCards}</div></section>
   </main>
@@ -639,23 +658,31 @@ for (const page of pages) {
 }
 
 const sitemapEntries = [
-  { path: "/", priority: "1.0", changefreq: "daily" },
-  ...pages.map((page) => ({ path: `/${page.slug}`, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
+  { path: "/", lastmod: modified, priority: "1.0", changefreq: "daily" },
+  ...pages.map((page) => ({ path: `/${page.slug}`, lastmod: page.modified ?? modified, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapEntries.map((entry) => `  <url><loc>${base}${entry.path}</loc><lastmod>${modified}</lastmod><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority></url>`).join("\n")}
+${sitemapEntries.map((entry) => `  <url><loc>${base}${entry.path}</loc><lastmod>${entry.lastmod}</lastmod><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority></url>`).join("\n")}
 </urlset>\n`;
 await writeFile(resolve(root, "sitemap.xml"), sitemap);
 
-const feedItems = pages.slice(0, 6).map((page) => `
+const latestModified = pages.reduce((latest, page) => {
+  const candidate = page.modified ?? modified;
+  return candidate > latest ? candidate : latest;
+}, modified);
+const feedItems = pages.slice(0, 6).map((page) => {
+  const itemModified = page.modified ?? modified;
+  const pubDate = new Date(`${itemModified}T16:00:00Z`).toUTCString();
+  return `
   <item>
     <title>${esc(page.h1)}</title>
     <link>${base}/${page.slug}</link>
     <guid isPermaLink="true">${base}/${page.slug}</guid>
-    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <pubDate>${pubDate}</pubDate>
     <description>${esc(page.description)}</description>
-  </item>`).join("");
+  </item>`;
+}).join("");
 const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
@@ -663,7 +690,7 @@ const feed = `<?xml version="1.0" encoding="UTF-8"?>
   <link>${base}/</link>
   <description>Verified GTA 6 news, guides, clips and independent community discussion.</description>
   <language>en-us</language>
-  <lastBuildDate>Wed, 09 Sep 2026 16:00:00 GMT</lastBuildDate>
+  <lastBuildDate>${new Date(`${latestModified}T16:00:00Z`).toUTCString()}</lastBuildDate>
   <atom:link href="${base}/feed.xml" rel="self" type="application/rss+xml"/>
   ${feedItems}
 </channel>
@@ -684,7 +711,7 @@ await writeFile(resolve(root, "llms.txt"), `# Vice City Forums
 
 Canonical site: ${base}/
 Official GTA VI source used for fact checking: ${officialHome}
-Last verified: ${modified}
+Last verified: ${latestModified}
 
 ## Core pages
 ${pages.map((page) => `- [${page.h1}](${base}/${page.slug}): ${page.description}`).join("\n")}
