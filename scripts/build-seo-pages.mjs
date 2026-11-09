@@ -148,7 +148,7 @@ const pages = [
         <article class="card"><span class="meta">Official destination · Wetlands</span><h3>Grassrivers</h3><p>Leonida's wetland country, presented by Rockstar as a distinct natural environment.</p></article>
         <article class="card"><span class="meta">Official destination · Coast</span><h3>Port Gellhorn</h3><p>A named coastal destination beyond Vice City. Its exact boundaries and internal district layout remain unconfirmed.</p></article>
         <article class="card"><span class="meta">Official destination · Industry</span><h3>Ambrosia</h3><p>An inland industrial destination associated with the Allied Crystal sugar refinery in Rockstar's world material.</p></article>
-        <article class="card"><span class="meta">Official destination · North</span><h3>Mount Kalaga National Park</h3><p>A northern natural area associated with outdoor terrain and a different pace from Vice City's urban core.</p></article>
+        <article class="card"><span class="meta">Official destination · North</span><h3>Mount Kalaga</h3><p>A northern natural area associated with outdoor terrain and a different pace from Vice City's urban core.</p></article>
       </div>
       <h2>Vice City: named neighborhoods and landmarks</h2>
       <p><strong>Rockstar location-page names:</strong> Ocean Beach, Little Cuba, Tisha-Wocka Flea Market, and the VC Port. Rockstar describes Ocean Beach's art-deco hotels and sands, Little Cuba's panaderías, the flea market's bootleg brands, and the port's cruise-ship traffic.</p>
@@ -168,8 +168,17 @@ const pages = [
         <article class="card"><span class="meta">Official store / area</span><h3>Lake Leonida</h3><p>A named body of water referenced in Rockstar's edition material.</p></article>
         <article class="card"><span class="meta">Official character profile</span><h3>Leonida Penitentiary</h3><p>Named in Lucia Caminos's official biography. The public profile does not provide a map position.</p></article>
       </div>
-      <h2>Other evidence to track as the map develops</h2>
-      <p>Rockstar's character profiles also identify Boobie Ike's Vice City businesses and Only Raw Records, plus Brian Heder's boat yard in the Keys. These are useful world references, but they should not be turned into precise map pins without a verified in-game or official map position.</p>
+      <h2>More named story locations and businesses</h2>
+      <div class="card-grid">
+        <article class="card"><span class="meta">Official store / street</span><h3>Shore Drive</h3><p>A named Vice City road referenced in Rockstar's vehicle descriptions. No full route or exact street position has been published.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>Goodtime Gear</h3><p>A named apparel and accessories brand tied to Leonida's in-world television personality Macca the Gator.</p></article>
+        <article class="card"><span class="meta">Official character / business</span><h3>Only Raw Records</h3><p>The record label associated with Dre'Quan Priest, Boobie Ike, and the Real Dimez.</p></article>
+        <article class="card"><span class="meta">Official character / business</span><h3>Jack of Hearts</h3><p>The strip club at the center of Boobie Ike's Vice City business empire.</p></article>
+        <article class="card"><span class="meta">Official destination / landmark</span><h3>Allied Crystal Sugar Refinery</h3><p>The refinery that provides jobs in Ambrosia, named in Rockstar's world material.</p></article>
+        <article class="card"><span class="meta">Official character / story location</span><h3>Brian Heder's Boat Yard</h3><p>A Keys-area story location used by Brian Heder and Lori. Rockstar has not published an exact pin.</p></article>
+        <article class="card"><span class="meta">Official promotional imagery</span><h3>Ocean View Hotel</h3><p>The hotel name is visible in official promotional imagery. Its precise map position and relationship to other properties are not established here.</p></article>
+      </div>
+      <p>Rockstar also names the Allied Crystal sugar refinery in Ambrosia, Only Raw Records, and the Jack of Hearts club in Boobie Ike's Vice City business empire. Brian Heder's boat yard is a story location in the Keys. The Ocean View Hotel sign is visible in official promotional imagery. These references belong in the location index, but the hotel and boat yard should not be assigned invented coordinates.</p>
       <div class="callout"><strong>Location evidence labels</strong><p><strong>Official destination</strong> means Rockstar profiles the place. <strong>Officially named</strong> means a Rockstar page, store listing, or official trailer names it. <strong>Trailer signage</strong> means the name is readable in official footage. <strong>Unplaced</strong> means the name is real but its exact position is not established. <strong>Community theory</strong> is never presented as Rockstar-confirmed geography.</p></div>
       <h2>Has Rockstar released the full GTA 6 map?</h2>
       <p>Rockstar's public world pages identify destinations and selected place names, but do not provide a complete, coordinate-accurate map of Leonida. Fan reconstructions can help organize evidence, but their borders, distances, road connections, and inferred locations must remain labeled as community work.</p>
@@ -177,11 +186,11 @@ const pages = [
       <p>There is no definitive square-mile measurement in the Rockstar location material cited here. We will not publish a precise size or place pins from leaked or unverified map images as if they were official.</p>
     `,
     faqs: [
-      ["What are the six major GTA 6 locations?", "Rockstar profiles Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga National Park."],
+      ["What are the six major GTA 6 locations?", "Rockstar profiles Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga."],
       ["Which Vice City neighborhoods and landmarks are named?", "Rockstar names Ocean Beach, Little Cuba, Tisha-Wocka Flea Market, and the VC Port; official trailer signage also shows names including Stockyard, Downtown, Southside, Peacock Bay, and VCI Airport."],
       ["Has Rockstar released the full GTA 6 map?", "No complete coordinate-accurate map is included in the Rockstar location material cited here."],
     ],
-    sources: [["Rockstar Games — Only in Leonida", officialWorld], ["Rockstar Games — GTA VI official site and store", officialHome], ["Rockstar Store — GTA VI", officialStore], ["Rockstar Games — Official GTA VI media", officialVideos]],
+    sources: [["Rockstar Games — Only in Leonida", officialWorld], ["Rockstar Games — GTA VI official site and store", officialHome], ["Rockstar Store — GTA VI", officialStore], ["PlayStation — GTA VI bonus content details", "https://www.playstation.com/en-ca/support/games/gta-vi-game/"], ["Rockstar Games — Official GTA VI media", officialVideos]],
   },
   {
     slug: "gta-6-trailers",
