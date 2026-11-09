@@ -126,7 +126,7 @@ const pages = [
   },
   {
     slug: "gta-6-map-locations",
-    title: "GTA 6 Map & Locations: Every Named Leonida Spot | Vice City Forums",
+    title: "GTA 6 Map & Locations: Every Named Leonida Spot",
     description: "Explore GTA 6 locations across Leonida: six official destinations, Vice City districts, named landmarks, businesses, and trailer-sign discoveries, with evidence labels.",
     kicker: "Leonida location atlas",
     h1: "GTA 6 Map: Every Named Leonida Location",
