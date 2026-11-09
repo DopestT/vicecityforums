@@ -126,39 +126,71 @@ const pages = [
   },
   {
     slug: "gta-6-map-locations",
-    title: "GTA 6 Map & Locations: Vice City and Leonida Guide",
-    description: "Explore the officially named GTA 6 map locations: Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga.",
-    kicker: "Confirmed world guide",
-    h1: "GTA 6 Map & Leonida Locations",
-    intro: "Rockstar has revealed a state-sized setting built around Vice City and several named regions. This guide keeps confirmed locations separate from fan-made maps and size estimates.",
+    title: "GTA 6 Map & Locations: Every Named Leonida Spot",
+    description: "Explore GTA 6 locations across Leonida: six official destinations, Vice City districts, landmarks, businesses, and trailer-sign discoveries, with evidence labels.",
+    kicker: "Leonida location atlas",
+    h1: "GTA 6 Map: Every Named Leonida Location",
+    intro: "A source-first location guide covering the six major Leonida destinations and the smaller places named in Rockstar material and official trailer signage. Exact map positions stay unclaimed until Rockstar confirms them.",
     type: "Article",
+    modified: "2026-11-08",
+    modifiedLabel: "November 8, 2026",
     facts: [
       ["State", "Leonida"],
-      ["Core city", "Vice City"],
-      ["Named areas", "Six revealed regions"],
+      ["Major destinations", "Six Rockstar profiles"],
+      ["Evidence standard", "Official · Trailer · Unplaced"],
     ],
     body: `
-      <h2>Officially named GTA 6 locations</h2>
+      <h2>The six major Leonida destinations</h2>
+      <p>Rockstar's official <a href="https://www.rockstargames.com/VI/only-in-leonida" rel="noopener">Only in Leonida guide</a> profiles six destinations. These are the confirmed backbone of the world—not a complete street map.</p>
       <div class="card-grid">
-        <article class="card"><span class="meta">Urban center</span><h3>Vice City</h3><p>The neon-soaked city at the center of GTA 6's identity. Rockstar describes Leonida as stretching beyond Vice City's streets into a wider state.</p></article>
-        <article class="card"><span class="meta">Coastal region</span><h3>Leonida Keys</h3><p>The Keys connect Jason's background and Brian's boat-yard operation to the state's island and waterfront side.</p></article>
-        <article class="card"><span class="meta">Wetlands</span><h3>Grassrivers</h3><p>An officially named Leonida destination associated with the state's marsh and wildlife terrain.</p></article>
-        <article class="card"><span class="meta">Coastal city</span><h3>Port Gellhorn</h3><p>One of Rockstar's named destinations outside central Vice City. Its exact boundaries and full gameplay role remain to be established.</p></article>
-        <article class="card"><span class="meta">Industrial region</span><h3>Ambrosia</h3><p>An officially introduced Leonida area that broadens the setting beyond beaches and nightlife.</p></article>
-        <article class="card"><span class="meta">Northern terrain</span><h3>Mount Kalaga</h3><p>A named destination that signals more varied inland and elevated terrain across the state.</p></article>
+        <article class="card"><span class="meta">Official destination · Urban</span><h3>Vice City</h3><p>The neon-soaked city at the center of Leonida, with beaches, nightlife, neighborhoods, a port, and a wider urban sprawl.</p></article>
+        <article class="card"><span class="meta">Official destination · Islands</span><h3>Leonida Keys</h3><p>An island chain tied to Jason's history and Brian Heder's boat-yard operation. The exact island-by-island layout is not officially mapped.</p></article>
+        <article class="card"><span class="meta">Official destination · Wetlands</span><h3>Grassrivers</h3><p>Leonida's wetland country, presented by Rockstar as a distinct natural environment.</p></article>
+        <article class="card"><span class="meta">Official destination · Coast</span><h3>Port Gellhorn</h3><p>A named coastal destination beyond Vice City. Its exact boundaries and internal district layout remain unconfirmed.</p></article>
+        <article class="card"><span class="meta">Official destination · Industry</span><h3>Ambrosia</h3><p>An inland industrial destination associated with the Allied Crystal sugar refinery in Rockstar's world material.</p></article>
+        <article class="card"><span class="meta">Official destination · North</span><h3>Mount Kalaga</h3><p>A northern natural area associated with outdoor terrain and a different pace from Vice City's urban core.</p></article>
       </div>
+      <h2>Vice City: named neighborhoods and landmarks</h2>
+      <p><strong>Rockstar location-page names:</strong> Ocean Beach, Little Cuba, Tisha-Wocka Flea Market, and the VC Port. Rockstar describes Ocean Beach's art-deco hotels and sands, Little Cuba's panaderías, the flea market's bootleg brands, and the port's cruise-ship traffic.</p>
+      <p><strong>Official trailer signage and other first-party references:</strong> Stockyard, Downtown, Southside Vice City, Peacock Bay, SW 9th Ave, VCI Airport, and Kelly County. These names appear in official promotional material; signage does not by itself establish exact borders or coordinates.</p>
+      <h2>More named places, businesses, and properties</h2>
+      <div class="card-grid">
+        <article class="card"><span class="meta">Official store / property reference</span><h3>Shore Court Garage</h3><p>Rockstar's vehicle listing describes this personal garage as close to the sands of Ocean Beach.</p></article>
+        <article class="card"><span class="meta">Official store / property reference</span><h3>Paradise Garage · Watson Bay</h3><p>A named garage in Watson Bay, listed with the Ultimate Edition content.</p></article>
+        <article class="card"><span class="meta">Official store / location reference</span><h3>Washington Beach</h3><p>A named beach location referenced in Rockstar's edition material. Its precise position is not published.</p></article>
+        <article class="card"><span class="meta">Official store / location reference</span><h3>Gambit Bay</h3><p>A named bay referenced in Rockstar's edition material. Do not confuse the name with a confirmed map pin.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>PTT YOUNGIN$ Illegal Goods Store</h3><p>A named gang-compound location associated with Southside Vice City in the Ultimate Edition listing.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>Electric Fang Tattoo</h3><p>A named tattoo shop associated with Stockyard in Rockstar's store material.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>Stock 305</h3><p>A named clothing store associated with Stockyard.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>Sara's Unisex Salon</h3><p>A named salon in Rockstar's edition material; its exact neighborhood is not asserted here.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>Rideout Customs</h3><p>A named vehicle-customization business in Rockstar's edition material.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>One-Eyed Willie's</h3><p>A named off-road modification shop referenced in Rockstar's edition material.</p></article>
+        <article class="card"><span class="meta">Official store / area</span><h3>Lake Leonida</h3><p>A named body of water referenced in Rockstar's edition material.</p></article>
+        <article class="card"><span class="meta">Official character profile</span><h3>Leonida Penitentiary</h3><p>Named in Lucia Caminos's official biography. The public profile does not provide a map position.</p></article>
+      </div>
+      <h2>More named story locations and businesses</h2>
+      <div class="card-grid">
+        <article class="card"><span class="meta">Official store / street</span><h3>Shore Drive</h3><p>A named Vice City road referenced in Rockstar's vehicle descriptions. No full route or exact street position has been published.</p></article>
+        <article class="card"><span class="meta">Official store / business</span><h3>Goodtime Gear</h3><p>A named apparel and accessories brand tied to Leonida's in-world television personality Macca the Gator.</p></article>
+        <article class="card"><span class="meta">Official character / business</span><h3>Only Raw Records</h3><p>The record label associated with Dre'Quan Priest, Boobie Ike, and the Real Dimez.</p></article>
+        <article class="card"><span class="meta">Official character / business</span><h3>Jack of Hearts</h3><p>The strip club at the center of Boobie Ike's Vice City business empire.</p></article>
+        <article class="card"><span class="meta">Official destination / landmark</span><h3>Allied Crystal Sugar Refinery</h3><p>The refinery that provides jobs in Ambrosia, named in Rockstar's world material.</p></article>
+        <article class="card"><span class="meta">Official character / story location</span><h3>Brian Heder's Boat Yard</h3><p>A Keys-area story location used by Brian Heder and Lori. Rockstar has not published an exact pin.</p></article>
+        <article class="card"><span class="meta">Official promotional imagery</span><h3>Ocean View Hotel</h3><p>The hotel name is visible in official promotional imagery. Its precise map position and relationship to other properties are not established here.</p></article>
+      </div>
+      <p>Rockstar also names the Allied Crystal sugar refinery in Ambrosia, Only Raw Records, and the Jack of Hearts club in Boobie Ike's Vice City business empire. Brian Heder's boat yard is a story location in the Keys. The Ocean View Hotel sign is visible in official promotional imagery. These references belong in the location index, but the hotel and boat yard should not be assigned invented coordinates.</p>
+      <div class="callout"><strong>Location evidence labels</strong><p><strong>Official destination</strong> means Rockstar profiles the place. <strong>Officially named</strong> means a Rockstar page, store listing, or official trailer names it. <strong>Trailer signage</strong> means the name is readable in official footage. <strong>Unplaced</strong> means the name is real but its exact position is not established. <strong>Community theory</strong> is never presented as Rockstar-confirmed geography.</p></div>
+      <h2>Has Rockstar released the full GTA 6 map?</h2>
+      <p>Rockstar's public world pages identify destinations and selected place names, but do not provide a complete, coordinate-accurate map of Leonida. Fan reconstructions can help organize evidence, but their borders, distances, road connections, and inferred locations must remain labeled as community work.</p>
       <h2>How big is the GTA 6 map?</h2>
-      <p>Rockstar has not published a definitive square-mile measurement on the official GTA VI pages cited here. Community overlays and coordinate estimates can be interesting, but they are reconstructions—not an official map-size announcement.</p>
-      <div class="callout"><strong>Map-analysis standard</strong><p>Confirmed place names come from Rockstar. Reconstructed roads, borders, distances, and interiors should be labeled as estimates until the final game or an official map settles them.</p></div>
-      <h2>Why Leonida matters</h2>
-      <p>Moving from a single-city frame to the wider state of Leonida creates room for dense nightlife, highways, islands, wetlands, smaller communities, industrial districts, and more remote terrain. The named destinations already show that GTA 6's world is intended to feel broader than one downtown skyline.</p>
+      <p>There is no definitive square-mile measurement in the Rockstar location material cited here. We will not publish a precise size or place pins from leaked or unverified map images as if they were official.</p>
     `,
     faqs: [
-      ["Where is GTA 6 set?", "GTA 6 is set in Vice City and the wider fictional state of Leonida."],
-      ["What locations are confirmed in GTA 6?", "Rockstar has named Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga."],
-      ["Has Rockstar confirmed the exact GTA 6 map size?", "No exact square-mile measurement appears on the official GTA VI pages cited here as of September 9, 2026."],
+      ["What are the six major GTA 6 locations?", "Rockstar profiles Vice City, Leonida Keys, Grassrivers, Port Gellhorn, Ambrosia, and Mount Kalaga."],
+      ["Which Vice City neighborhoods and landmarks are named?", "Rockstar names Ocean Beach, Little Cuba, Tisha-Wocka Flea Market, and the VC Port; official trailer signage also shows names including Stockyard, Downtown, Southside, Peacock Bay, and VCI Airport."],
+      ["Has Rockstar released the full GTA 6 map?", "No complete coordinate-accurate map is included in the Rockstar location material cited here."],
     ],
-    sources: [["Rockstar Games — Only in Leonida", officialWorld]],
+    sources: [["Rockstar Games — Only in Leonida", officialWorld], ["Rockstar Games — GTA VI official site and store", officialHome], ["Rockstar Store — GTA VI", officialStore], ["PlayStation — GTA VI bonus content details", "https://www.playstation.com/en-ca/support/games/gta-vi-game/"], ["Rockstar Games — Official GTA VI media", officialVideos]],
   },
   {
     slug: "gta-6-trailers",
@@ -499,7 +531,7 @@ function jsonLd(page) {
       name: page.h1,
       description: page.description,
       datePublished: modified,
-      dateModified: modified,
+      dateModified: page.modified || modified,
       inLanguage: "en-US",
       isPartOf: { "@id": `${base}/#website` },
       publisher: { "@id": `${base}/#organization` },
@@ -578,7 +610,7 @@ function render(page) {
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Vice City Forums — GTA 6 news, guides and community discussion">
   <meta property="article:published_time" content="${modified}">
-  <meta property="article:modified_time" content="${modified}">
+  <meta property="article:modified_time" content="${page.modified || modified}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(page.title)} | Vice City Forums">
   <meta name="twitter:description" content="${esc(page.description)}">
@@ -604,7 +636,7 @@ function render(page) {
       <div class="kicker">${esc(page.kicker)}</div>
       <h1>${esc(page.h1)}</h1>
       <p class="dek">${esc(page.intro)}</p>
-      <time class="updated" datetime="${modified}">Verified and updated ${modifiedLabel}</time>
+      <time class="updated" datetime="${page.modified || modified}">Verified and updated ${page.modifiedLabel || modifiedLabel}</time>
     </header>
     <section class="fact-grid" aria-label="Key facts">${facts}</section>
     <div class="share-bar" aria-label="Share this guide"><strong>Share</strong><a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}" target="_blank" rel="noopener noreferrer">Reddit</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" rel="noopener noreferrer">Facebook</a><button type="button" data-copy-link>Copy link</button><span data-copy-status aria-live="polite"></span></div>
@@ -640,11 +672,11 @@ for (const page of pages) {
 
 const sitemapEntries = [
   { path: "/", priority: "1.0", changefreq: "daily" },
-  ...pages.map((page) => ({ path: `/${page.slug}`, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
+  ...pages.map((page) => ({ path: `/${page.slug}`, modified: page.modified || modified, priority: page.slug === "gta-6-news" ? "0.9" : "0.8", changefreq: page.slug === "gta-6-news" ? "daily" : "weekly" })),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemapEntries.map((entry) => `  <url><loc>${base}${entry.path}</loc><lastmod>${modified}</lastmod><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority></url>`).join("\n")}
+${sitemapEntries.map((entry) => `  <url><loc>${base}${entry.path}</loc><lastmod>${entry.modified || modified}</lastmod><changefreq>${entry.changefreq}</changefreq><priority>${entry.priority}</priority></url>`).join("\n")}
 </urlset>\n`;
 await writeFile(resolve(root, "sitemap.xml"), sitemap);
 
@@ -653,7 +685,7 @@ const feedItems = pages.slice(0, 6).map((page) => `
     <title>${esc(page.h1)}</title>
     <link>${base}/${page.slug}</link>
     <guid isPermaLink="true">${base}/${page.slug}</guid>
-    <pubDate>Wed, 09 Sep 2026 16:00:00 GMT</pubDate>
+    <pubDate>${new Date((page.modified || modified) + "T16:00:00Z").toUTCString()}</pubDate>
     <description>${esc(page.description)}</description>
   </item>`).join("");
 const feed = `<?xml version="1.0" encoding="UTF-8"?>
