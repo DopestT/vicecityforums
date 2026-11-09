@@ -45,7 +45,7 @@ const pages = [
       </div>
       <div class="callout"><strong>Our verification rule</strong><p>A claim is labeled “confirmed” only when it appears on a Rockstar-controlled page or another direct first-party source. Trailer observations are identified as observations; predictions and theories stay labeled as community discussion.</p></div>
       <h2>What is confirmed right now?</h2>
-      <p>Rockstar currently lists <strong>November 19, 2026</strong> as the launch date and names <strong>PlayStation 5</strong> and <strong>Xbox Series X|S</strong> as platforms. The official world material identifies Vice City as part of the state of Leonida and introduces Jason, Lucia, and a wider supporting cast. Rockstar's dedicated Pre-Load FAQ, last updated November 3, says digital pre-load begins November 10, 2026: midnight local time on PS5 and 00:00 GMT on Xbox Series X|S. The download requires up to 212 GB depending on device; code-in-box copies are expected from November 12.</p>
+      <p>Rockstar currently lists <strong>November 19, 2026</strong> as the launch date and names <strong>PlayStation 5</strong> and <strong>Xbox Series X|S</strong> as platforms. The official world material identifies Vice City as part of the state of Leonida and introduces Jason, Lucia, and a wider supporting cast. Rockstar's dedicated Pre-Load FAQ, last updated November 3, says digital pre-load begins November 10, 2026: midnight local time on PS5 and 00:00 GMT on Xbox Series X|S. The download requires up to 212 GB depending on device; code-in-box copies are expected from November 12, 2026.</p>
       <p>Rockstar's media library currently groups three major videos—An Extended Look, Trailer 2, and Trailer 1—along with official character and cover-art clips. That gives the community more material to study while keeping speculation anchored to footage Rockstar actually published.</p>
       <h2>What is not confirmed?</h2>
       <p>An exact PC release date is not listed on Rockstar's current GTA VI landing page. Exact map dimensions, every gameplay system, the full mission list, and a complete post-launch roadmap also remain unconfirmed. Treat unattributed screenshots, “insider” posts, and unlabeled AI footage as unverified until a primary source supports them.</p>
@@ -307,7 +307,7 @@ const pages = [
       ["When does GTA 6 digital pre-load start?", "Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says PS5 starts at midnight local time on November 10, 2026 and Xbox Series X|S starts at 00:00 GMT on November 10, 2026."],
       ["How much storage does the digital pre-load need?", "Rockstar says up to 212 GB of available space depending on your device."],
       ["What GTA 6 editions are official?", "Rockstar currently lists Standard and Ultimate editions on its official store."],
-      ["Does the physical GTA 6 box include a disc?", "No. Rockstar says the physical version is code-in-box and does not include a disc; retailers are expected to have it from November 12."],
+      ["Does the physical GTA 6 box include a disc?", "No. Rockstar says the physical version is code-in-box and does not include a disc; retailers are expected to have it from November 12, 2026."],
     ],
     sources: [["Rockstar Store — GTA VI", officialStore], ["Official GTA VI site", officialHome], ["Rockstar Support — GTA VI Pre-Load FAQ", officialPreloadFaq], ["Rockstar Support — Regional pre-load times", officialPreloadTimes], ["Rockstar Newswire — Pre-load begins November 10", officialPreloadNewswire]],
   },
