@@ -1,6 +1,6 @@
 # Vice City Forums — Growth Operating System
 
-Last updated: 2026-09-09
+Last updated: 2026-11-08
 
 ## Position
 
@@ -55,7 +55,7 @@ Recommended daily mix: one short-form video, one story/poll, one discussion prom
 
 ### Countdown launch
 
-**Caption:** The clock to Vice City is running. We built a clean GTA 6 countdown tied to Rockstar's current November 19, 2026 date—plus the November 12 preload date and direct source links. What are you doing first when the city opens?
+**Caption:** The clock to Vice City is running. We built a clean GTA 6 countdown tied to Rockstar's current November 19, 2026 date—plus the November 10 digital pre-load schedule and direct source links. What are you doing first when the city opens?
 
 **Link:** `https://vicecityforums.com/gta-6-countdown?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
 
@@ -67,7 +67,7 @@ Recommended daily mix: one short-form video, one story/poll, one discussion prom
 
 ### Pre-order guide
 
-**Caption:** GTA 6 pre-orders are live, but the fine print matters: Standard vs. Ultimate, the Vintage Vice City pack, November 12 preload, and physical versions described as code-in-box with no disc. We put the official details in one place.
+**Caption:** GTA 6 pre-orders are live, but the fine print matters: Standard vs. Ultimate, the Vintage Vice City pack, November 10 digital pre-load (PS5 midnight local; Xbox 00:00 GMT), up to 212 GB, and code-in-box versions expected from November 12 with no disc. We put the official details in one place.
 
 **Link:** `https://vicecityforums.com/gta-6-pre-order?utm_source=CHANNEL&utm_medium=social&utm_campaign=growth_launch`
 

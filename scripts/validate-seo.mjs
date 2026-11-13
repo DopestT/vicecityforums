@@ -109,6 +109,34 @@ for (const [file, route] of routes) {
   }
 }
 
+const currentPreloadChecks = [
+  {
+    file: "gta-6-news/index.html",
+    required: ["November 10, 2026", "212 GB", "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq", "2026-11-08", "When does GTA 6 digital pre-load start?"],
+    forbidden: ["November 12 preload date", "November 12, 2026 as the preload date"],
+  },
+  {
+    file: "gta-6-pre-order/index.html",
+    required: ["November 10, 2026", "212 GB", "November 12, 2026", "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq", "2026-11-08", "How much storage does the digital pre-load need?"],
+    forbidden: ["November 12, 2026 as the preload date"],
+  },
+  {
+    file: "gta-6-countdown/index.html",
+    required: ["November 10, 2026", "212 GB", "November 12, 2026", "https://support.rockstargames.com/articles/7nPqOA2uCbpEQHXx7KVrYd/grand-theft-auto-vi-pre-load-faq", "2026-11-08", "How much storage does the preload need?"],
+    forbidden: ["November 12, 2026 as the preload date"],
+  },
+];
+
+for (const check of currentPreloadChecks) {
+  const html = readFileSync(resolve(root, check.file), "utf8");
+  for (const text of check.required) {
+    if (!html.includes(text)) fail(check.file, `missing current pre-load fact/source: ${text}`);
+  }
+  for (const text of check.forbidden) {
+    if (html.includes(text)) fail(check.file, `stale digital pre-load claim remains: ${text}`);
+  }
+}
+
 const expectedUrls = routes.map(([, route]) => `${origin}${route}`).sort();
 const sitemap = readFileSync(resolve(root, "sitemap.xml"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]).sort();
