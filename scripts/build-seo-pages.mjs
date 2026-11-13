@@ -554,6 +554,9 @@ function render(page) {
   const faqHtml = page.faqs.map(([question, answer]) => `<article class="faq-item"><h3>${esc(question)}</h3><p>${esc(answer)}</p></article>`).join("");
   const sourceHtml = page.sources.map(([label, href]) => `<li><a href="${href}" rel="noopener">${esc(label)}</a></li>`).join("");
   const facts = page.facts.map(([label, value]) => `<div class="fact"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`).join("");
+  const joinCta = page.slug === "gta-6-forums"
+    ? `<a class="nav-cta" href="${base}/#signup">Create a free account →</a> <a href="${base}/#categories">Browse forums</a>`
+    : `<a class="nav-cta" href="${base}/#categories">Enter Vice City Forums →</a>`;
   return `<!doctype html>
 <html lang="en-US">
 <head>
@@ -609,7 +612,7 @@ function render(page) {
     <section class="fact-grid" aria-label="Key facts">${facts}</section>
     <div class="share-bar" aria-label="Share this guide"><strong>Share</strong><a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}" target="_blank" rel="noopener noreferrer">Reddit</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" rel="noopener noreferrer">Facebook</a><button type="button" data-copy-link>Copy link</button><span data-copy-status aria-live="polite"></span></div>
     <div class="content-grid">
-      <article class="article-body">${page.body}<h2>Frequently asked questions</h2><div class="faq-list">${faqHtml}</div><section class="join-card"><span class="meta">Your take belongs here</span><h2>Continue the conversation</h2><p>Bring the evidence, theory, clip, or question to a real GTA 6 discussion. Reading is public; posting takes a free member profile.</p><a class="nav-cta" href="${base}/#categories">Enter Vice City Forums →</a></section></article>
+      <article class="article-body">${page.body}<h2>Frequently asked questions</h2><div class="faq-list">${faqHtml}</div><section class="join-card"><span class="meta">Your take belongs here</span><h2>Continue the conversation</h2><p>Bring the evidence, theory, clip, or question to a real GTA 6 discussion. Reading is public; posting takes a free member profile.</p>${joinCta}</section></article>
       <aside class="source-box"><h2>Primary sources</h2><p>Facts on this page are checked against first-party material. Community interpretation is labeled separately.</p><ul>${sourceHtml}</ul><p><strong>Last checked:</strong><br>${modifiedLabel}</p></aside>
     </div>
     <section class="related" aria-labelledby="related-title"><h2 id="related-title">Keep exploring GTA 6</h2><div class="related-grid">${relatedCards}</div></section>

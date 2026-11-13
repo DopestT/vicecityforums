@@ -292,6 +292,7 @@ function showError(e){ console.error(e); view.innerHTML=`<div class="content"><d
 function route(){
   closeMenu(); const raw=location.hash.replace(/^#/,'')||'home'; const [page,arg]=raw.split('/');
   if(page!=='clips') clipsModule.destroy();
+  if(page==='signup'){ home(); if(!session) openAuth('signup'); return; }
   if(page==='home') return home(); if(page==='categories') return allCategories(); if(page==='category') return categoryPage(arg); if(page==='thread') return threadPage(arg); if(page==='new') return newThreadPage(); if(page==='clips') return clipsModule.show(arg); if(page==='crews') return comingSoon(); if(page==='privacy'||page==='terms') return legal(page); return home();
 }
 
