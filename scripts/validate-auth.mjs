@@ -19,12 +19,16 @@ requireText(app, "resetPasswordForEmail", 'forgot-password flow exists');
 requireText(app, "updateUser({password})", 'password-reset completion exists');
 requireText(app, "is_admin", 'profile load includes administrator state');
 requireText(app, 'href="admin.html"', 'signed-in administrators receive an admin link');
-requireText(app, "founding-citizens.js?v=20260920-1", 'founding campaign loads from the canonical app');
-requireText(index, 'src="js/app.js?v=20260920-1"', 'homepage loads app.js directly');
+requireText(app, "founding-citizens.js?v=20261119-1", 'founding campaign loads from the canonical app');
+requireText(index, 'src="js/app.js?v=20261119-1"', 'homepage loads app.js directly');
 if (index.includes('src="js/backend-bootstrap.js')) failures.push('homepage still depends on backend-bootstrap.js');
 requireText(admin, "https://mzqplhhtsnahxghxpwcd.supabase.co", 'admin uses the canonical Supabase project');
 requireText(admin, '@supabase/supabase-js@2.115.0', 'admin Supabase client is version-pinned');
 requireText(admin, 'SEED 30 DISCUSSIONS', 'admin exposes the 30-discussion legitimate seed tool');
+if (founding.includes('function decorateHome()') || founding.includes('founding-count')) failures.push('public founding member count must remain hidden');
+requireText(app, 'TODAY ON THE WIRE', 'homepage exposes the curated VCF editorial desk');
+requireText(app, 'These are featured topics, not member posts or activity counts.', 'featured content is disclosed as curated rather than member engagement');
+requireText(app, 'LATEST MEMBER DISCUSSIONS', 'real discussion list is clearly separated from editorial features');
 requireText(founding, "const label = full ? 'CREATE ACCOUNT' : 'JOIN THE FIRST 100';", 'mobile auth CTA computes one stable label');
 requireText(founding, 'if(cta.textContent !== label) cta.textContent = label;', 'mobile auth CTA avoids rewriting unchanged text and retriggering the MutationObserver');
 
