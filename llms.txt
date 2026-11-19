@@ -4,7 +4,7 @@
 
 Canonical site: https://vicecityforums.com/
 Official GTA VI source used for fact checking: https://www.rockstargames.com/VI
-Last verified: 2026-11-08
+Last verified: 2026-11-19
 
 ## Core pages
 - [GTA 6 News: Confirmed Updates](https://vicecityforums.com/gta-6-news): Track confirmed GTA 6 news, official Rockstar announcements, release-date updates, trailers, platforms, characters, and Vice City developments.
@@ -18,7 +18,7 @@ Last verified: 2026-11-08
 - [GTA 6 Gameplay: What Is Confirmed](https://vicecityforums.com/gta-6-gameplay): Explore confirmed GTA 6 gameplay footage, what Rockstar's PS5 extended look actually shows, and which systems remain community interpretation.
 - [GTA 6 PC Release Status](https://vicecityforums.com/gta-6-pc): Check the current official GTA 6 PC release status, confirmed console platforms, unsupported date claims, and the sources worth watching for an announcement.
 - [GTA 6 Vehicles & Confirmed Names](https://vicecityforums.com/gta-6-vehicles): Track officially named GTA 6 vehicles from Rockstar's store and media, including the Cheetah, Stanier, Dominator Buggy, Squalo, and more.
-- [GTA 6 Release Countdown](https://vicecityforums.com/gta-6-countdown): Follow a live calendar countdown to the confirmed GTA 6 release date, November 19, 2026, plus preload timing and launch-status source links.
+- [GTA 6 Release Countdown](https://vicecityforums.com/gta-6-countdown): GTA 6 launch status for November 19, 2026, with a countdown archive, confirmed platforms, and official source links.
 
 ## Editorial policy
 - Confirmed claims are tied to Rockstar-controlled or other direct first-party sources.
