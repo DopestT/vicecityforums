@@ -322,5 +322,5 @@ document.querySelectorAll('[data-route]').forEach(b=>b.onclick=()=>{location.has
 document.querySelectorAll('.sidebar [data-category]').forEach(b=>b.onclick=()=>{location.hash='#category/'+b.dataset.category;});
 window.addEventListener('hashchange',route);
 bootstrap()
-  .then(()=>import('./founding-citizens.js?v=20260920-1'))
+  .then(()=>import('./founding-citizens.js?v=20261119-1'))
   .catch(showError);
