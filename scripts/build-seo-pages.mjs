@@ -420,10 +420,10 @@ const pages = [
   },
   {
     slug: "gta-6-countdown",
-    modified: "2026-11-08",
-    modifiedLabel: "November 8, 2026",
-    title: "GTA 6 Countdown to November 19, 2026",
-    description: "Follow a live calendar countdown to the confirmed GTA 6 release date, November 19, 2026, plus preload timing and launch-status source links.",
+    modified: "2026-11-19",
+    modifiedLabel: "November 19, 2026",
+    title: "GTA 6 Launch Status and Countdown Archive",
+    description: "GTA 6 launch status for November 19, 2026, with a countdown archive, confirmed platforms, and official source links.",
     kicker: "Live launch tracker",
     h1: "GTA 6 Release Countdown",
     intro: "Count down to Rockstar's currently announced November 19, 2026 launch date, with the official status kept one click away.",
@@ -434,31 +434,31 @@ const pages = [
       ["Countdown basis", "Your local calendar"],
     ],
     body: `
-      <h2>Time until the GTA 6 launch date</h2>
+      <h2>Launch-day countdown status</h2>
       <div class="countdown" id="release-countdown" aria-live="polite">
         <div><strong id="countdown-days">—</strong><span>Days</span></div>
         <div><strong id="countdown-hours">—</strong><span>Hours</span></div>
         <div><strong id="countdown-minutes">—</strong><span>Minutes</span></div>
         <div><strong id="countdown-seconds">—</strong><span>Seconds</span></div>
       </div>
-      <p class="countdown-note" id="countdown-note">Calendar countdown to November 19 in your device's local timezone. Exact digital unlock times can vary by platform and region.</p>
-      <h2>What happens before launch?</h2>
+      <p class="countdown-note" id="countdown-note">The November 19 launch date has arrived. Check Rockstar and your platform store for current availability.</p>
+      <h2>Launch preparation recap</h2>
       <p>Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says digital pre-load starts at midnight local time on PS5 on November 10, 2026, and at 00:00 GMT on Xbox Series X|S. In U.S. Eastern time, the Xbox start is 7:00 p.m. ET on November 9. The download requires up to 212 GB depending on device. Pre-load access is not early gameplay access.</p>
       <div class="card-grid">
         <article class="card"><span class="meta">November 10</span><h3>Digital pre-load</h3><p>PS5: midnight local time. Xbox Series X|S: 00:00 GMT worldwide (7:00 p.m. ET on November 9). Allow up to 212 GB of free space, depending on device.</p></article>
         <article class="card"><span class="meta">November 12</span><h3>Code-in-box availability</h3><p>Rockstar says physical code-in-box versions should be available from retailers starting November 12, 2026. The package contains a download code, not a disc.</p></article>
-        <article class="card"><span class="meta">November 19</span><h3>Current launch date</h3><p>Rockstar's regional support page says the game releases at midnight local time on November 19 in all regions for both consoles.</p></article>
+        <article class="card"><span class="meta">November 19</span><h3>Launch date</h3><p>Rockstar's regional support page says the game releases at midnight local time on November 19 in all regions for both consoles.</p></article>
       </div>
-      <div class="callout"><strong>This is a calendar countdown</strong><p>Rockstar has announced a date, not one universal worldwide unlock timestamp on the sources cited here. The timer targets the beginning of November 19 on your device and should not be used to predict a storefront's exact unlock hour.</p></div>
-      <h2>Build your launch crew now</h2>
-      <p>A launch-day community is made before launch day. Use the forums to choose what you will explore first, compare official details, save favorite theories, and meet other players without waiting for the city gates to open.</p>
+      <div class="callout"><strong>Calendar countdown explained</strong><p>The calendar countdown targeted the start of November 19 in your device's local timezone. Storefront access and launch times can differ by platform and region, so use official sources for availability.</p></div>
+      <h2>Join the GTA 6 discussion</h2>
+      <p>The launch-day conversation continues here. Bring official discoveries, gameplay clips, screenshots, and questions to the forums. Label spoilers clearly for other players.</p>
       <p><a class="nav-cta" href="/#categories">Join the GTA 6 launch discussion →</a></p>
     `,
     faqs: [
       ["When does GTA 6 release?", "Rockstar currently lists November 19, 2026 as the release date."],
       ["When can GTA 6 be preloaded?", "Rockstar's dedicated Pre-Load FAQ, last updated November 3, 2026, says PS5 begins at midnight local time on November 10, 2026 and Xbox Series X|S begins at 00:00 GMT on November 10, 2026."],
       ["How much storage does the preload need?", "Rockstar says up to 212 GB of available space depending on the device."],
-      ["Is the countdown an exact unlock timer?", "No. It counts to the launch-date calendar day in your local timezone; exact store unlock times can vary."],
+      ["Was the countdown an exact unlock timer?", "No. It counted to the start of the launch-date calendar day in your local timezone; actual store unlock times could vary."],
     ],
     sources: [["Official GTA VI site", officialHome], ["Rockstar Store — GTA VI", officialStore], ["Rockstar Support — GTA VI Pre-Load FAQ", officialPreloadFaq], ["Rockstar Support — Regional pre-load times", officialPreloadTimes], ["Rockstar Newswire — Pre-load begins November 10", officialPreloadNewswire]],
     script: `<script>
