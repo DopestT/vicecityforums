@@ -207,7 +207,7 @@ function threadCard(row,authors){
 
 const seoHubs = `
   <a class="seo-hub-card" href="gta-6-news"><b>GTA 6 NEWS</b><span>Verified updates and official announcements</span></a>
-  <a class="seo-hub-card" href="gta-6-countdown"><b>LIVE COUNTDOWN</b><span>Days until November 19, 2026</span></a>
+  <a class="seo-hub-card" href="gta-6-countdown"><b>LAUNCH STATUS</b><span>November 19, 2026 release information</span></a>
   <a class="seo-hub-card" href="gta-6-pre-order"><b>PRE-ORDER GUIDE</b><span>Editions, bonuses, and preload details</span></a>
   <a class="seo-hub-card" href="gta-6-gameplay"><b>GAMEPLAY</b><span>Confirmed footage versus interpretation</span></a>
   <a class="seo-hub-card" href="gta-6-release-date"><b>RELEASE DATE</b><span>Launch date, platforms, and status</span></a>
@@ -219,25 +219,46 @@ const seoHubs = `
   <a class="seo-hub-card" href="gta-6-funny-clips"><b>FUNNY CLIPS</b><span>Fails, glitches, concepts, and NPC chaos</span></a>
   <a class="seo-hub-card" href="gta-6-forums"><b>FORUM DIRECTORY</b><span>Find the right GTA 6 discussion</span></a>`;
 
+const todayOnTheWire = `
+  <section class="wire-desk" aria-labelledby="today-on-the-wire">
+    <div class="section-head"><div><div class="wire-kicker">VCF EDITORIAL DESK · CURATED FEATURES</div><h2 id="today-on-the-wire" class="section-title">TODAY ON THE WIRE</h2></div><a class="btn small ghost" href="#categories">JOIN A DISCUSSION</a></div>
+    <p class="wire-description">News, conversation starters, clips, and guides—prepared by the VCF desk. These are featured topics, not member posts or activity counts.</p>
+    <div class="wire-grid">
+      <article class="wire-card"><div class="wire-card-top"><span>01 · NEWS DESK</span><span class="wire-label">CURATED</span></div><h3>GTA VI launch: the official source</h3><p>See Rockstar's latest release information before debating theories or sharing updates.</p><a href="https://www.rockstargames.com/newswire/article/39akk424a9oo53/grand-theft-auto-vi-now-available" target="_blank" rel="noopener noreferrer">READ ROCKSTAR'S ANNOUNCEMENT →</a></article>
+      <article class="wire-card"><div class="wire-card-top"><span>02 · COMMUNITY HOST</span><span class="wire-label">DISCUSSION PROMPT</span></div><h3>Where did you explore first in Leonida?</h3><p>Pick a district, compare discoveries, or start a spoiler-tagged discussion with other players.</p><a href="#categories">EXPLORE THE FORUMS →</a></article>
+      <article class="wire-card"><div class="wire-card-top"><span>03 · CLIP DESK</span><span class="wire-label">SUBMISSIONS</span></div><h3>Share the moment worth replaying</h3><p>See community clips and submit your own footage with proper attribution and usage rights.</p><a href="#clips">OPEN THE CLIP FEED →</a></article>
+      <article class="wire-card"><div class="wire-card-top"><span>04 · GUIDE DESK</span><span class="wire-label">SOURCE-LABELED</span></div><h3>Find your way around Leonida</h3><p>Browse locations Rockstar has named, with unconfirmed community theories kept separate.</p><a href="gta-6-map-locations">EXPLORE THE MAP GUIDE →</a></article>
+    </div>
+  </section>`;
+
 async function home(){
   setHead('vice-wire','The city starts here.'); setActive('data-route','home');
   view.innerHTML='<div class="loading">Loading the city…</div>';
+  let rows=[], authors={}, threadsUnavailable=false;
+  try {
+    const result=await getThreads(null,8);
+    rows=result.rows;
+    authors=result.authors;
+  } catch(error) {
+    console.error('Latest discussions temporarily unavailable.',error);
+    threadsUnavailable=true;
+  }
   try{
-    const {rows,authors}=await getThreads(null,8);
     view.innerHTML=`<div class="content">
       <section class="hero">
         <div class="eyebrow">INDEPENDENT GTA 6 FAN COMMUNITY</div>
         <h1>THE GTA 6 COMMUNITY IS OPEN.</h1>
-        <p>Track verified GTA 6 news, break down official trailers, explore Leonida, discover characters, share funny clips, and debate theories with people waiting for Vice City.</p>
-        <div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<a class="btn ghost" href="#clips">WATCH VCF CLIPS</a><button class="btn ghost" data-go-categories>BROWSE FORUMS</button><a class="btn ghost" href="gta-6-countdown">LAUNCH COUNTDOWN</a></div>
+        <p>Track verified GTA 6 news, break down official trailers, explore Leonida, discover characters, share funny clips, and debate theories with players exploring Vice City now.</p>
+        <div class="hero-actions">${session?'<button class="btn" data-new-thread>START A THREAD</button>':'<button class="btn" data-auth="signup">CREATE YOUR ACCOUNT</button><button class="btn ghost" data-auth="login">LOG IN</button>'}<a class="btn ghost" href="#clips">WATCH VCF CLIPS</a><button class="btn ghost" data-go-categories>BROWSE FORUMS</button><a class="btn ghost" href="gta-6-countdown">GTA 6 LAUNCH STATUS</a></div>
         <div class="launch-note">Unofficial fan community · Not affiliated with Rockstar Games or Take-Two Interactive</div>
       </section>
       <section aria-labelledby="explore-gta6">
         <div class="section-head"><h2 id="explore-gta6" class="section-title">EXPLORE GTA 6</h2></div>
         <div class="seo-hubs">${seoHubs}</div>
       </section>
-      <div class="section-head"><h2 class="section-title">LATEST DISCUSSIONS</h2><button class="btn small ghost" data-go-categories>ALL FORUMS</button></div>
-      <div class="thread-list">${rows.length?rows.map(r=>threadCard(r,authors)).join(''):'<div class="empty">No discussions yet. Be the first to post.</div>'}</div>
+      ${todayOnTheWire}
+      <div class="section-head"><h2 class="section-title">LATEST MEMBER DISCUSSIONS</h2><button class="btn small ghost" data-go-categories>ALL FORUMS</button></div>
+      <div class="thread-list">${threadsUnavailable?'<div class="empty">Discussions are temporarily unavailable. Please try again soon.</div>':rows.length?rows.map(r=>threadCard(r,authors)).join(''):'<div class="empty">No member discussions yet. Start the first conversation.</div>'}</div>
     </div>`;
     bindPageActions();
   }catch(e){ showError(e); }
@@ -301,5 +322,5 @@ document.querySelectorAll('[data-route]').forEach(b=>b.onclick=()=>{location.has
 document.querySelectorAll('.sidebar [data-category]').forEach(b=>b.onclick=()=>{location.hash='#category/'+b.dataset.category;});
 window.addEventListener('hashchange',route);
 bootstrap()
-  .then(()=>import('./founding-citizens.js?v=20260920-1'))
+  .then(()=>import('./founding-citizens.js?v=20261119-1'))
   .catch(showError);

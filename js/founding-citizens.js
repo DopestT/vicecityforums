@@ -38,42 +38,6 @@ function campaignState(){
   return {claimed,full,rank:rankFor(currentUserId)};
 }
 
-function decorateHome(){
-  const hero = document.querySelector('#view .hero');
-  if(!hero || hero.dataset.foundingDecorated==='true') return;
-  hero.dataset.foundingDecorated='true';
-
-  const {claimed,full,rank} = campaignState();
-  const eyebrow = hero.querySelector('.eyebrow');
-  const title = hero.querySelector('h1');
-  const copy = hero.querySelector('p');
-  const actions = hero.querySelector('.hero-actions');
-  if(eyebrow) eyebrow.innerHTML = `FOUNDING CITIZEN CAMPAIGN <span class="founding-hero-flag">FIRST 100</span>`;
-  if(title) title.textContent = 'THE GTA 6 COMMUNITY IS OPEN.';
-  if(copy) copy.textContent = full
-    ? 'The first 100 Founding Citizens have been claimed. Follow verified GTA 6 news, clips, guides, and discussion as Vice City approaches.'
-    : 'Join the first 100 completed member profiles and help build the founding generation of this independent GTA 6 community.';
-
-  if(actions){
-    const panel = document.createElement('div');
-    panel.className = 'founding-panel';
-    const countText = claimed===null ? 'FIRST 100 MEMBERS' : `${claimed} / 100 CLAIMED`;
-    const progress = claimed===null ? 0 : Math.max(2,Math.min(100,claimed));
-    const statusCopy = rank
-      ? `You are Founding Citizen #${String(rank).padStart(3,'0')}. Your early-member status is tied to your account.`
-      : full
-        ? 'The founding round is complete, but the city is still just getting started.'
-        : 'Create an account, claim your handle, and complete your profile before the first 100 spots are gone.';
-    panel.innerHTML = `<div class="founding-topline"><div><div class="founding-kicker">FOUNDING CITIZEN STATUS</div><div class="founding-count">${esc(countText)}</div></div>${rank?`<div class="founding-status-inline">YOUR #${String(rank).padStart(3,'0')}</div>`:''}</div><p class="founding-copy">${esc(statusCopy)}</p>${claimed===null?'':`<div class="founding-progress" aria-label="Founding Citizen progress"><span style="width:${progress}%"></span></div>`}<div class="founding-steps"><span class="founding-step">1 · CREATE ACCOUNT</span><span class="founding-step">2 · CLAIM HANDLE</span><span class="founding-step">3 · JOIN A DISCUSSION</span></div>`;
-    actions.before(panel);
-
-    const signup = actions.querySelector('[data-auth="signup"]');
-    if(signup) signup.textContent = full ? 'JOIN THE COMMUNITY' : 'CLAIM YOUR SPOT';
-    const newThread = actions.querySelector('[data-new-thread]');
-    if(newThread) newThread.textContent = 'MAKE YOUR FIRST POST';
-  }
-}
-
 function decorateAuth(){
   const modal = document.querySelector('#modal-root .modal');
   if(!modal || modal.dataset.foundingDecorated==='true') return;
@@ -118,7 +82,6 @@ function decorateMobileCta(){
 }
 
 function decorate(){
-  decorateHome();
   decorateAuth();
   decorateMemberBadge();
   decorateMobileCta();

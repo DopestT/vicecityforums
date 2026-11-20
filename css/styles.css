@@ -73,3 +73,20 @@ body.clips-mode .footer,body.clips-mode .mobile-auth-cta{display:none}
   .clips-empty h1{font-size:36px}
 }
 @media(prefers-reduced-motion:reduce){.clips-feed{scroll-behavior:auto}.clip-actions button{transition:none}}
+
+
+/* VCF editorial desk: curated topics, not simulated member activity. */
+.wire-desk{margin:30px 0 26px}
+.wire-desk .section-head{margin-bottom:8px}
+.wire-kicker{font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--cyan);margin-bottom:7px}
+.wire-description{color:#bdb5cf;font-size:12px;line-height:1.6;margin:0 0 17px;max-width:720px}
+.wire-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.wire-card{display:flex;flex-direction:column;gap:10px;padding:19px;border:1px solid rgba(123,82,255,.33);border-radius:15px;background:linear-gradient(145deg,rgba(29,23,49,.98),rgba(16,13,28,.98));min-width:0;box-shadow:0 9px 28px rgba(0,0,0,.12)}
+.wire-card:nth-child(2n){border-color:rgba(80,215,255,.27)}
+.wire-card-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:9px;font-weight:800;letter-spacing:.12em;color:var(--cyan)}
+.wire-label{font-size:8px;letter-spacing:.07em;border:1px solid rgba(255,255,255,.17);border-radius:999px;padding:5px 7px;color:#cfc7dd;background:rgba(8,6,17,.7)}
+.wire-card h3{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(20px,2.5vw,25px);line-height:1.1;margin:3px 0 0;color:#fff}
+.wire-card p{color:#c8c0d8;line-height:1.6;font-size:12px;margin:0}
+.wire-card a{margin-top:auto;padding-top:9px;font-size:10px;font-weight:900;letter-spacing:.07em;color:var(--cyan);text-decoration:none;align-self:flex-start}
+.wire-card a:hover,.wire-card a:focus-visible{color:#fff;text-decoration:underline}
+@media(max-width:640px){.wire-grid{grid-template-columns:minmax(0,1fr)}.wire-card{padding:16px}.wire-desk .section-head{gap:10px;flex-wrap:wrap}.wire-description{font-size:11px}}
