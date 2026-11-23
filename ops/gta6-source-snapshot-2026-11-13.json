@@ -1,0 +1,41 @@
+{
+  "verified_on": "2026-11-13",
+  "project": "Vice City Forums (GTA)",
+  "kind": "verified_official_source_refresh",
+  "publication_status": "review_only_not_published",
+  "authority": "Rockstar Games first-party Newswire and official GTA VI site",
+  "preserves_historical_snapshot": "ops/gta6-source-snapshot-2026-11-02.json",
+  "release": {
+    "date": "2026-11-19",
+    "platforms": [
+      "PlayStation 5",
+      "Xbox Series X|S"
+    ],
+    "source": "https://www.rockstargames.com/VI",
+    "status": "publisher_announced_not_yet_released_as_of_2026-11-13"
+  },
+  "newly_checked_items": [
+    {
+      "title": "Pre-Load Grand Theft Auto VI Now",
+      "source_url": "https://www.rockstargames.com/newswire/article/89834o94713o21/pre-load-grand-theft-auto-vi-now",
+      "published_on": "2026-11-10",
+      "verified_summary": "Rockstar says digital pre-order customers can now pre-load GTA VI ahead of the November 19 release.",
+      "source_type": "official_publisher_statement",
+      "observed_on": "2026-11-13"
+    },
+    {
+      "title": "Grand Theft Auto VI: The Festival",
+      "source_url": "https://www.rockstargames.com/VI/gtavi-thefestival",
+      "published_on": "2026-11-09",
+      "verified_summary": "Rockstar and PlayStation announce a launch celebration at Mana Wynwood in Miami on November 21, 2026.",
+      "source_type": "official_publisher_event_announcement",
+      "observed_on": "2026-11-13"
+    }
+  ],
+  "limits": [
+    "No automated crawler, job, content publication or production database change is included.",
+    "Do not treat this dated source snapshot as an automatically maintained ingestion pipeline.",
+    "Verify latest official publisher state again before promotion to public pages or feeds.",
+    "No speculative GTA VI gameplay claims or user-generated footage are included."
+  ]
+}
